@@ -121,6 +121,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+
+
 //    private boolean validateFields() {
 //        if (!SkilExValidator.checkNullString(this.edtUsername.getText().toString().trim())) {
 //            edtUsername.setError(getString(R.string.err_username));
