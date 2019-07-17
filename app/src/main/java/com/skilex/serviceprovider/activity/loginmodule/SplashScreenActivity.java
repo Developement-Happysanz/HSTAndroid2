@@ -1,4 +1,4 @@
-package com.skilex.serviceprovider.activity;
+package com.skilex.serviceprovider.activity.loginmodule;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 
@@ -17,7 +18,13 @@ public class SplashScreenActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.splash_display);
+
+        String GCMKey = PreferenceStorage.getGCM(getApplicationContext());
+        if (GCMKey.equalsIgnoreCase("")) {
+            String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+            PreferenceStorage.saveGCM(getApplicationContext(), refreshedToken);
+        }
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -36,13 +43,12 @@ public class SplashScreenActivity extends Activity {
 //
 //                }
 //                else {
-//                    Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
-//                    startActivity(i);
-//                    finish();
+                    Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
+                    startActivity(i);
+                    finish();
 //                }
             }
         }, SPLASH_TIME_OUT);
-
     }
 }
 
