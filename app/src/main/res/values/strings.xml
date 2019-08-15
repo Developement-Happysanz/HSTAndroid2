@@ -1,21 +1,21 @@
 <resources>
-<string name="app_name">SkilEx-A</string>
-<!--<string name="app_name">SkilEx Service Provider</string>-->
-<string name="empty" />
-<string name="error_occurred">Failed to connect to the server. Please try again.</string>
-<string name="navigation_drawer_open">Open navigation drawer</string>
-<string name="navigation_drawer_close">Close navigation drawer</string>
-<string name="nav_header_title">Android Studio</string>
-<string name="nav_header_subtitle">android.studio@android.com</string>
-<string name="nav_header_desc">Navigation header</string>
-<string name="action_settings">Settings</string>
+    <string name="app_name">SkilEx-A</string>
+    <!--<string name="app_name">SkilEx Service Provider</string>-->
+    <string name="empty" />
+    <string name="error_occurred">Failed to connect to the server. Please try again.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
-<string name="menu_home">Home</string>
-<string name="menu_gallery">Gallery</string>
-<string name="menu_slideshow">Slideshow</string>
-<string name="menu_tools">Tools</string>
-<string name="menu_share">Share</string>
-<string name="menu_send">Send</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 
 
     <!--Login-->
@@ -24,14 +24,95 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
 
+    <!--Register-->
+    <string name="reg_name">Name *</string>
+    <string name="reg_name_hint">John</string>
+    <string name="reg_mob_no">Phone Number *</string>
+    <string name="reg_mob_no_hint">0123456789</string>
+    <string name="reg_mail_id">Email ID (Optional)</string>
+    <string name="reg_mail_id_hint">info@demo.com</string>
+    <string name="reg_submit">Submit</string>
+    <string name="reg_action_bar">Registration</string>
+    <string name="reg_name_error">Enter valid name</string>
+    <string name="reg_phone_error">Enter valid phone number</string>
 
-<!--Dialog Fragment-->
-<string name="alert_button_ok">OK</string>
-<string name="alert_button_cancel">Cancel</string>
+    <!--OTP Page-->
+
+    <string name="verificationcode">Verification Code</string>
+    <string name="didntrecievecode">Didn\'t receive the code?\t</string>
+    <string name="entercodetxt">We have sent you 4 digit verification code to\nyour mobile number</string>
+    <string name="resend">Resend now</string>
+    <string name="resend_otp">Resend OTP?</string>
+    <string name="changenumber">Change number</string>
+    <string name="otp_action_bar">OTP</string>
+
+    <!--Category Selection-->
+
+    <string name="category_action_bar">Select Category</string>
+    <string name="go_next">Next</string>
+
+    <!--Organization Selection-->
+    <string name="org_type_action_bar">Select Organization</string>
+    <string name="org_info">*How would you like to identify yourself?</string>
+    <string name="reg_org">A registered organization</string>
+    <string name="un_org">An individual / an unregistered organization</string>
+
+    <!--Registered Organization-->
+    <string name="reg_org_action_bar">Organization details</string>
 
 
-<string name="mobile_number">Mobile Number</string>
+    <!--Un Registered Organization-->
+    <string name="un_reg_org_action_bar">Enter individual details</string>
+    <string name="individual_title">Individual details</string>
+    <string name="check_box_1">Are you an individual service expert?</string>
+    <string name="check_box_2">Someone who also coordinates other experts?</string>
+    <string name="un_reg_emp_count_box">What is the strength of your team?</string>
+    <string name="check_also_expert">Will you be leading your team in the project you undertake?</string>
+    <string name="expert_yes">Yes</string>
+    <string name="expert_no">No</string>
 
-<string name="google_android_map_api_key">AIzaSyD428E0W4-pf4kJuJ3rsqG5vCELRgmR2ok</string>
+    <!--Un Reg Org Document Upload-->
+    <string name="un_reg_doc_upload_action_bar">Documentation</string>
+    <string name="un_reg_doc_upload">Documentation of Individual Service Expert</string>
+    <string name="pan_card_title">PAN Card Number</string>
+    <string name="upload">Upload</string>
+    <string name="id_selection_title">ID Proof and Address Proof</string>
+    <string name="id_selection_type">Select the ID proof you want to submit</string>
+    <string name="id_proof_number">Enter your proof number</string>
+    <string name="bank_details_title">Bank Account Details</string>
+    <string name="bank_name">Enter the bank name</string>
+    <string name="bank_acc_no">Enter bank account number</string>
+    <string name="bank_ifsc">Enter bank IFSC number</string>
+    <string name="bank_branch">Enter bank branch name</string>
+    <string name="bank_pass_book">Kindly scan and upload your passbook\'s \nfront page</string>
+    <string name="term"><u>Term of Agreement</u></string>
+
+
+    <!--General-->
+    <string name="confirm">Confirm</string>
+    <string name="progress_loading">Loading&#8230;</string>
+    <string name="error_entry">Entry Invalid</string>
+    <string name="error_mail">Enter valid mail ID</string>
+    <string name="error_number">Enter valid phone number</string>
+    <string name="empty_entry">Field cannot be empty</string>
+
+    <!--Side menu-->
+    <string name="text_tamil" translatable="false">தமிழ்</string>
+    <string name="text_english" translatable="false">English</string>
+
+    <string-array name="language_selection">
+        <item>Select</item>
+        <item>தமிழ்</item>
+        <item>English</item>
+    </string-array>
+
+    <!--Dialog Fragment-->
+    <string name="alert_button_ok">OK</string>
+    <string name="alert_button_cancel">Cancel</string>
+
+
+    <string name="mobile_number">Mobile Number</string>
+
+    <string name="google_android_map_api_key">AIzaSyD428E0W4-pf4kJuJ3rsqG5vCELRgmR2ok</string>
 
 </resources>

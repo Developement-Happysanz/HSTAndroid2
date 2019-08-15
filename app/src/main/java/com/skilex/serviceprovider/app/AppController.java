@@ -1,5 +1,6 @@
 package com.skilex.serviceprovider.app;
 
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -15,6 +16,7 @@ import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.languagesupport.LocaleManager;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -22,7 +24,7 @@ import java.security.NoSuchAlgorithmException;
 //import com.facebook.FacebookSdk;
 
 
-public class AppController extends android.support.multidex.MultiDexApplication  {
+public class AppController extends android.support.multidex.MultiDexApplication {
 
     public static final String TAG = AppController.class
             .getSimpleName();
@@ -62,6 +64,7 @@ public class AppController extends android.support.multidex.MultiDexApplication 
         }
         return universalImageLoader;
     }
+
     public DisplayImageOptions getLogoDisplayOptions() {
         if (logoDisplayOptions == null) {
             logoDisplayOptions = new DisplayImageOptions.Builder().cacheInMemory(true)
@@ -117,7 +120,19 @@ public class AppController extends android.support.multidex.MultiDexApplication 
             e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-        } }
+        }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleManager.setLocale(base));
+    }
+
+    @Override
+    public void onConfigurationChanged(android.content.res.Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        LocaleManager.setLocale(this);
+    }
 
 
 }

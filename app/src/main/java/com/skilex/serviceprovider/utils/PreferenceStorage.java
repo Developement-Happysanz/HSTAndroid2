@@ -58,4 +58,57 @@ public class PreferenceStorage {
     }
     /*End*/
 
+    /*To store mobile number*/
+    public static void saveMobileNo(Context context, String type) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SkilExConstants.KEY_MOBILE_NUMBER, type);
+        editor.apply();
+    }
+
+    public static String getMobileNo(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String mobileNo;
+        mobileNo = sharedPreferences.getString(SkilExConstants.KEY_MOBILE_NUMBER, "");
+        return mobileNo;
+    }
+    /*End*/
+
+    /*To store user master id*/
+    public static void saveUserMasterId(Context context, String userMasterId) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SkilExConstants.KEY_USER_MASTER_ID, userMasterId);
+        editor.apply();
+    }
+
+    public static String getUserMasterId(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String userMasterId;
+        userMasterId = sharedPreferences.getString(SkilExConstants.KEY_USER_MASTER_ID, "");
+        return userMasterId;
+    }
+    /*End*/
+
+    /*Preferences Storeage*/
+    public static void savePreferencesSelected(Context context, boolean selected) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(SkilExConstants.KEY_USER_HAS_PREFERENCES, selected);
+        editor.apply();
+    }
+
+    public static boolean isPreferencesPresent(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        boolean logged = sharedPreferences.getBoolean(SkilExConstants.KEY_USER_HAS_PREFERENCES, false);
+        return logged;
+    }
+    /*End*/
+
 }
