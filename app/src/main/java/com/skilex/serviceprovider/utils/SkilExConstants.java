@@ -75,6 +75,14 @@ public class SkilExConstants {
 
     // Upload unregistered organization document upload
     public static final String UPLOAD_DOCUMENT = "upload_doc/";
+    public static final String KEY_COMPANY_TYPE = "company_type";
+    public static final String ID_PROOF_LIST = "list_idaddress_proofs/";
+    public static final String UPDATE_UN_ORG_PROVIDER_BANK_INFO = "update_provider_bank_detail/";
+    public static final String KEY_BANK_NAME = "bank_name";
+    public static final String KEY_BANK_ACC_NO = "acc_no";
+    public static final String KEY_BANK_BRANCH = "branch_name";
+    public static final String KEY_BANK_IFSC = "ifsc_code";
+
 
     //Login
     public static String LOGIN = "login/";

@@ -119,6 +119,13 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
+        <activity
+            android:name=".activity.providerregistration.InitialDepositActivity"
+            android:label="@string/un_reg_org_action_bar"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
         <activity android:name=".activity.MainActivity" />
 
 

@@ -88,6 +88,9 @@
     <string name="bank_pass_book">Kindly scan and upload your passbook\'s \nfront page</string>
     <string name="term"><u>Term of Agreement</u></string>
 
+    <!--Initial deposit-->
+    <string name="initial_deposit_action_bar">Deposit</string>
+
 
     <!--General-->
     <string name="confirm">Confirm</string>
