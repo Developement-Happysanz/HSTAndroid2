@@ -111,4 +111,23 @@ public class PreferenceStorage {
     }
     /*End*/
 
+    /*Preferences StoreAge*/
+    public static void savePaymentType(Context context, String paymentType) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SkilExConstants.PREF_PAYMENT_TYPE, paymentType);
+        editor.apply();
+    }
+
+    public static String getPaymentType(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String paymentType;
+        paymentType = sharedPreferences.getString(SkilExConstants.PREF_PAYMENT_TYPE, "");
+        return paymentType;
+    }
+    /*End*/
+    /*End*/
+
 }

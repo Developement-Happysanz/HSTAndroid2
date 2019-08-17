@@ -292,7 +292,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
 
                 if (selectedFilePath != null && !selectedFilePath.equals("")) {
                     sizeCge = new File(selectedFilePath);
-                    if (sizeCge.length() >= 9000000) {
+                    if (sizeCge.length() >= 40000000) {
                         AlertDialogHelper.showSimpleAlertDialog(this, "File size too large");
                         selectedFilePath = null;
                     } else {
@@ -643,12 +643,12 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     spnIdProofType2.setAdapter(adapter1);
                 }
                 if (checkValue.equalsIgnoreCase("bank")) {
+
                     String message = response.getString("msg");
                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
 
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
                     startActivity(i);
-
                 }
 
             }

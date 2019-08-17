@@ -84,6 +84,10 @@ public class SkilExConstants {
     public static final String KEY_BANK_IFSC = "ifsc_code";
 
 
+    // Payment module
+    public static final String PREF_PAYMENT_TYPE = "payment_type";
+
+
     //Login
     public static String LOGIN = "login/";
     // Login Parameters

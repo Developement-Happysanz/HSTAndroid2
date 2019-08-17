@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.activity.providerregistration.InitialDepositActivity;
 import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocumentUploadActivity;
 import com.skilex.serviceprovider.activity.providerregistration.UnRegisteredOnganizationInfoActivity;
 import com.skilex.serviceprovider.languagesupport.LocaleManager;
@@ -34,6 +35,7 @@ public class SplashScreenActivity extends Activity {
             public void run() {
 
                 Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
+//                homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();
             }

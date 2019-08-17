@@ -114,17 +114,21 @@
 
         <activity
             android:name=".activity.providerregistration.UnRegOrgDocumentUploadActivity"
-            android:label="@string/un_reg_org_action_bar"
+            android:label="@string/un_reg_doc_upload_action_bar"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activity.providerregistration.InitialDepositActivity"
-            android:label="@string/un_reg_org_action_bar"
+            android:label="@string/initial_deposit_action_bar"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".ccavenue.activity.InitialScreenActivity" />
+        <activity android:name=".ccavenue.activity.StatusActivity" />
+        <activity android:name=".ccavenue.activity.WebViewActivity" />
 
         <activity android:name=".activity.MainActivity" />
 

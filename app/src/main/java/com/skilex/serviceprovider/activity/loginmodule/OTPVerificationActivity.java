@@ -179,7 +179,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
             try {
                 Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
                 startActivity(i);
-                finish();
+//                finish();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

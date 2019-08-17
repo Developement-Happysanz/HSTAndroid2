@@ -10,4 +10,8 @@
     <color name="transparent">#51EEECEC</color>
     <color name="background_grey">#e5e6e9</color>
     <color name="grey">#B7B8BB</color>
+    <color name="payment_success_bg">#E2F2F0</color>
+    <color name="payment_success_font">#3FAA84</color>
+    <color name="payment_failed_bg">#FBF2EC</color>
+    <color name="payment_failed_font">#EF4069</color>
 </resources>
