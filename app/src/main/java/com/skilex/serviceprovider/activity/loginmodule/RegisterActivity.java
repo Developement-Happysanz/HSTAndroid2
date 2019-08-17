@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.bean.support.Preference;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
@@ -168,6 +169,7 @@ public class RegisterActivity extends BaseActivity implements IServiceListener, 
                 String saveUserMasterId = response.getString("user_master_id");
                 PreferenceStorage.saveUserMasterId(this, saveUserMasterId);
                 PreferenceStorage.saveMobileNo(this, edtRegisterPhoneNumber.getText().toString());
+                PreferenceStorage.saveLoginType(getApplicationContext(), "Register");
 
                 Intent i = new Intent(RegisterActivity.this, OTPVerificationActivity.class);
                 startActivity(i);

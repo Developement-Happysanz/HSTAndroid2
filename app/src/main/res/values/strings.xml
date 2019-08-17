@@ -146,6 +146,21 @@
     <string name="error_number">Enter valid phone number</string>
     <string name="empty_entry">Field cannot be empty</string>
 
+    <!--Landing page-->
+    <string name="home">Home</string>
+    <string name="service_expert">Service Expert</string>
+    <string name="profile_title">Profile</string>
+    <string name="dashboard">Dashboard</string>
+
+    <!--Home fragment-->
+    <string name="requested_ser">Requested Services</string>
+    <string name="assigned">Assigned Services</string>
+    <string name="ongoing">On going Services</string>
+    <string name="completed">Completed Services</string>
+    <string name="cancelled">Cancelled Services</string>
+    <string name="transaction">Transaction Details</string>
+
+
     <!--Side menu-->
     <string name="text_tamil" translatable="false">தமிழ்</string>
     <string name="text_english" translatable="false">English</string>

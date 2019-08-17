@@ -137,7 +137,12 @@
         <activity android:name=".ccavenue.activity.StatusActivity" />
         <activity android:name=".ccavenue.activity.WebViewActivity" />
 
-        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.LandingPageActivity"
+            android:label="@string/dashboard"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
 
 
         <service android:name=".fcm.MyFirebaseInstanceIDService">

@@ -14,4 +14,10 @@
     <color name="payment_success_font">#3FAA84</color>
     <color name="payment_failed_bg">#FBF2EC</color>
     <color name="payment_failed_font">#EF4069</color>
+    <color name="light_cyan">#4CB7BF</color>
+    <color name="light_orange">#F15A29</color>
+    <color name="light_violet">#AE84BB</color>
+    <color name="light_green">#03A04A</color>
+    <color name="light_red">#EF3E3B</color>
+    <color name="light_blue">#4CB7BF</color>
 </resources>

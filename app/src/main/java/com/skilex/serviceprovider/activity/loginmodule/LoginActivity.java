@@ -50,6 +50,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.util.Log.d;
+
 public class LoginActivity extends BaseActivity implements DialogClickListener, IServiceListener, View.OnClickListener {
 
     private static final String TAG = LoginActivity.class.getName();
@@ -208,8 +210,51 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
 
     }
 
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInSuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(SkilExConstants.PARAM_MESSAGE);
+                d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInSuccess = false;
+                        d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInSuccess = true;
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return signInSuccess;
+    }
+
     @Override
     public void onResponse(JSONObject response) {
+
+        progressDialogHelper.hideProgressDialog();
+
+        if (validateSignInResponse(response)) {
+            try {
+                String saveUserMasterId = response.getString("user_master_id");
+                PreferenceStorage.saveUserMasterId(this, saveUserMasterId);
+                PreferenceStorage.saveMobileNo(this, edtMobileNo.getText().toString());
+                PreferenceStorage.saveLoginType(getApplicationContext(), "Login");
+
+                Intent i = new Intent(getApplicationContext(), OTPVerificationActivity.class);
+                startActivity(i);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
 
     }
 

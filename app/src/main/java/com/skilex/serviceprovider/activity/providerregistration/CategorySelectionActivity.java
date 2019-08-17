@@ -20,7 +20,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.skilex.serviceprovider.R;
-import com.skilex.serviceprovider.activity.MainActivity;
 import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
 import com.skilex.serviceprovider.adapter.CategoryListAdapter;
 import com.skilex.serviceprovider.bean.support.Category;

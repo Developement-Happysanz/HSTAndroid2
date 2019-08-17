@@ -144,6 +144,12 @@
     <string name="rating_text">Rate your service</string>
     <string name="rate">Rate</string>
 
+    <!--Landing page-->
+    <string name="home">Home</string>
+    <string name="service_expert">Service Expert</string>
+    <string name="profile_title">Profile</string>
+    <string name="dashboard">Dashboard</string>
+
     <!--General-->
     <string name="confirm">Confirm</string>
     <string name="progress_loading">Loading&#8230;</string>
@@ -151,6 +157,14 @@
     <string name="error_mail">Enter vaild mail ID</string>
     <string name="error_number">Enter vaild phone number</string>
     <string name="empty_entry">Field cannot be empty</string>
+
+    <!--Home fragment-->
+    <string name="requested_ser">Requested Services</string>
+    <string name="assigned">Assigned Services</string>
+    <string name="ongoing">On going Services</string>
+    <string name="completed">Completed Services</string>
+    <string name="cancelled">Cancelled Services</string>
+    <string name="transaction">Transaction Details</string>
 
 
     <!--Side menu-->

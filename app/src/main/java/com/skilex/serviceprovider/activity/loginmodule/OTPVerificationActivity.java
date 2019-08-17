@@ -10,11 +10,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.activity.LandingPageActivity;
 import com.skilex.serviceprovider.activity.providerregistration.CategorySelectionActivity;
 import com.skilex.serviceprovider.customview.CustomOtpEditText;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
@@ -177,13 +177,18 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
         progressDialogHelper.hideProgressDialog();
         if (validateResponse(response)) {
             try {
-                Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
-                startActivity(i);
+                String loginType = PreferenceStorage.getLoginType(getApplicationContext());
+                if (loginType.equalsIgnoreCase("Register")) {
+                    Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
+                    startActivity(i);
+                }
 //                finish();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
         }
     }
 

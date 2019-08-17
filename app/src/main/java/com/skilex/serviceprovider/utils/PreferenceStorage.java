@@ -111,7 +111,7 @@ public class PreferenceStorage {
     }
     /*End*/
 
-    /*Preferences StoreAge*/
+    /*Payment type*/
     public static void savePaymentType(Context context, String paymentType) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
@@ -128,6 +128,24 @@ public class PreferenceStorage {
         return paymentType;
     }
     /*End*/
+
+    /*Login type*/
+    public static void saveLoginType(Context context, String loginType) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SkilExConstants.PREF_LOGIN_TYPE, loginType);
+        editor.apply();
+    }
+
+    public static String getLoginType(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String loginType;
+        loginType = sharedPreferences.getString(SkilExConstants.PREF_LOGIN_TYPE, "");
+        return loginType;
+    }
     /*End*/
+
 
 }

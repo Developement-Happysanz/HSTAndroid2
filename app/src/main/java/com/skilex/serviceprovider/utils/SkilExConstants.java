@@ -16,6 +16,9 @@ public class SkilExConstants {
     //NUMBER VERIFICATION URL FOR LOGIN
     public static final String MOBILE_VERIFICATION = "mobile_check/";
 
+    //Login type
+    public static final String PREF_LOGIN_TYPE = "login_type";
+
     //Register with basic info
     public static final String REGISTER_SERVICE_PROVIDER = "register/";
     //Service provider registration basic field
