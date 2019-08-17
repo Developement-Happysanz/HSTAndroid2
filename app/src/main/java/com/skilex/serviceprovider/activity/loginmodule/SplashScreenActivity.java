@@ -9,9 +9,7 @@ import android.support.annotation.Nullable;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.providerregistration.InitialDepositActivity;
-import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocumentUploadActivity;
-import com.skilex.serviceprovider.activity.providerregistration.UnRegisteredOnganizationInfoActivity;
-import com.skilex.serviceprovider.languagesupport.LocaleManager;
+import com.skilex.serviceprovider.activity.providerregistration.RegisteredOrganizationInfoActivity;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 
 

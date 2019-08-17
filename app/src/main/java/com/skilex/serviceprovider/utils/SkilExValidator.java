@@ -30,4 +30,12 @@ public class SkilExValidator {
             return true;
         }
     }
+
+    public static boolean checkPinCodeLength(String mobile) {
+        if (mobile.length() == 6) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

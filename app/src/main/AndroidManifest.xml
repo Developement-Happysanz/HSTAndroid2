@@ -106,7 +106,14 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.providerregistration.UnRegisteredOnganizationInfoActivity"
+            android:name=".activity.providerregistration.RegOrgDocumentUploadActivity"
+            android:label="@string/reg_doc_upload_action_bar"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.providerregistration.UnRegisteredOrganizationInfoActivity"
             android:label="@string/un_reg_org_action_bar"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"

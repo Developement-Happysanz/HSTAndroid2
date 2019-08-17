@@ -69,9 +69,19 @@ public class SkilExConstants {
 
     // Individual type organization
     public static final String PROVIDER_INDIVIDUAL_DETAILS = "add_individual_status/";
-
     public static final String KEY_NO_OF_SERVICE_PERSON = "no_of_service_person";
     public static final String KEY_ALSO_A_SERVICE_PERSON = "also_service_person";
+
+    //Registered organization
+    public static final String PROVIDER_REGISTERED_ORG_DETAILS = "add_company_status/";
+    public static final String KEY_COMPANY_NAME = "company_name";
+    public static final String KEY_REG_NO_OF_PERSON = "no_of_service_person";
+    public static final String KEY_COMPANY_ADDRESS = "company_address";
+    public static final String KEY_COMPANY_CITY = "company_city";
+    public static final String KEY_COMPANY_STATE = "company_state";
+    public static final String KEY_COMPANY_ZIP = "company_zip";
+    public static final String KEY_COMPANY_BUILDING_TYPE = "company_building_type";
+
 
     // Upload unregistered organization document upload
     public static final String UPLOAD_DOCUMENT = "upload_doc/";

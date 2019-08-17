@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.skilex.serviceprovider.R;
-import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
@@ -124,7 +123,7 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
 //                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else if (organizationType.equalsIgnoreCase("Company")) {
-                    Intent intent = new Intent(this, UnRegisteredOnganizationInfoActivity.class);
+                    Intent intent = new Intent(this, UnRegisteredOrganizationInfoActivity.class);
 //                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }

@@ -227,8 +227,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                 } else {
                     Toast.makeText(getApplicationContext(), "Complete first proof upload", Toast.LENGTH_LONG).show();
                 }
-            }
-            if (v == txtUploadPassBook) {
+            } else if (v == txtUploadPassBook) {
                 if (flag == 4) {
                     if (validateFields()) {
                         storeDocumentNumber = "";
@@ -238,8 +237,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                 } else {
                     Toast.makeText(getApplicationContext(), "Complete second proof upload", Toast.LENGTH_LONG).show();
                 }
-            }
-            if (v == btnSubmit) {
+            } else if (v == btnSubmit) {
                 if (flag == 5) {
                     checkValue = "bank";
                     JSONObject jsonObject = new JSONObject();

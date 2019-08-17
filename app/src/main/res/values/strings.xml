@@ -56,6 +56,28 @@
 
     <!--Registered Organization-->
     <string name="reg_org_action_bar">Organization details</string>
+    <string name="reg_org_title">Tell us about your business</string>
+    <string name="reg_org_company_name">Enter your registered company name</string>
+    <string name="reg_org_no_of_people">How many people work for you?</string>
+    <string name="reg_org_address_1">Enter your business address (line 1)</string>
+    <string name="reg_org_address_2">Enter your business address (line 2)</string>
+    <string name="reg_org_city">Enter city</string>
+    <string name="reg_org_postal">Enter postal code</string>
+    <string name="reg_org_state">Enter state</string>
+    <string name="reg_org_building_own">Own</string>
+    <string name="reg_org_building_rental">Tenancy</string>
+    <string name="reg_org_building_title">Details of office premises</string>
+
+    <!--Registered organization document upload-->
+    <string name="reg_doc_upload_action_bar">Documentation</string>
+    <string name="reg_doc_upload_title">Documentation of Service Organization</string>
+    <string name="org_rc">RC Certificate Number</string>
+    <string name="org_rc_hint">Enter RC Certificate Number</string>
+    <string name="org_gst">GST Certificate Number</string>
+    <string name="org_gst_hint">Enter GST Number</string>
+    <string name="org_pan">Organization PAN Number</string>
+    <string name="org_pan_hint">Enter PAN Number</string>
+    <string name="org_authority">Are you going to be a signing authority</string>
 
     <!--Un Registered Organization-->
     <string name="un_reg_org_action_bar">Enter individual details</string>
