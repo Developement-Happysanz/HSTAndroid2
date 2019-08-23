@@ -135,7 +135,6 @@
                         android:background="@drawable/rounded_trans_bg_with_border"
                         android:focusableInTouchMode="true"
                         android:hint="@string/id_proof_number"
-                        android:inputType="number"
                         android:maxLength="20"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"

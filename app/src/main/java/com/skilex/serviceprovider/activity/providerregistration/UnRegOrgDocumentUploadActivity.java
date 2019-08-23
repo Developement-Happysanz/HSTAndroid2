@@ -84,6 +84,8 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
     private String storeDocumentMasterId = "";
     private String checkValue = "";
     private int flag = 1;
+    private String spinnerValue1 = "";
+    private String spinnerValue2 = "";
 
     private static final int PICK_FILE_REQUEST = 1;
     private String selectedFilePath;
@@ -134,7 +136,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 StoreMasterId classList = (StoreMasterId) parent.getSelectedItem();
-                storeDocumentMasterId = classList.getDocId();
+                spinnerValue1 = classList.getDocId();
             }
 
             @Override
@@ -148,12 +150,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 StoreMasterId classList = (StoreMasterId) parent.getSelectedItem();
                 String getValue = classList.getDocId();
-
-                if (flag > 1) {
-                    storeDocumentMasterId = getValue;
-                } else {
-                    storeDocumentMasterId = "Try";
-                }
+                spinnerValue2 = classList.getDocId();
             }
 
             @Override
@@ -208,7 +205,8 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             } else if (v == txtUploadProof1) {
                 if (flag == 2) {
                     if (validateFields()) {
-                        storeDocumentNumber = edtSelectIdProof1.getText().toString();
+                        storeDocumentMasterId = spinnerValue1;
+                        storeDocumentNumber = edtProofNo1.getText().toString();
                         showFileChooser();
                     }
                 } else {
@@ -217,10 +215,14 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             } else if (v == txtUploadProof2) {
                 if (flag == 3) {
                     if (validateFields()) {
-                        if (storeDocumentMasterId.equalsIgnoreCase("Try")) {
+                        String spn1 = spnIdProofType1.getSelectedItem().toString();
+                        String spn2 = spnIdProofType2.getSelectedItem().toString();
+
+                        if (spn2.equalsIgnoreCase(spn1)) {
                             Toast.makeText(getApplicationContext(), "Try some other Id proof", Toast.LENGTH_LONG).show();
                         } else {
-                            storeDocumentNumber = edtSelectIdProof1.getText().toString();
+                            storeDocumentMasterId = spinnerValue2;
+                            storeDocumentNumber = edtProofNo2.getText().toString();
                             showFileChooser();
                         }
                     }
@@ -230,7 +232,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             } else if (v == txtUploadPassBook) {
                 if (flag == 4) {
                     if (validateFields()) {
-                        storeDocumentNumber = "";
+                        storeDocumentNumber = "PassBook";
                         storeDocumentMasterId = "22";
                         showFileChooser();
                     }

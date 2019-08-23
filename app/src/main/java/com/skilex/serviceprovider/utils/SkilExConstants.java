@@ -68,7 +68,7 @@ public class SkilExConstants {
 
     // Organization type
     public static final String ORGANIZATION_TYPE_SELECTION = "update_company_status/";
-    public static final String KEY_TYPE_SELECTION = "company_type";
+    public static final String KEY_TYPE_SELECTION = "company_status";
 
     // Individual type organization
     public static final String PROVIDER_INDIVIDUAL_DETAILS = "add_individual_status/";

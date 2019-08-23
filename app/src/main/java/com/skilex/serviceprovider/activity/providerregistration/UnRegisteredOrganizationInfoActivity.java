@@ -133,7 +133,7 @@ public class UnRegisteredOrganizationInfoActivity extends BaseActivity implement
                 if (validateFields()) {
                     JSONObject jsonObject = new JSONObject();
                     try {
-                        jsonObject.put(SkilExConstants.KEY_USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
+                        jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
                         jsonObject.put(SkilExConstants.KEY_NO_OF_SERVICE_PERSON, noOfServicePersons);
                         jsonObject.put(SkilExConstants.KEY_ALSO_A_SERVICE_PERSON, alsoServicePerson);
                     } catch (Exception e) {

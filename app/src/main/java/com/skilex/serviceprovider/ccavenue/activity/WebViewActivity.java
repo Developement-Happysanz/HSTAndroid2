@@ -107,7 +107,7 @@ public class WebViewActivity extends AppCompatActivity {
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(webview, url);
                     LoadingDialog.cancelLoading();
-                    if (url.indexOf("/serv_provider_advance.php") != -1) {
+                    if (url.indexOf("/serv_provider_advance.php") != -1) { //ccavResponseHandler.jsp
                         webview.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
                     }
 //                    else if (url.contains("/service_net_amount.php")) {

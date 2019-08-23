@@ -117,8 +117,6 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                         jsonObject.put(SkilExConstants.OTP, otpEditText.getOTP());
                         jsonObject.put(SkilExConstants.DEVICE_TOKEN, PreferenceStorage.getGCM(getApplicationContext()));
                         jsonObject.put(SkilExConstants.MOBILE_TYPE, "1");
-
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -129,7 +127,6 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                 } else {
                     AlertDialogHelper.showSimpleAlertDialog(this, "Invalid OTP");
                 }
-
             }
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
@@ -177,10 +174,22 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
         progressDialogHelper.hideProgressDialog();
         if (validateResponse(response)) {
             try {
+                JSONObject userData = response.getJSONObject("userData");
                 String loginType = PreferenceStorage.getLoginType(getApplicationContext());
                 if (loginType.equalsIgnoreCase("Register")) {
                     Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
                     startActivity(i);
+                } else if (loginType.equalsIgnoreCase("Login")) {
+                    if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Pending")) {
+
+                        Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
+                        startActivity(i);
+                    }
+                     else if (userData.getString("serv_prov_display_status").equalsIgnoreCase("Pending")) {
+                        Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
+                        startActivity(i);
+                    }
+
                 } else {
                     Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
                     startActivity(i);

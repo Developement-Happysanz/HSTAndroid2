@@ -53,10 +53,10 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
     public void onClick(View v) {
         if (CommonUtils.haveNetworkConnection(getApplicationContext())) {
             if (v == llRegOrg) {
-                organizationType = "Individual";
+                organizationType = "Company";
                 setOrganizationType();
             } else if (v == llUnRegOrg) {
-                organizationType = "Company";
+                organizationType = "Individual";
                 setOrganizationType();
             }
         } else {
@@ -67,7 +67,7 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
     private void setOrganizationType() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put(SkilExConstants.KEY_USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
+            jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
             jsonObject.put(SkilExConstants.KEY_TYPE_SELECTION, organizationType);
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,11 +118,11 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
         progressDialogHelper.hideProgressDialog();
         if (validateSignInResponse(response)) {
             try {
-                if (organizationType.equalsIgnoreCase("Individual")) {
+                if (organizationType.equalsIgnoreCase("Company")) {
                     Intent intent = new Intent(this, RegisteredOrganizationInfoActivity.class);
 //                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                } else if (organizationType.equalsIgnoreCase("Company")) {
+                } else if (organizationType.equalsIgnoreCase("Individual")) {
                     Intent intent = new Intent(this, UnRegisteredOrganizationInfoActivity.class);
 //                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
