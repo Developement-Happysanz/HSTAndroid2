@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/llRequested"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -36,6 +37,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llAssigned"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -67,6 +69,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llOnGoing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -98,6 +101,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llCompleted"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -129,6 +133,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llCancelled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -160,6 +165,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llTransaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

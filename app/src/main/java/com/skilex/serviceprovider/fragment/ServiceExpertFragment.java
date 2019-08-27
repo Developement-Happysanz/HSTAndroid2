@@ -1,6 +1,7 @@
 package com.skilex.serviceprovider.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -9,10 +10,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.activity.serviceperson.ServicePersonCreationActivity;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
 import com.skilex.serviceprovider.servicehelpers.ServiceHelper;
@@ -46,7 +49,20 @@ public class ServiceExpertFragment extends Fragment implements IServiceListener,
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // TODO Add your menu entries here
+        inflater.inflate(R.menu.service_person_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_service_person:
+                Intent intent = new Intent(getActivity(), ServicePersonCreationActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
+
     }
 
     @Override

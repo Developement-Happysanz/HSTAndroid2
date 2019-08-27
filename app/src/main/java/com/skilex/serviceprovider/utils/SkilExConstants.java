@@ -85,7 +85,6 @@ public class SkilExConstants {
     public static final String KEY_COMPANY_ZIP = "company_zip";
     public static final String KEY_COMPANY_BUILDING_TYPE = "company_building_type";
 
-
     // Upload unregistered organization document upload
     public static final String UPLOAD_DOCUMENT = "upload_doc/";
     public static final String KEY_COMPANY_TYPE = "company_type";
@@ -96,10 +95,8 @@ public class SkilExConstants {
     public static final String KEY_BANK_BRANCH = "branch_name";
     public static final String KEY_BANK_IFSC = "ifsc_code";
 
-
     // Payment module
     public static final String PREF_PAYMENT_TYPE = "payment_type";
-
 
     //Login
     public static String LOGIN = "login/";
@@ -112,5 +109,9 @@ public class SkilExConstants {
     public static String UNIQUE_NUMBER = "unique_number";
     public static String MOBILE_KEY = "mobile_key";
     public static String USER_STATUS = "user_stat";
+
+    // Service person creation
+    public static String API_SERVICE_PERSON_CREATION = "create_serv_person/";
+
 
 }

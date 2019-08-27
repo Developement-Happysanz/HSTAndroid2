@@ -117,8 +117,16 @@
     <string name="pay">Pay</string>
     <string name="deposit_description">* The amount you deposit will be refunded when you end your agreement with SkilEx or when you manage to have a good service record via SkilEx.</string>
     <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advnace.php</string>
-<!--    <string name="advance_redirect_url">https://test.ccavenue.com/transaction/initTrans</string>-->
+    <!--    <string name="advance_redirect_url">https://test.ccavenue.com/transaction/initTrans</string>-->
     <string name="redirect_page">Please wait your are redirecting to \nthe payment page&#8230;</string>
+
+    <!--Uploaded document verify status-->
+    <string name="upload_doc_verify_display_title">Document Verification</string>
+    <string name="success">Success</string>
+    <string name="success_desc">Your document is verified successfully.\nYou can now Proceed\n to get started.</string>
+
+    <!--Document verify display-->
+    <string name="doc_verify_display_title">Document Verification</string>
 
 
     <!--Daily transaction payment-->
@@ -166,6 +174,32 @@
     <string name="completed">Completed Services</string>
     <string name="cancelled">Cancelled Services</string>
     <string name="transaction">Transaction Details</string>
+
+    <!--Service person fragment-->
+    <string name="application_status">Service Expert Application Status</string>
+
+    <!--Service person creation-->
+    <string name="service_person_title">Service Person Creation</string>
+    <string name="service_person_detail_info_title">Service Expert Details</string>
+    <string name="service_person_document_title">Service Expert Documentation</string>
+
+    <!--Requested Services-->
+    <string name="requested_title">Requested Services</string>
+
+    <!--Assigned Services-->
+    <string name="assigned_title">Assigned Services</string>
+
+    <!--OnGoing Services-->
+    <string name="ongoing_title">Ongoing Services</string>
+
+    <!--Completed Services-->
+    <string name="completed_title">Completed Services</string>
+
+    <!--Cancelled Services-->
+    <string name="cancelled_title">Cancelled Services</string>
+
+    <!--Transaction Details-->
+    <string name="transaction_details_title">Transaction Details</string>
 
 
     <!--Side menu-->
