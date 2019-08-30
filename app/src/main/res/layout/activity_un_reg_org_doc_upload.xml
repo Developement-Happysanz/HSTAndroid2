@@ -100,24 +100,8 @@
                     android:overlapAnchor="false"
                     android:paddingStart="12dp"
                     android:paddingEnd="10dp"
-                    android:prompt="@string/term" />
-
-
-                <EditText
-                    android:id="@+id/edtDpdIdType1"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/rounded_trans_bg_with_border"
-                    android:drawableEnd="@drawable/ic_expand_more_black_24dp"
-                    android:focusable="false"
-                    android:hint="@string/id_selection_type"
-                    android:inputType="none"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="10dp"
-                    android:singleLine="true"
-                    android:visibility="gone" />
+                    android:prompt="@string/term"
+                    android:saveEnabled="false" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -163,22 +147,6 @@
                     android:paddingStart="12dp"
                     android:paddingEnd="10dp"
                     android:prompt="@string/term" />
-
-                <EditText
-                    android:id="@+id/edtDpdIdType2"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/rounded_trans_bg_with_border"
-                    android:drawableRight="@drawable/ic_expand_more_black_24dp"
-                    android:focusable="false"
-                    android:hint="@string/id_selection_type"
-                    android:inputType="none"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="10dp"
-                    android:singleLine="true"
-                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

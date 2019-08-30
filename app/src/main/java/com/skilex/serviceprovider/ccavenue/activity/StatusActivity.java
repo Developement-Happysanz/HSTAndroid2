@@ -78,7 +78,7 @@ public class StatusActivity extends AppCompatActivity implements IServiceListene
                 paymentIcon.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_payment_success));
                 paymentStatus.setText(R.string.payment_success);
                 paymentComment.setText(R.string.payment_success_comment);
-                rate.setText(R.string.rating_text);
+                rate.setText(R.string.alert_button_ok);
                 rate.setBackground(ContextCompat.getDrawable(this, R.drawable.button_rate_service));
                 rate.setOnClickListener(new View.OnClickListener() {
                     @Override

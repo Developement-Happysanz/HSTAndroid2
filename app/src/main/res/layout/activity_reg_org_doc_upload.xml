@@ -23,6 +23,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+
             <LinearLayout
                 android:id="@+id/ll_pan_card"
                 android:layout_width="match_parent"
@@ -30,6 +31,17 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="1dp"
+                    android:text="Authority Person Details"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,24 +112,8 @@
                     android:overlapAnchor="false"
                     android:paddingStart="12dp"
                     android:paddingEnd="10dp"
-                    android:prompt="@string/term" />
-
-
-                <EditText
-                    android:id="@+id/edtDpdIdType1"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/rounded_trans_bg_with_border"
-                    android:drawableEnd="@drawable/ic_expand_more_black_24dp"
-                    android:focusable="false"
-                    android:hint="@string/id_selection_type"
-                    android:inputType="none"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="10dp"
-                    android:singleLine="true"
-                    android:visibility="gone" />
+                    android:prompt="@string/term"
+                    android:saveEnabled="false" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -164,22 +160,6 @@
                     android:paddingEnd="10dp"
                     android:prompt="@string/term" />
 
-                <EditText
-                    android:id="@+id/edtDpdIdType2"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/rounded_trans_bg_with_border"
-                    android:drawableRight="@drawable/ic_expand_more_black_24dp"
-                    android:focusable="false"
-                    android:hint="@string/id_selection_type"
-                    android:inputType="none"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="10dp"
-                    android:singleLine="true"
-                    android:visibility="gone" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -225,6 +205,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="1dp"
+                    android:text="Organization Details"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
                     android:text="@string/org_rc"
@@ -246,7 +237,7 @@
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
                         android:background="@drawable/rounded_trans_bg_with_border"
-                        android:hint="@string/org_gst_hint"
+                        android:hint="@string/org_rc_hint"
                         android:maxLength="20"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
@@ -357,6 +348,55 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.1"
+                        android:drawableTop="@drawable/ic_uploading"
+                        android:gravity="center"
+                        android:text="@string/upload"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="1dp"
+                    android:text="@string/id_address_title"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spnAddressProofType"
+                        style="@style/spinner_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="3"
+                        android:overlapAnchor="false"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="1dp"
+                        android:prompt="@string/term" />
+
+                    <TextView
+                        android:id="@+id/txtUploadAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.1"
+                        android:background="@color/transparent"
                         android:drawableTop="@drawable/ic_uploading"
                         android:gravity="center"
                         android:text="@string/upload"

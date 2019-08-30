@@ -101,6 +101,7 @@
     <string name="pan_card_title">PAN Card Number</string>
     <string name="upload">Upload</string>
     <string name="id_selection_title">ID Proof and Address Proof</string>
+    <string name="id_address_title">Address proof of your office</string>
     <string name="id_selection_type">Select the ID proof you want to submit</string>
     <string name="id_proof_number">Enter your proof number</string>
     <string name="bank_details_title">Bank Account Details</string>
@@ -124,9 +125,14 @@
     <string name="upload_doc_verify_display_title">Document Verification</string>
     <string name="success">Success</string>
     <string name="success_desc">Your document is verified successfully.\nYou can now Proceed\n to get started.</string>
+    <string name="upload_doc_verify_pending_status">Pending</string>
+    <string name="pending_desc">Your document is under verification process.\nKindly be patient\n to get start.</string>
+    <string name="close">Close</string>
 
     <!--Document verify display-->
     <string name="doc_verify_display_title">Document Verification</string>
+    <string name="welcome_desc">To the platform where expertise is served\nwith convenience</string>
+    <string name="get_start">Get Started</string>
 
 
     <!--Daily transaction payment-->

@@ -110,7 +110,7 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
                 recreate();
                 return true;
             case R.id.local_tamil:
-                LocaleManager.setNewLocale(this, LocaleManager.LANGUAGE_KEY_HINDI);
+                LocaleManager.setNewLocale(this, LocaleManager.LANGUAGE_KEY_TAMIL);
                 recreate();
                 return true;
         }
@@ -260,7 +260,8 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
 
     @Override
     public void onError(String error) {
-
+        progressDialogHelper.hideProgressDialog();
+        AlertDialogHelper.showSimpleAlertDialog(this, error);
     }
 
     private void showLangAlert() {

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.bean.support.StoreAddressMasterId;
 import com.skilex.serviceprovider.bean.support.StoreMasterId;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
@@ -64,11 +65,11 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
     private EditText edtPanCardNumber;
     private TextView txtUploadPan;
 
-    private EditText edtSelectIdProof1, edtProofNo1;
+    private EditText edtProofNo1;
     private TextView txtUploadProof1;
     private Spinner spnIdProofType1;
 
-    private EditText edtSelectIdProof2, edtProofNo2;
+    private EditText edtProofNo2;
     private TextView txtUploadProof2;
     private Spinner spnIdProofType2;
 
@@ -81,6 +82,9 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
     private EditText edtOrgPanCardNumber;
     private TextView txtUploadOrgPan;
 
+    private Spinner spnAddressProofType;
+    private TextView txtUploadAddressProof;
+
     private EditText edtBankName, edtAccNo, edtIFSC, edtBranchName;
     private TextView txtUploadPassBook;
 
@@ -90,6 +94,9 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
     private String storeDocumentMasterId = "";
     private String checkValue = "";
     private int flag = 1;
+    private String spinnerValue1 = "";
+    private String spinnerValue2 = "";
+    private String spinnerValue3 = "";
 
     private static final int PICK_FILE_REQUEST = 1;
     private String selectedFilePath;
@@ -110,15 +117,11 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
         txtUploadPan = findViewById(R.id.txtUploadPanCard);
         txtUploadPan.setOnClickListener(this);
 
-        edtSelectIdProof1 = findViewById(R.id.edtDpdIdType1);
-        edtSelectIdProof1.setOnClickListener(this);
         edtProofNo1 = findViewById(R.id.edtProof1);
         txtUploadProof1 = findViewById(R.id.txtUploadProof1);
         txtUploadProof1.setOnClickListener(this);
         spnIdProofType1 = findViewById(R.id.spnIdProofType1);
 
-        edtSelectIdProof2 = findViewById(R.id.edtDpdIdType2);
-        edtSelectIdProof2.setOnClickListener(this);
         edtProofNo2 = findViewById(R.id.edtProof2);
         txtUploadProof2 = findViewById(R.id.txtUploadProof2);
         txtUploadProof2.setOnClickListener(this);
@@ -136,6 +139,10 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
         txtUploadOrgPan = findViewById(R.id.txtUploadOrgPanCard);
         txtUploadOrgPan.setOnClickListener(this);
 
+        spnAddressProofType = findViewById(R.id.spnAddressProofType);
+        txtUploadAddressProof = findViewById(R.id.txtUploadAddress);
+        txtUploadAddressProof.setOnClickListener(this);
+
         edtBankName = findViewById(R.id.edtBankName);
         edtAccNo = findViewById(R.id.edtBankAccNo);
         edtIFSC = findViewById(R.id.edtBankIFSC);
@@ -146,13 +153,14 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
 
-        getIdProofType();
+        getPersonIdProofType();
+        spnIdProofType1.setEnabled(false);
 
         spnIdProofType1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 StoreMasterId classList = (StoreMasterId) parent.getSelectedItem();
-                storeDocumentMasterId = classList.getDocId();
+                spinnerValue1 = classList.getDocId();
             }
 
             @Override
@@ -165,13 +173,20 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 StoreMasterId classList = (StoreMasterId) parent.getSelectedItem();
-                String getValue = classList.getDocId();
+                spinnerValue2 = classList.getDocId();
+            }
 
-                if (flag > 1) {
-                    storeDocumentMasterId = getValue;
-                } else {
-                    storeDocumentMasterId = "Try";
-                }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spnAddressProofType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                StoreAddressMasterId classList = (StoreAddressMasterId) parent.getSelectedItem();
+                spinnerValue3 = classList.getAddDocId();
             }
 
             @Override
@@ -189,9 +204,32 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
         return true;
     }
 
-    private void getIdProofType() {
+    private void getPersonIdProofType() {
 
         checkValue = "IdProof1";
+
+        if (CommonUtils.isNetworkAvailable(this)) {
+
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put(SkilExConstants.KEY_COMPANY_TYPE, "Individual");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+            String url = SkilExConstants.BUILD_URL + SkilExConstants.ID_PROOF_LIST;
+            serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
+
+        } else {
+            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
+        }
+    }
+
+    private void getAddressIdProofType() {
+
+        checkValue = "IdProof2";
 
         if (CommonUtils.isNetworkAvailable(this)) {
 
@@ -224,7 +262,8 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             } else if (v == txtUploadProof1) {
                 if (flag == 2) {
                     if (validateFields()) {
-                        storeDocumentNumber = edtSelectIdProof1.getText().toString();
+                        storeDocumentNumber = edtProofNo1.getText().toString();
+                        storeDocumentMasterId = spinnerValue1;
                         showFileChooser();
                     }
                 } else {
@@ -236,7 +275,8 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         if (storeDocumentMasterId.equalsIgnoreCase("Try")) {
                             Toast.makeText(getApplicationContext(), "Try some other Id proof", Toast.LENGTH_LONG).show();
                         } else {
-                            storeDocumentNumber = edtSelectIdProof1.getText().toString();
+                            storeDocumentNumber = edtProofNo2.getText().toString();
+                            storeDocumentMasterId = spinnerValue2;
                             showFileChooser();
                         }
                     }
@@ -246,7 +286,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             } else if (v == txtUploadRCNumber) {
                 if (flag == 4) {
                     if (validateFields()) {
-                        storeDocumentNumber = edtPanCardNumber.getText().toString();
+                        storeDocumentNumber = edtRCCertificateNumber.getText().toString();
                         storeDocumentMasterId = "8";
                         showFileChooser();
                     }
@@ -257,7 +297,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             } else if (v == txtUploadGST) {
                 if (flag == 5) {
                     if (validateFields()) {
-                        storeDocumentNumber = edtPanCardNumber.getText().toString();
+                        storeDocumentNumber = edtGSTNumber.getText().toString();
                         storeDocumentMasterId = "9";
                         showFileChooser();
                     }
@@ -268,7 +308,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             } else if (v == txtUploadOrgPan) {
                 if (flag == 6) {
                     if (validateFields()) {
-                        storeDocumentNumber = edtPanCardNumber.getText().toString();
+                        storeDocumentNumber = edtOrgPanCardNumber.getText().toString();
                         storeDocumentMasterId = "2";
                         showFileChooser();
                     }
@@ -276,18 +316,29 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     Toast.makeText(getApplicationContext(), "Complete GST certificate upload", Toast.LENGTH_LONG).show();
                 }
 
-            } else if (v == txtUploadPassBook) {
+            } else if (v == txtUploadAddressProof) {
                 if (flag == 7) {
+                    if (validateFields()) {
+                        storeDocumentNumber = "";
+                        storeDocumentMasterId = spinnerValue3;
+                        showFileChooser();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Complete organization PAN card upload", Toast.LENGTH_LONG).show();
+                }
+
+            } else if (v == txtUploadPassBook) {
+                if (flag == 8) {
                     if (validateFields()) {
                         storeDocumentNumber = "";
                         storeDocumentMasterId = "22";
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete organization PAN card upload", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Complete organization address proof upload", Toast.LENGTH_LONG).show();
                 }
             } else if (v == btnSubmit) {
-                if (flag == 8) {
+                if (flag == 9) {
                     checkValue = "bank";
                     JSONObject jsonObject = new JSONObject();
                     try {
@@ -319,7 +370,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
         //allows to select data and return it
         intent.setAction(Intent.ACTION_GET_CONTENT);
         //starts new activity to select file and return data
-        startActivityForResult(Intent.createChooser(intent, "Choose File to Upload.."), PICK_FILE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Choose file to upload.."), PICK_FILE_REQUEST);
     }
 
     @Override
@@ -332,7 +383,6 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     return;
                 }
 
-
                 Uri selectedFileUri = data.getData();
                 selectedFilePath = FilePath.getPath(this, selectedFileUri);
                 Log.i(TAG, "Selected File Path:" + selectedFilePath);
@@ -343,7 +393,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         AlertDialogHelper.showSimpleAlertDialog(this, "File size too large");
                         selectedFilePath = null;
                     } else {
-                        Toast.makeText(this, "File ready to Upload", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "File ready to upload", Toast.LENGTH_SHORT).show();
                         dialog = ProgressDialog.show(RegOrgDocumentUploadActivity.this, "", "Uploading File...", true);
 
                         new Thread(new Runnable() {
@@ -488,7 +538,6 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     dataOutputStream.flush();
                     dataOutputStream.close();
 
-
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                     runOnUiThread(new Runnable() {
@@ -510,7 +559,6 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 dialog.dismiss();
                 return serverResponseMessage;
             }
-
         }
 
         @Override
@@ -567,6 +615,12 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     txtUploadOrgPan.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
                     flag = 7;
                 } else if (flag == 7) {
+                    spnAddressProofType.setEnabled(false);
+                    txtUploadAddressProof.setText("");
+                    txtUploadAddressProof.setEnabled(false);
+                    txtUploadAddressProof.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+                    flag = 8;
+                } else if (flag == 8) {
                     edtBankName.setEnabled(false);
                     edtBranchName.setEnabled(false);
                     edtAccNo.setEnabled(false);
@@ -574,7 +628,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     txtUploadPassBook.setText("");
                     txtUploadPassBook.setEnabled(false);
                     txtUploadPassBook.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 8;
+                    flag = 9;
                 }
             } else {
                 Toast.makeText(getApplicationContext(), "Unable to upload file", Toast.LENGTH_SHORT).show();
@@ -631,7 +685,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 return false;
             }
         }
-        if (flag == 7) {
+        if (flag == 8) {
             if (!SkilExValidator.checkNullString(this.edtBankName.getText().toString().trim())) {
                 edtBankName.setError(getString(R.string.empty_entry));
                 requestFocus(edtBankName);
@@ -730,8 +784,34 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     //fill data in spinner
                     ArrayAdapter<StoreMasterId> adapter1 = new ArrayAdapter<StoreMasterId>(getApplicationContext(), R.layout.spinner_item_ns, docNumberList);
                     spnIdProofType2.setAdapter(adapter1);
-                }
-                if (checkValue.equalsIgnoreCase("bank")) {
+
+                    getAddressIdProofType();
+
+                } else if (checkValue.equalsIgnoreCase("IdProof2")) {
+
+                    JSONArray getData = response.getJSONArray("proof_list");
+                    JSONObject userData = getData.getJSONObject(0);
+                    int getLength = getData.length();
+                    String subjectName = null;
+                    Log.d(TAG, "userData dictionary" + userData.toString());
+
+                    String docId = "";
+                    String docName = "";
+                    ArrayList<StoreAddressMasterId> docAddressNumberList = new ArrayList<>();
+
+                    for (int i = 0; i < getLength; i++) {
+
+                        docId = getData.getJSONObject(i).getString("id");
+                        docName = getData.getJSONObject(i).getString("doc_name");
+
+                        docAddressNumberList.add(new StoreAddressMasterId(docId, docName));
+                    }
+
+                    //fill data in spinner
+                    ArrayAdapter<StoreAddressMasterId> adapter = new ArrayAdapter<StoreAddressMasterId>(getApplicationContext(), R.layout.spinner_item_address, docAddressNumberList);
+                    spnAddressProofType.setAdapter(adapter);
+
+                } else if (checkValue.equalsIgnoreCase("bank")) {
 
                     String message = response.getString("msg");
                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();

@@ -52,7 +52,7 @@ public class SkilExConstants {
     public static final String KEY_MOBILE_NUMBER = "mobile_number";
 
     //  Shared User Master Id
-    public static final String KEY_USER_MASTER_ID = "store_user_master_id";
+    public static final String KEY_USER_MASTER_ID = "user_master_id";
 
     //Select category
     public static final String KEY_USER_HAS_PREFERENCES = "hasPreferences";
@@ -94,6 +94,12 @@ public class SkilExConstants {
     public static final String KEY_BANK_ACC_NO = "acc_no";
     public static final String KEY_BANK_BRANCH = "branch_name";
     public static final String KEY_BANK_IFSC = "ifsc_code";
+
+    //Document verify status
+    public static final String API_PROVIDER_DOCUMENT_STATUS = "list_provider_doc/";
+
+    //Document success
+    public static final String API_SET_PROVIDER_ACTIVE = "provider_active_status/";
 
     // Payment module
     public static final String PREF_PAYMENT_TYPE = "payment_type";

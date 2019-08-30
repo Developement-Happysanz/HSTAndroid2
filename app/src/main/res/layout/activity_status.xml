@@ -56,7 +56,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_rate_service"
-
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:text="@string/alert_button_ok"

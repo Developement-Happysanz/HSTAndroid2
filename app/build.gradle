@@ -13,7 +13,7 @@ android {
     }
 
     compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+        buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.skilex.serviceprovider"
@@ -64,18 +64,12 @@ android {
         exclude 'META-INF/ASL2.0'
     }
 
-    //            outputFileName = file("$project.buildDir/apk/Heylaapp.apk")
     android.applicationVariants.all { variant ->
-
         variant.outputs.all { output ->
-            /* def finalVersionCode = 10000 + versionCode
-             output.versionCodeOverride = finalVersionCode
-             outputFileName = new File(
-                     output.outputFile.parent,
-                     outputFileName.replace("Heylaapp.apk", "-${finalVersionCode}Heylaapp.apk"))*/
-//            outputFileName = file("$project.buildDir/apk/Heylaapp.apk")
-//            outputFileName = "${variant.name}-${variant.versionName}.apk"
-//            outputFileName = file("$project.buildDir/apk/Heylaapp.apk")
+//            output.outputFile = new File(
+//                    output.outputFile.parent,
+//                    output.outputFile.name.replace(".apk", "-${variant.versionName}.apk"))
+
         }
     }
 

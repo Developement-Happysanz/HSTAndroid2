@@ -67,11 +67,11 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
     private EditText edtPanCardNumber;
     private TextView txtUploadPan;
 
-    private EditText edtSelectIdProof1, edtProofNo1;
+    private EditText edtProofNo1;
     private TextView txtUploadProof1;
     private Spinner spnIdProofType1;
 
-    private EditText edtSelectIdProof2, edtProofNo2;
+    private EditText edtProofNo2;
     private TextView txtUploadProof2;
     private Spinner spnIdProofType2;
 
@@ -106,15 +106,11 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
         txtUploadPan = findViewById(R.id.txtUploadPanCard);
         txtUploadPan.setOnClickListener(this);
 
-        edtSelectIdProof1 = findViewById(R.id.edtDpdIdType1);
-        edtSelectIdProof1.setOnClickListener(this);
         edtProofNo1 = findViewById(R.id.edtProof1);
         txtUploadProof1 = findViewById(R.id.txtUploadProof1);
         txtUploadProof1.setOnClickListener(this);
         spnIdProofType1 = findViewById(R.id.spnIdProofType1);
 
-        edtSelectIdProof2 = findViewById(R.id.edtDpdIdType2);
-        edtSelectIdProof2.setOnClickListener(this);
         edtProofNo2 = findViewById(R.id.edtProof2);
         txtUploadProof2 = findViewById(R.id.txtUploadProof2);
         txtUploadProof2.setOnClickListener(this);
@@ -272,7 +268,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
         //allows to select data and return it
         intent.setAction(Intent.ACTION_GET_CONTENT);
         //starts new activity to select file and return data
-        startActivityForResult(Intent.createChooser(intent, "Choose File to Upload.."), PICK_FILE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Choose file to upload.."), PICK_FILE_REQUEST);
     }
 
     @Override
@@ -296,7 +292,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                         AlertDialogHelper.showSimpleAlertDialog(this, "File size too large");
                         selectedFilePath = null;
                     } else {
-                        Toast.makeText(this, "File ready to Upload", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "File ready to upload", Toast.LENGTH_SHORT).show();
                         dialog = ProgressDialog.show(UnRegOrgDocumentUploadActivity.this, "", "Uploading File...", true);
 
                         new Thread(new Runnable() {

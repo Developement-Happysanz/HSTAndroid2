@@ -16,6 +16,9 @@ import android.widget.TextView;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.LandingPageActivity;
 import com.skilex.serviceprovider.activity.providerregistration.CategorySelectionActivity;
+import com.skilex.serviceprovider.activity.providerregistration.DocumentVerificationStatusActivity;
+import com.skilex.serviceprovider.activity.providerregistration.DocumentVerifySuccessActivity;
+import com.skilex.serviceprovider.activity.providerregistration.WelcomeActivity;
 import com.skilex.serviceprovider.customview.CustomOtpEditText;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
@@ -71,7 +74,6 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
-
             if (v == tvResendOTP) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle("Do you want to resend OTP ?");
@@ -180,14 +182,19 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                     Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
                     startActivity(i);
                 } else if (loginType.equalsIgnoreCase("Login")) {
-                    if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Pending")) {
+                    if (userData.getString("serv_prov_display_status").equalsIgnoreCase("Inactive")) {
 
-                        Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
-                        startActivity(i);
-                    }
-                     else if (userData.getString("serv_prov_display_status").equalsIgnoreCase("Pending")) {
-                        Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
-                        startActivity(i);
+                        if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Pending")) {
+
+                            Intent i = new Intent(OTPVerificationActivity.this, DocumentVerificationStatusActivity.class);
+                            startActivity(i);
+                            finish();
+                        } else if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Approved")) {
+
+                            Intent i = new Intent(OTPVerificationActivity.this, DocumentVerifySuccessActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
                     }
 
                 } else {
