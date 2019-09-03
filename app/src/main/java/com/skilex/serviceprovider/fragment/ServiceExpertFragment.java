@@ -62,7 +62,6 @@ public class ServiceExpertFragment extends Fragment implements IServiceListener,
                 break;
         }
         return true;
-
     }
 
     @Override

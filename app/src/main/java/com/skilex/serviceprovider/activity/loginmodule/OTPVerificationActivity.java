@@ -180,6 +180,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                 String loginType = PreferenceStorage.getLoginType(getApplicationContext());
                 if (loginType.equalsIgnoreCase("Register")) {
                     Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
+                    i.putExtra("ProviderPersonCheck", "Provider");
                     startActivity(i);
                 } else if (loginType.equalsIgnoreCase("Login")) {
                     if (userData.getString("serv_prov_display_status").equalsIgnoreCase("Inactive")) {
@@ -195,11 +196,12 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                             startActivity(i);
                             finish();
                         }
+                    } else {
+                        Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
+                        startActivity(i);
+                        finish();
                     }
 
-                } else {
-                    Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
-                    startActivity(i);
                 }
 //                finish();
             } catch (Exception ex) {

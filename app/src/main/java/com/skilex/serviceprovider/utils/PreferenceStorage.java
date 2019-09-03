@@ -147,5 +147,41 @@ public class PreferenceStorage {
     }
     /*End*/
 
+    /*Login type*/
+    public static void saveActiveStatus(Context context, String loginType) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SkilExConstants.PREF_ACTIVE_STATUS, loginType);
+        editor.apply();
+    }
+
+    public static String getActiveStatus(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String loginType;
+        loginType = sharedPreferences.getString(SkilExConstants.PREF_ACTIVE_STATUS, "");
+        return loginType;
+    }
+    /*End*/
+
+    /*Login type*/
+    public static void saveServicePersonId(Context context, String loginType) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SkilExConstants.PREF_SERVICE_PERSON_ID, loginType);
+        editor.apply();
+    }
+
+    public static String getServicePersonId(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String loginType;
+        loginType = sharedPreferences.getString(SkilExConstants.PREF_SERVICE_PERSON_ID, "");
+        return loginType;
+    }
+    /*End*/
+
 
 }

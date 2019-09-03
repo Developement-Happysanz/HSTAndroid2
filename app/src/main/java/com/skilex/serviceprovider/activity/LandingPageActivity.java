@@ -22,6 +22,7 @@ import com.skilex.serviceprovider.fragment.ProfileFragment;
 import com.skilex.serviceprovider.fragment.ServiceExpertFragment;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
 import com.skilex.serviceprovider.languagesupport.BaseActivity;
+import com.skilex.serviceprovider.utils.PreferenceStorage;
 
 public class LandingPageActivity extends BaseActivity implements DialogClickListener {
 
@@ -34,6 +35,8 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PreferenceStorage.saveActiveStatus(getApplicationContext(), "Live");
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(

@@ -21,4 +21,14 @@
         <item name="android:popupBackground">#ffffff</item>
     </style>
 
+    <style name="datePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/colorPrimary</item>
+        <item name="android:textColorTertiary">@color/colorPrimary</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
+
 </resources>

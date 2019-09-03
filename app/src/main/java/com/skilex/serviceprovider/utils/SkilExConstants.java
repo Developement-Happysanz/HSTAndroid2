@@ -19,6 +19,12 @@ public class SkilExConstants {
     //Login type
     public static final String PREF_LOGIN_TYPE = "login_type";
 
+    //Active status
+    public static final String PREF_ACTIVE_STATUS = "activeStatus";
+
+    //Service person
+    public static final String PREF_SERVICE_PERSON_ID = "serv_pers_id";
+
     //Register with basic info
     public static final String REGISTER_SERVICE_PROVIDER = "register/";
     //Service provider registration basic field
@@ -64,7 +70,8 @@ public class SkilExConstants {
     public static final String KEY_CATEGORIES_ID = "category_ids";
 
     // Category save
-    public static final String USER_CATEGORY_UPDATE = "serv_prov_category_add/";
+    public static final String PROVIDER_CATEGORY_UPDATE = "serv_prov_category_add/";
+    public static final String PERSON_CATEGORY_UPDATE = "serv_pers_category_add/";
 
     // Organization type
     public static final String ORGANIZATION_TYPE_SELECTION = "update_company_status/";
@@ -118,6 +125,17 @@ public class SkilExConstants {
 
     // Service person creation
     public static String API_SERVICE_PERSON_CREATION = "create_serv_person/";
+    public static String API_SERVICE_PERSON_UPDATE = "update_serv_person_details/";
+
+    public static String KEY_SERVICE_PERSON_ID = "serv_person_id";
+    public static String KEY_FULL_NAME = "full_name";
+    public static String KEY_GENDER = "gender";
+    public static String KEY_ADDRESS = "address";
+    public static String KEY_CITY = "city";
+    public static String KEY_PIN_CODE = "pincode";
+    public static String KEY_STATE = "state";
+    public static String KEY_LANGUAGE_KNOWN = "language_known";
+    public static String KEY_EDUCATION_QUALIFICATION = "edu_qualification";
 
 
 }

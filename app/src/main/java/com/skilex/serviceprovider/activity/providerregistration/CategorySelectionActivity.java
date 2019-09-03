@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
+import com.skilex.serviceprovider.activity.serviceperson.ServicePersonDocumentUploadActivity;
 import com.skilex.serviceprovider.adapter.CategoryListAdapter;
 import com.skilex.serviceprovider.bean.support.Category;
 import com.skilex.serviceprovider.bean.support.Preference;
@@ -64,6 +65,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
     private String responseActivity = "";
 
     private String serviceFlag = "";
+    private String checkProviderAndPerson = "";
 
 
     @Override
@@ -97,6 +99,12 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            checkProviderAndPerson = extras.getString("ProviderPersonCheck");
+            //The key argument here must match that used in the other activity
+        }
 
         getCategories();
 
@@ -163,7 +171,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
-//                jsonObject.put(SkilExConstants.KEY_USER_TYPE, PreferenceStorage.getUserMasterId(getApplicationContext()));
+                jsonObject.put(SkilExConstants.KEY_SERVICE_PERSON_ID, PreferenceStorage.getServicePersonId(getApplicationContext()));
                 jsonObject.put(SkilExConstants.KEY_CATEGORIES_ID, newOk4);
 
             } catch (JSONException e) {
@@ -171,7 +179,12 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
             }
 
             progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-            String url = SkilExConstants.BUILD_URL + SkilExConstants.USER_CATEGORY_UPDATE;
+            String url = "";
+            if (checkProviderAndPerson.equalsIgnoreCase("Provider")) {
+                url = SkilExConstants.BUILD_URL + SkilExConstants.PROVIDER_CATEGORY_UPDATE;
+            } else {
+                url = SkilExConstants.BUILD_URL + SkilExConstants.PERSON_CATEGORY_UPDATE;
+            }
             serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
 
 
@@ -248,7 +261,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
     @Override
     public void onResponse(JSONObject response) {
         progressDialogHelper.hideProgressDialog();
-             if (validateResponse(response)) {
+        if (validateResponse(response)) {
             PreferenceStorage.savePreferencesSelected(this, true);
             if (serviceFlag.equalsIgnoreCase("List")) {
                 try {
@@ -264,10 +277,18 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
                 }
 
             } else if (serviceFlag.equalsIgnoreCase("Selection")) {
-                Intent intent = new Intent(this, OrganizationTypeSelectionActivity.class);
+
+                if (checkProviderAndPerson.equalsIgnoreCase("Provider")) {
+                    Intent intent = new Intent(this, OrganizationTypeSelectionActivity.class);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                    startActivity(intent);
 //                finish();
+                } else {
+                    Intent intent = new Intent(this, ServicePersonDocumentUploadActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+
             }
         }
     }

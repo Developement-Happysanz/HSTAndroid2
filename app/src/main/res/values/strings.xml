@@ -128,7 +128,6 @@
     <string name="welcome_desc">To the platform where expertise is served\nwith convenience</string>
     <string name="get_start">Get Started</string>
 
-
     <!--Daily transaction payment-->
     <string name="payment_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_payment.php</string>
 
@@ -148,6 +147,11 @@
     <string name="go_home">Back to Home </string>
     <string name="try_again">Try Again</string>
 
+    <!--Service person document upload-->
+    <string name="service_person_doc_upload">Documentation of Service Expert</string>
+    <string name="back_home">Back to Home</string>
+    <string name="on_upload_success">Thank you! Your documents have been\nuploaded successfully</string>
+
     <!--Rating Page-->
     <string name="rating_title">Rate Service</string>
     <string name="rating_text">Rate your service</string>
@@ -160,6 +164,7 @@
     <string name="error_mail">Enter valid mail ID</string>
     <string name="error_number">Enter valid phone number</string>
     <string name="empty_entry">Field cannot be empty</string>
+    <string name="empty_spinner">Select some value </string>
 
     <!--Landing page-->
     <string name="home">Home</string>
@@ -182,6 +187,23 @@
     <string name="service_person_title">Service Person Creation</string>
     <string name="service_person_detail_info_title">Service Expert Details</string>
     <string name="service_person_document_title">Service Expert Documentation</string>
+    <string name="update">Update</string>
+    <string name="serv_pers_full_name">Full name</string>
+    <string name="gender">Gender</string>
+    <string name="dob">DOB</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="pincode">PIN</string>
+    <string name="state">State</string>
+    <string name="language_known">Language known</string>
+    <string name="edu_qulifiy">Education qualification</string>
+
+    <string-array name="gender_array">
+        <item>Select gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
 
     <!--Requested Services-->
     <string name="requested_title">Requested Services</string>
@@ -215,6 +237,14 @@
     <!--Dialog Fragment-->
     <string name="alert_button_ok">OK</string>
     <string name="alert_button_cancel">Cancel</string>
+
+    <!--Profile Settings Page-->
+    <string name="about">About</string>
+    <string name="share">Share app</string>
+    <string name="logout">Logout</string>
+    <string name="update_service">Update Services</string>
+    <string name="bank_details">Edit Bank Details</string>
+    <string name="company_details">Company Details</string>
 
 
     <string name="mobile_number">Mobile Number</string>

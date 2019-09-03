@@ -12,6 +12,7 @@ import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.languagesupport.BaseActivity;
 import com.skilex.serviceprovider.utils.CommonUtils;
+import com.skilex.serviceprovider.utils.PreferenceStorage;
 
 public class WelcomeActivity extends BaseActivity implements View.OnClickListener {
 

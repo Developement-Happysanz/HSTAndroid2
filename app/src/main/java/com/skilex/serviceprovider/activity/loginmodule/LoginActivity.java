@@ -25,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +62,7 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
     private TextView txtRegister;
     private Button btnLogin;
     String res = "";
+    ImageView lang;
 
     private static String[] PERMISSIONS_ALL = {Manifest.permission.READ_CONTACTS,
             Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CALENDAR,
@@ -87,6 +89,8 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
         btnLogin.setOnClickListener(this);
         txtRegister = findViewById(R.id.btnRegister);
         txtRegister.setOnClickListener(this);
+        lang = findViewById(R.id.langues);
+        lang.setOnClickListener(this);
 
         FirstTimePreference prefFirstTime = new FirstTimePreference(getApplicationContext());
 
@@ -96,9 +100,9 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
             }
         }
 
-        if (LocaleManager.getLanguagePref(this).isEmpty()) {
-            showLangAlert();
-        }
+//        if (LocaleManager.getLanguagePref(this).isEmpty()) {
+//            showLangAlert();
+//        }
     }
 
     @Override
@@ -173,6 +177,8 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
                 Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(i);
 //                finish();
+            } if(v==lang){
+                showLangAlert();
             }
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
@@ -250,12 +256,12 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
 
                 Intent i = new Intent(getApplicationContext(), OTPVerificationActivity.class);
                 startActivity(i);
+                finish();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
-
     }
 
     @Override

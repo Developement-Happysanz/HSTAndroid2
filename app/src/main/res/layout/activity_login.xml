@@ -7,6 +7,22 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/langues"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:onClick="showLangsAlert"
+            android:padding="10dp"
+            android:src="@drawable/ic_language_blue" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/login_layout"
         android:layout_width="match_parent"
@@ -68,7 +84,6 @@
             android:textSize="14sp" />
 
         <Button
-
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="40dp"

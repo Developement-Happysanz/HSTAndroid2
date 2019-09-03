@@ -1,6 +1,7 @@
 package com.skilex.serviceprovider.activity.serviceperson;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.MotionEvent;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
@@ -155,10 +157,19 @@ public class ServicePersonCreationActivity extends BaseActivity implements Dialo
 
         if (validateSignInResponse(response)) {
 
+            try {
 
+                String servicePersonId = response.getString("serv_person_id");
+                PreferenceStorage.saveServicePersonId(getApplicationContext(), servicePersonId);
+
+                Intent i = new Intent(getApplicationContext(), ServicePersonDetailInfoActivity.class);
+                startActivity(i);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
         }
-
     }
 
     @Override

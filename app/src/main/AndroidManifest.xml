@@ -217,6 +217,13 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
+        <activity
+            android:name=".activity.serviceperson.DocUploadOnSuccessActivity"
+            android:label="@string/service_person_document_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
         <activity android:name=".ccavenue.activity.InitialScreenActivity" />
         <activity android:name=".ccavenue.activity.StatusActivity" />
         <activity android:name=".ccavenue.activity.WebViewActivity" />
