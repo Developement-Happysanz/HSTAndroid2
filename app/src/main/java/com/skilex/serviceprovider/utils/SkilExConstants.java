@@ -111,6 +111,22 @@ public class SkilExConstants {
     // Payment module
     public static final String PREF_PAYMENT_TYPE = "payment_type";
 
+    //Requested services list
+    public static final String API_REQUESTED_SERVICE = "list_requested_services/";
+
+    //Accept service
+    public static final String API_ACCEPT_SERVICE_ORDER = "accept_requested_services/";
+
+    //Accept service
+    public static final String API_ASSIGN_SERVICE_ORDER = "assigned_accepted_services/";
+
+    //Cancel service
+    public static final String API_CANCEL_REASON = "cancel_service_reasons/";
+    public static final String API_CANCEL_SERVICE = "cancel_services/";
+    public static String SERVICE_ORDER_ID = "service_order_id";
+    public static String CANCEL_ID = "cancel_master_id";
+    public static String CANCEL_COMMENTS = "comments";
+
     //Login
     public static String LOGIN = "login/";
     // Login Parameters
@@ -126,6 +142,8 @@ public class SkilExConstants {
     // Service person creation
     public static String API_SERVICE_PERSON_CREATION = "create_serv_person/";
     public static String API_SERVICE_PERSON_UPDATE = "update_serv_person_details/";
+    public static String API_SERVICE_PERSON_LIST = "list_serv_persons/";
+
 
     public static String KEY_SERVICE_PERSON_ID = "serv_person_id";
     public static String KEY_FULL_NAME = "full_name";

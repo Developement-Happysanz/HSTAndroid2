@@ -159,6 +159,28 @@
     <string name="back_home">Back to Home</string>
     <string name="on_upload_success">Thank you! Your documents have been\nuploaded successfully</string>
 
+    <!--Requested service list-->
+    <string name="category">Category</string>
+    <string name="subcategory">Sub Category</string>
+    <string name="date">Select Date</string>
+    <string name="time">Select Time Slot</string>
+    <string name="location">Select Service Location</string>
+    <string name="cancel">Cancel Service</string>
+    <string name="accept">Accept Service</string>
+    <string name="assign">Assign</string>
+
+    <string name="cancel_service_noadvance_alert1">Are you sure you want to cancel your service?</string>
+
+    <string name="alert_button_yes">Yes</string>
+    <string name="alert_button_no">No</string>
+
+    <string name="reason">Reason</string>
+    <string name="comment">Comment</string>
+
+    <!--Cancel service-->
+    <string name="cancel_title">Cancel Service</string>
+
+
     <!--Rating Page-->
     <string name="rating_title">Rate Service</string>
     <string name="rating_text">Rate your service</string>

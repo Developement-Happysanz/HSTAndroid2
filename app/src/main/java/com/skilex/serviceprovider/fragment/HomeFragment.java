@@ -13,7 +13,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.skilex.serviceprovider.R;
-import com.skilex.serviceprovider.activity.fragmentactivity.TransactionDetailsActivity;
+import com.skilex.serviceprovider.activity.fragmentactivity.requested.RequestedServicesActivity;
+import com.skilex.serviceprovider.activity.fragmentactivity.transaction.TransactionDetailsActivity;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
 import com.skilex.serviceprovider.servicehelpers.ServiceHelper;
@@ -86,6 +87,9 @@ public class HomeFragment extends Fragment implements IServiceListener, DialogCl
     public void onClick(View v) {
 
         if (v == layoutRequested) {
+            Intent intent = new Intent(getActivity(), RequestedServicesActivity.class);
+//            intent.putExtra("cat", category);
+            startActivity(intent);
 
         } else if (v == layoutAssigned) {
 

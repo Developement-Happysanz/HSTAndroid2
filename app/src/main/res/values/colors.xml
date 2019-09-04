@@ -21,4 +21,9 @@
     <color name="light_red">#EF3E3B</color>
     <color name="light_blue">#4CB7BF</color>
     <color name="Logout">#ED1C24</color>
+
+    <color name="request">#4CB7BF</color>
+    <color name="ongoing">#ae84bb</color>
+    <color name="history">#f0515d</color>
+    <color name="completed">#8dc63f</color>
 </resources>

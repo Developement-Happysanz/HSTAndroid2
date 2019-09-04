@@ -1,4 +1,4 @@
-package com.skilex.serviceprovider.activity.fragmentactivity;
+package com.skilex.serviceprovider.activity.fragmentactivity.ongoing;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

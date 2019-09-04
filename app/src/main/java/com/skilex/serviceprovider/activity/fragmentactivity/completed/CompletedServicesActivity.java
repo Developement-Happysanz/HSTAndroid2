@@ -1,4 +1,4 @@
-package com.skilex.serviceprovider.activity.fragmentactivity;
+package com.skilex.serviceprovider.activity.fragmentactivity.completed;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.languagesupport.BaseActivity;
 
-public class CancelledServicesActivity extends BaseActivity {
+public class CompletedServicesActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

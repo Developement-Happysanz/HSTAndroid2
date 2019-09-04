@@ -155,42 +155,56 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.fragmentactivity.RequestedServicesActivity"
+            android:name=".activity.fragmentactivity.requested.RequestedServicesActivity"
             android:label="@string/requested_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.fragmentactivity.AssignedServicesActivity"
+            android:name=".activity.fragmentactivity.requested.RequestedServiceDetailActivity"
+            android:label="@string/requested_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.fragmentactivity.cancelled.CancelRequestedServiceActivity"
+            android:label="@string/cancel_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.fragmentactivity.assigned.AssignedServicesActivity"
             android:label="@string/assigned_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.fragmentactivity.OnGoingServicesActivity"
+            android:name=".activity.fragmentactivity.ongoing.OnGoingServicesActivity"
             android:label="@string/ongoing_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.fragmentactivity.CompletedServicesActivity"
+            android:name=".activity.fragmentactivity.completed.CompletedServicesActivity"
             android:label="@string/completed_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.fragmentactivity.CancelledServicesActivity"
+            android:name=".activity.fragmentactivity.cancelled.CancelledServicesActivity"
             android:label="@string/cancelled_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.fragmentactivity.TransactionDetailsActivity"
+            android:name=".activity.fragmentactivity.transaction.TransactionDetailsActivity"
             android:label="@string/transaction_details_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
