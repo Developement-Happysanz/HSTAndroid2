@@ -240,7 +240,24 @@
 
     <!--Cancel service-->
     <string name="cancel_title">Cancel Service</string>
+    <string name="cancel_details">Cancellation Details</string>
+    <string name="reason_hint">Due to non availability</string>
+    <string name="reason_comments">Comments(if any)</string>
+    <string name="reason_comments_hint">I will book the service once i am available</string>
+    <string name="service_number">Service Number</string>
+    <string name="service_number_hint">Service Number Hint</string>
+    <string name="cancelled_by">Cancelled By</string>
+    <string name="cancelled_by_hint">Cancelled By Hint</string>
 
+    <!--Assigned service-->
+    <string name="customer_name">Customer Name</string>
+    <string name="customer_name_text">Customer Name Text</string>
+    <string name="customer_number">Customer Number</string>
+    <string name="customer_number_text">Customer Number Text</string>
+    <string name="service_time">Service Time</string>
+    <string name="service_time_text">Service Time Text</string>
+    <string name="service_cost">Estimated Cost</string>
+    <string name="service_cost_text">Estimated Cost Text</string>
 
     <!--Side menu-->
     <string name="text_tamil" translatable="false">தமிழ்</string>

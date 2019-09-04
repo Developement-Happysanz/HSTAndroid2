@@ -11,17 +11,17 @@ import android.widget.TextView;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.bean.support.AssignedService;
-import com.skilex.serviceprovider.bean.support.RequestedServiceArray;
+import com.skilex.serviceprovider.bean.support.CancelledService;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.servicehelpers.ServiceHelper;
 
 import java.util.ArrayList;
 
-public class AssignedServiceListAdapter extends BaseAdapter {
+public class CancelledServiceListAdapter extends BaseAdapter {
 
     //    private final Transformation transformation;
     private Context context;
-    private ArrayList<AssignedService> services;
+    private ArrayList<CancelledService> services;
     private boolean mSearching = false;
     private boolean mAnimateSearch = false;
     Boolean click = false;
@@ -31,7 +31,7 @@ public class AssignedServiceListAdapter extends BaseAdapter {
 
 //    DynamicSubCatFragment dsf = new DynamicSubCatFragment();
 
-    public AssignedServiceListAdapter(Context context, ArrayList<AssignedService> services) {
+    public CancelledServiceListAdapter(Context context, ArrayList<CancelledService> services) {
         this.context = context;
         this.services = services;
 //        Collections.reverse(services);
@@ -70,13 +70,13 @@ public class AssignedServiceListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final AssignedServiceListAdapter.ViewHolder holder;
+        final CancelledServiceListAdapter.ViewHolder holder;
 //        ViewHolder holder;
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.assigned_service_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.cancelled_service_list_item, parent, false);
 
-            holder = new AssignedServiceListAdapter.ViewHolder();
+            holder = new CancelledServiceListAdapter.ViewHolder();
             holder.txtCatName = convertView.findViewById(R.id.category_name);
             holder.txtSubCatName = convertView.findViewById(R.id.sub_category_name);
 //            if (PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
@@ -90,12 +90,12 @@ public class AssignedServiceListAdapter extends BaseAdapter {
             holder.txtDate.setText(services.get(position).getServiceOrderDate());
             holder.txtTime = convertView.findViewById(R.id.service_time_slot);
             holder.txtTime.setText(services.get(position).getServiceOrderFromTime());
-            holder.txtExpert = convertView.findViewById(R.id.service_expert);
-            holder.txtExpert.setText(services.get(position).getServiceExpertName());
+            holder.txtLocation = convertView.findViewById(R.id.service_location);
+            holder.txtLocation.setText(services.get(position).getServiceLocation());
             convertView.setTag(holder);
 
         } else {
-            holder = (AssignedServiceListAdapter.ViewHolder) convertView.getTag();
+            holder = (CancelledServiceListAdapter.ViewHolder) convertView.getTag();
 
             holder.txtCatName = convertView.findViewById(R.id.category_name);
             holder.txtSubCatName = convertView.findViewById(R.id.sub_category_name);
@@ -110,8 +110,8 @@ public class AssignedServiceListAdapter extends BaseAdapter {
             holder.txtDate.setText(services.get(position).getServiceOrderDate());
             holder.txtTime = convertView.findViewById(R.id.service_time_slot);
             holder.txtTime.setText(services.get(position).getServiceOrderFromTime());
-            holder.txtExpert = convertView.findViewById(R.id.service_expert);
-            holder.txtExpert.setText(services.get(position).getServiceExpertName());
+            holder.txtLocation = convertView.findViewById(R.id.service_location);
+            holder.txtLocation.setText(services.get(position).getServiceLocation());
         }
 
         if (mSearching) {
@@ -151,7 +151,7 @@ public class AssignedServiceListAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        public TextView txtCatName, txtSubCatName, txtDate, txtTime, txtExpert;
+        public TextView txtCatName, txtSubCatName, txtDate, txtTime, txtLocation;
     }
 
     public boolean ismSearching() {

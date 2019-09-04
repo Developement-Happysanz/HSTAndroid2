@@ -35,7 +35,8 @@ import java.util.ArrayList;
 
 import static android.util.Log.d;
 
-public class RequestedServiceDetailActivity extends BaseActivity implements IServiceListener, DialogClickListener, View.OnClickListener {
+public class RequestedServiceDetailActivity extends BaseActivity implements IServiceListener, DialogClickListener,
+        View.OnClickListener {
 
     private static final String TAG = RequestedServiceDetailActivity.class.getName();
     private ServiceHelper serviceHelper;
@@ -221,7 +222,7 @@ public class RequestedServiceDetailActivity extends BaseActivity implements ISer
 
     private void cancelOrder() {
         Intent intent = new Intent(this, CancelRequestedServiceActivity.class);
-        intent.putExtra("serviceObj", requestedServiceArray);
+        intent.putExtra("serviceOrderId", requestedServiceArray.getServiceOrderId());
         startActivity(intent);
         finish();
     }

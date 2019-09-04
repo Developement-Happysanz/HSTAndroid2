@@ -184,6 +184,7 @@ public class RequestedServicesActivity extends BaseActivity implements IServiceL
 
     @Override
     public void onError(String error) {
-
+        progressDialogHelper.hideProgressDialog();
+        AlertDialogHelper.showSimpleAlertDialog(this, error);
     }
 }

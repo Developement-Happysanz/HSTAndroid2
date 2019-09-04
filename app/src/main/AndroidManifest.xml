@@ -183,6 +183,13 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name=".activity.fragmentactivity.assigned.AssignedServiceDetailActivity"
+            android:label="@string/assigned_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name=".activity.fragmentactivity.ongoing.OnGoingServicesActivity"
             android:label="@string/ongoing_title"
             android:screenOrientation="portrait"
@@ -198,6 +205,13 @@
 
         <activity
             android:name=".activity.fragmentactivity.cancelled.CancelledServicesActivity"
+            android:label="@string/cancelled_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.fragmentactivity.cancelled.CancelledServiceDetailActivity"
             android:label="@string/cancelled_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"

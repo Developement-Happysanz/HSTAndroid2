@@ -114,11 +114,15 @@ public class SkilExConstants {
     //Requested services list
     public static final String API_REQUESTED_SERVICE = "list_requested_services/";
 
+    //Requested services list
+    public static final String API_ASSIGNED_SERVICE = "list_assigned_services/";
+
     //Accept service
     public static final String API_ACCEPT_SERVICE_ORDER = "accept_requested_services/";
 
-    //Accept service
+    //Assigned service
     public static final String API_ASSIGN_SERVICE_ORDER = "assigned_accepted_services/";
+    public static final String API_ASSIGNED_SERVICE_DETAILS = "detail_assigned_services/";
 
     //Cancel service
     public static final String API_CANCEL_REASON = "cancel_service_reasons/";
@@ -126,6 +130,8 @@ public class SkilExConstants {
     public static String SERVICE_ORDER_ID = "service_order_id";
     public static String CANCEL_ID = "cancel_master_id";
     public static String CANCEL_COMMENTS = "comments";
+    public static final String API_CANCELLED_SERVICE_LIST = "list_canceled_services/";
+
 
     //Login
     public static String LOGIN = "login/";

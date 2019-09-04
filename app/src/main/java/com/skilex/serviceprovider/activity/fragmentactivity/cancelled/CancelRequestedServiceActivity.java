@@ -42,13 +42,14 @@ public class CancelRequestedServiceActivity extends BaseActivity implements ISer
 
     EditText reason, comment;
     Button submit;
-    RequestedServiceArray requestedServiceArray;
+//    RequestedServiceArray requestedServiceArray;
 
     String res = "";
 
     ArrayAdapter<StoreCancelReasons> storeCancelReasonsArrayAdapter = null;
     ArrayList<StoreCancelReasons> storeCancelReasons;
     String cancelMasterId = "";
+    String serviceId = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,7 +64,10 @@ public class CancelRequestedServiceActivity extends BaseActivity implements ISer
     }
 
     private void initVal() {
-        requestedServiceArray = (RequestedServiceArray) getIntent().getSerializableExtra("serviceObj");
+//        requestedServiceArray = (RequestedServiceArray) getIntent().getSerializableExtra("serviceObj");
+
+        Intent intent = getIntent();
+        serviceId = intent.getExtras().getString("serviceOrderId");
 
         reason = (EditText) findViewById(R.id.edt_user_reason);
         reason.setFocusable(false);
@@ -91,11 +95,9 @@ public class CancelRequestedServiceActivity extends BaseActivity implements ISer
     private void cancelOrder() {
         res = "cancel";
         JSONObject jsonObject = new JSONObject();
-        String id = "";
-        id = requestedServiceArray.getServiceOrderId();
         try {
             jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(this));
-            jsonObject.put(SkilExConstants.SERVICE_ORDER_ID, id);
+            jsonObject.put(SkilExConstants.SERVICE_ORDER_ID, serviceId);
             jsonObject.put(SkilExConstants.CANCEL_ID, cancelMasterId);
             jsonObject.put(SkilExConstants.CANCEL_COMMENTS, comment.getText().toString());
 
