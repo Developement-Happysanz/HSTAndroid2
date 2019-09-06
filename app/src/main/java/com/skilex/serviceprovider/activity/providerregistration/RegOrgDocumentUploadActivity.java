@@ -272,11 +272,14 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             } else if (v == txtUploadProof2) {
                 if (flag == 3) {
                     if (validateFields()) {
-                        if (storeDocumentMasterId.equalsIgnoreCase("Try")) {
+                        String spn1 = spnIdProofType1.getSelectedItem().toString();
+                        String spn2 = spnIdProofType2.getSelectedItem().toString();
+
+                        if (spn2.equalsIgnoreCase(spn1)) {
                             Toast.makeText(getApplicationContext(), "Try some other Id proof", Toast.LENGTH_LONG).show();
                         } else {
-                            storeDocumentNumber = edtProofNo2.getText().toString();
                             storeDocumentMasterId = spinnerValue2;
+                            storeDocumentNumber = edtProofNo2.getText().toString();
                             showFileChooser();
                         }
                     }
@@ -393,7 +396,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         AlertDialogHelper.showSimpleAlertDialog(this, "File size too large");
                         selectedFilePath = null;
                     } else {
-                        Toast.makeText(this, "File ready to upload", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Uploading...", Toast.LENGTH_SHORT).show();
                         dialog = ProgressDialog.show(RegOrgDocumentUploadActivity.this, "", "Uploading File...", true);
 
                         new Thread(new Runnable() {
@@ -814,7 +817,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 } else if (checkValue.equalsIgnoreCase("bank")) {
 
                     String message = response.getString("msg");
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "All documents are submitted for verification!", Toast.LENGTH_LONG).show();
 
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
                     startActivity(i);

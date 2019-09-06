@@ -127,6 +127,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
         btnSubmit.setOnClickListener(this);
 
         getIdProofType();
+        spnIdProofType1.setEnabled(false);
 
         spnIdProofType1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -281,7 +282,6 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     return;
                 }
 
-
                 Uri selectedFileUri = data.getData();
                 selectedFilePath = FilePath.getPath(this, selectedFileUri);
                 Log.i(TAG, "Selected File Path:" + selectedFilePath);
@@ -292,7 +292,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                         AlertDialogHelper.showSimpleAlertDialog(this, "File size too large");
                         selectedFilePath = null;
                     } else {
-                        Toast.makeText(this, "File ready to upload", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Uploading...", Toast.LENGTH_SHORT).show();
                         dialog = ProgressDialog.show(UnRegOrgDocumentUploadActivity.this, "", "Uploading File...", true);
 
                         new Thread(new Runnable() {
@@ -641,12 +641,11 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                 if (checkValue.equalsIgnoreCase("bank")) {
 
                     String message = response.getString("msg");
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "All documents are submitted for verification!", Toast.LENGTH_LONG).show();
 
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
                     startActivity(i);
                 }
-
             }
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -198,6 +198,7 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
                 if (flag == 3) {
                     Intent i = new Intent(getApplicationContext(), DocUploadOnSuccessActivity.class);
                     startActivity(i);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Complete second proof upload", Toast.LENGTH_LONG).show();
                 }

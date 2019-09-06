@@ -191,7 +191,6 @@ public class AssignedServiceDetailActivity extends BaseActivity implements IServ
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
     }
 

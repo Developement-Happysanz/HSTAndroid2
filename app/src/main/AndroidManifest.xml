@@ -263,6 +263,20 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
+        <activity
+            android:name=".activity.loginmodule.AboutUsActivity"
+            android:label="@string/about_us"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.fragmentactivity.ongoing.InitiatedServiceActivity"
+            android:label="@string/ongoing_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
 
         <service android:name=".fcm.MyFirebaseInstanceIDService">
             <intent-filter>

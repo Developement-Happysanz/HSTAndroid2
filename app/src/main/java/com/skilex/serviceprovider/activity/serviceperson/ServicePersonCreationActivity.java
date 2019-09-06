@@ -164,6 +164,7 @@ public class ServicePersonCreationActivity extends BaseActivity implements Dialo
 
                 Intent i = new Intent(getApplicationContext(), ServicePersonDetailInfoActivity.class);
                 startActivity(i);
+                finish();
 
             } catch (Exception ex) {
                 ex.printStackTrace();

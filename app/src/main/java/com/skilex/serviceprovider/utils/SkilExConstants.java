@@ -132,6 +132,20 @@ public class SkilExConstants {
     public static String CANCEL_COMMENTS = "comments";
     public static final String API_CANCELLED_SERVICE_LIST = "list_canceled_services/";
 
+    //Ongoing service list
+    public static final String API_ONGOING_SERVICE = "list_ongoing_services/";
+    public static final String API_INITIATED_SERVICE_DETAIL = "detail_initiated_services/";
+    public static final String API_ONGOING_SERVICE_DETAILS = "detail_ongoing_services/";
+    public static final String API_ONGOING_SERVICE_DETAIL_UPDATE = "update_ongoing_services/";
+    public static final String API_ONGOING_SERVICE_COMPLETE = "complete_services/";
+    public static final String UPLOAD_BILL_DOCUMENT = "upload_service_bills/";
+
+    //Completed service
+    public static final String API_COMPLETED_SERVICE_LIST = "list_completed_services/";
+    public static final String API_COMPLETED_SERVICE_DETAIL = "detail_completed_services/";
+
+    public static String KEY_MATERIAL_NOTES = "material_notes";
+
 
     //Login
     public static String LOGIN = "login/";

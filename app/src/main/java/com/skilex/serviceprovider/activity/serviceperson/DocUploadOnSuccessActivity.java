@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.activity.LandingPageActivity;
 import com.skilex.serviceprovider.languagesupport.BaseActivity;
 
 public class DocUploadOnSuccessActivity extends BaseActivity {
@@ -22,7 +23,7 @@ public class DocUploadOnSuccessActivity extends BaseActivity {
         btnBackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ServicePersonCreationActivity.class);
+                Intent i = new Intent(getApplicationContext(), LandingPageActivity.class);
                 startActivity(i);
                 finish();
             }

@@ -285,6 +285,7 @@ public class ServicePersonDetailInfoActivity extends BaseActivity implements Dat
                 Intent i = new Intent(getApplicationContext(), CategorySelectionActivity.class);
                 i.putExtra("ProviderPersonCheck", "Person");
                 startActivity(i);
+                finish();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
