@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.adapter.CompletedServiceListAdapter;
 import com.skilex.serviceprovider.bean.support.CompletedService;
+import com.skilex.serviceprovider.bean.support.CompletedServiceList;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
@@ -21,10 +23,13 @@ import com.skilex.serviceprovider.utils.CommonUtils;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 import com.skilex.serviceprovider.utils.SkilExConstants;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static android.util.Log.d;
 
 public class CompletedServicesActivity extends BaseActivity implements IServiceListener, DialogClickListener,
         AdapterView.OnItemClickListener {
@@ -109,13 +114,72 @@ public class CompletedServicesActivity extends BaseActivity implements IServiceL
 
     }
 
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInSuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(SkilExConstants.PARAM_MESSAGE);
+                d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInSuccess = false;
+                        d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInSuccess = true;
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return signInSuccess;
+    }
+
     @Override
     public void onResponse(JSONObject response) {
+        progressDialogHelper.hideProgressDialog();
+        if (validateSignInResponse(response)) {
+            try {
+                JSONArray getData = response.getJSONArray("list_services_order");
+//                    loadMembersList(getData.length());
+                Gson gson = new Gson();
+                CompletedServiceList completedServiceList = gson.fromJson(response.toString(), CompletedServiceList.class);
+                if (completedServiceList.getServiceArrayList() != null && completedServiceList.getServiceArrayList().size() > 0) {
+                    totalCount = completedServiceList.getCount();
+//                    this.ongoingServiceArrayList.addAll(ongoingServiceList.getserviceArrayList());
+                    isLoadingForFirstTime = false;
+                    updateListAdapter(completedServiceList.getServiceArrayList());
+                } else {
+                    if (completedServiceArrayList != null) {
+                        completedServiceArrayList.clear();
+                        updateListAdapter(completedServiceList.getServiceArrayList());
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
+    protected void updateListAdapter(ArrayList<CompletedService> completedServiceArrayLists) {
+        completedServiceArrayList.clear();
+        completedServiceArrayList.addAll(completedServiceArrayLists);
+        if (completedServiceListAdapter == null) {
+            completedServiceListAdapter = new CompletedServiceListAdapter(this, completedServiceArrayList);
+            loadMoreListView.setAdapter(completedServiceListAdapter);
+        } else {
+            completedServiceListAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
     public void onError(String error) {
-
+        progressDialogHelper.hideProgressDialog();
+        AlertDialogHelper.showSimpleAlertDialog(this, error);
     }
 }

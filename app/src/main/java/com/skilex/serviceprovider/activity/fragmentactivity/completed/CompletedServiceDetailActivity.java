@@ -173,6 +173,7 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
 
     @Override
     public void onError(String error) {
-
+        progressDialogHelper.hideProgressDialog();
+        AlertDialogHelper.showSimpleAlertDialog(this, error);
     }
 }
