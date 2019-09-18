@@ -11,7 +11,8 @@ public class SkilExConstants {
     private static final String BASE_URL = "https://skilex.in/";
 
     //BUILD URL
-    public static final String BUILD_URL = BASE_URL + "development/apisprovider/";
+//    public static final String BUILD_URL = BASE_URL + "development/apisprovider/";
+    public static final String BUILD_URL = BASE_URL + "uat/apisprovider/";
 
     //NUMBER VERIFICATION URL FOR LOGIN
     public static final String MOBILE_VERIFICATION = "mobile_check/";
@@ -155,6 +156,8 @@ public class SkilExConstants {
     public static String DEVICE_TOKEN = "device_token";
     public static String MOBILE_TYPE = "mobile_type";
     public static String USER_MASTER_ID = "user_master_id";
+    public static String SP_LAT = "lat";
+    public static String SP_LON = "lon";
     public static String UNIQUE_NUMBER = "unique_number";
     public static String MOBILE_KEY = "mobile_key";
     public static String USER_STATUS = "user_stat";
@@ -174,6 +177,22 @@ public class SkilExConstants {
     public static String KEY_STATE = "state";
     public static String KEY_LANGUAGE_KNOWN = "language_known";
     public static String KEY_EDUCATION_QUALIFICATION = "edu_qualification";
+
+
+    // Service provider active status
+    public static String API_SERVICE_PROVIDER_STATUS = "provider_status/";
+
+    //Login data
+    public static final String PREF_FULL_NAME = "full_name";
+    public static final String PREF_EMAIL = "email";
+    public static final String PREF_GENDER = "gender";
+    public static final String PREF_PROFILE_PICTURE = "profile_picture";
+    public static final String PREF_ADDRESS = "address";
+
+    //PROFILE UPDATE URL
+    public static final String PROFILE_INFO = "user_info/";
+    public static final String UPDATE_PROFILE = "profile_update/";
+    public static final String UPLOAD_IMAGE = "profile_pic_upload/";
 
 
 }

@@ -180,7 +180,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
 
             progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
             String url = "";
-            if (checkProviderAndPerson.equalsIgnoreCase("Provider")) {
+            if (checkProviderAndPerson.equalsIgnoreCase("Provider") || checkProviderAndPerson.equalsIgnoreCase("ProviderUpdate")) {
                 url = SkilExConstants.BUILD_URL + SkilExConstants.PROVIDER_CATEGORY_UPDATE;
             } else {
                 url = SkilExConstants.BUILD_URL + SkilExConstants.PERSON_CATEGORY_UPDATE;
@@ -283,6 +283,8 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 //                finish();
+                } else if (checkProviderAndPerson.equalsIgnoreCase("ProviderUpdate")) {
+                    finish();
                 } else {
                     Intent intent = new Intent(this, ServicePersonDocumentUploadActivity.class);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);

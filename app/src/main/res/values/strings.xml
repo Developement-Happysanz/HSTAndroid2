@@ -324,6 +324,15 @@
     <string name="clear">Clear All</string>
     <string name="pay_button">Pay</string>
 
+    <string name="GPSAlertDialogTitle">Enable GPS</string>
+    <string name="GPSAlertDialogMessage">Enable GPS</string>
+
+    <string name="user_name">Name</string>
+    <string name="user_address">Address</string>
+    <string name="user_mail">E-Mail</string>
+    <string name="user_gender">Gender</string>
+    <string name="select_user_gender">Select Gender</string>
+
 
     <string name="mobile_number">Mobile Number</string>
     <string name="google_android_map_api_key">AIzaSyD428E0W4-pf4kJuJ3rsqG5vCELRgmR2ok</string>

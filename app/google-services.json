@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "801092971423-k3tag8q4ac7g3o9amfvrp9fsvjke85te.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skilex.serviceprovider",
+            "certificate_hash": "80003a73e099e2a48d7352c3b42b21702f1066db"
+          }
+        },
+        {
+          "client_id": "801092971423-ud7i19ji9rfhtahir31m5ciecic9j0i8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skilex.serviceprovider",
+            "certificate_hash": "0359e7dc48fefeb14bc7b8d941c6ca08301ad167"
+          }
+        },
+        {
           "client_id": "801092971423-m2tnfshgr0h38n7537s97s0a51c6chmm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

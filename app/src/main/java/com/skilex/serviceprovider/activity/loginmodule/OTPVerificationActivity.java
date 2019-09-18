@@ -197,6 +197,22 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                             finish();
                         }
                     } else {
+
+                        String userMasterId = userData.getString("user_master_id");
+                        String fullName = userData.getString("full_name");
+                        String phoneNo = userData.getString("phone_no");
+                        String email = userData.getString("email");
+                        String userType = userData.getString("user_type");
+                        String profilePic = userData.getString("profile_pic");
+
+                        PreferenceStorage.saveUserMasterId(this, userMasterId);
+                        PreferenceStorage.saveFullName(this, fullName);
+                        PreferenceStorage.saveMobileNo(this, phoneNo);
+                        PreferenceStorage.saveEmail(this, email);
+                        PreferenceStorage.saveLoginType(this, userType);
+                        PreferenceStorage.saveProfilePicture(this, profilePic);
+
+
                         Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
                         startActivity(i);
                         finish();

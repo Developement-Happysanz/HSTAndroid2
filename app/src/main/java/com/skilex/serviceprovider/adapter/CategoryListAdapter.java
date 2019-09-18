@@ -19,6 +19,7 @@ import com.skilex.serviceprovider.utils.SkilExValidator;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
+
 import java.util.ArrayList;
 
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
@@ -95,7 +96,8 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         holder.mPrefTextView.setText(categoryArrayList.get(position).getCategory());
 
         if (SkilExValidator.checkNullString(categoryArrayList.get(position).getImgPath())) {
-            Picasso.with(this.context).load(categoryArrayList.get(position).getImgPath()).fit().transform(this.transformation).placeholder(R.drawable.ic_logo_blue).error(R.drawable.ic_logo_blue).into(holder.mImageView);
+//            Picasso.with(this.context).load(categoryArrayList.get(position).getImgPath()).fit().transform(this.transformation).placeholder(R.drawable.ic_logo_blue).error(R.drawable.ic_logo_blue).into(holder.mImageView);
+            Picasso.get().load(categoryArrayList.get(position).getImgPath()).fit().transform(this.transformation).placeholder(R.drawable.ic_logo_blue).error(R.drawable.ic_logo_blue).into(holder.mImageView);
         } else {
             holder.mImageView.setImageResource(R.drawable.ic_logo_blue);
         }

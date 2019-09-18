@@ -254,6 +254,9 @@
     <string name="clear">Clear All</string>
     <string name="pay_button">Pay</string>
 
+    <string name="GPSAlertDialogTitle">Enable GPS</string>
+    <string name="GPSAlertDialogMessage">Enable GPS</string>
+
     <!--General-->
     <string name="confirm">Confirm</string>
     <string name="progress_loading">Loading&#8230;</string>
@@ -337,6 +340,12 @@
     <string name="update_service">Update Services</string>
     <string name="bank_details">Edit Bank Details</string>
     <string name="company_details">Company Details</string>
+
+    <string name="user_name">Name</string>
+    <string name="user_address">Address</string>
+    <string name="user_mail">E-Mail</string>
+    <string name="user_gender">Gender</string>
+    <string name="select_user_gender">Select Gender</string>
 
 
     <string name="mobile_number">Mobile Number</string>
