@@ -83,6 +83,12 @@ android {
         abortOnError false
         disable 'RestrictedApi'
     }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
 }
 
 repositories {
