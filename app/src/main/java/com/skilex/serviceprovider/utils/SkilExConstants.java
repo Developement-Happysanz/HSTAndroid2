@@ -12,7 +12,8 @@ public class SkilExConstants {
 
     //BUILD URL
 //    public static final String BUILD_URL = BASE_URL + "development/apisprovider/";
-    public static final String BUILD_URL = BASE_URL + "uat/apisprovider/";
+//    public static final String BUILD_URL = BASE_URL + "uat/apisprovider/";
+    public static final String BUILD_URL = BASE_URL + "apisprovider/";
 
     //NUMBER VERIFICATION URL FOR LOGIN
     public static final String MOBILE_VERIFICATION = "mobile_check/";
