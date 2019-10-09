@@ -98,7 +98,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
             lat = gpsTracker.getLatitude();
             lon = gpsTracker.getLongitude();
 
-//            setAssociateLiveStatus(lat, lon);
+            setAssociateLiveStatus(lat, lon);
 
         } else {
             // can't get location

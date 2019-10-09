@@ -118,6 +118,8 @@
     <string name="pay">Pay</string>
     <string name="deposit_description">* The amount you deposit will be refunded when you end your agreement with SkilEx or when you manage to have a good service record via SkilEx.</string>
     <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advnace.php</string>
+<!--    <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advnace.php</string>-->
+<!--    <string name="advance_redirect_url">http://skilex.in/ccavenue_app/serv_provider_advnace.php</string>-->
     <!--    <string name="advance_redirect_url">https://test.ccavenue.com/transaction/initTrans</string>-->
     <string name="redirect_page">Please wait your are redirecting to \nthe payment page&#8230;</string>
 
