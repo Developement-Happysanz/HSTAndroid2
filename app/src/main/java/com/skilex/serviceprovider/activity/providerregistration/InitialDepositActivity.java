@@ -28,7 +28,7 @@ public class InitialDepositActivity extends BaseActivity implements IServiceList
     private static final String TAG = InitialDepositActivity.class.getName();
 
     private Button btnPay;
-    private String payment = "1.00", orderId;
+    private String payment = "100.00", orderId;
 
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
