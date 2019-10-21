@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -64,6 +65,8 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
     String res = "";
     ImageView lang;
 
+    boolean doubleBackToExitPressedOnce = false;
+
     private static String[] PERMISSIONS_ALL = {Manifest.permission.READ_CONTACTS,
             Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CALENDAR,
             Manifest.permission.WRITE_CALENDAR, Manifest.permission.ACCESS_FINE_LOCATION,
@@ -103,6 +106,27 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
 //        if (LocaleManager.getLanguagePref(this).isEmpty()) {
 //            showLangAlert();
 //        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
     @Override
@@ -255,6 +279,7 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
                 PreferenceStorage.saveLoginType(getApplicationContext(), "Login");
 
                 Intent i = new Intent(getApplicationContext(), OTPVerificationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();
 

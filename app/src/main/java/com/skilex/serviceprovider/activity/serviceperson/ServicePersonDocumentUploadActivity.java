@@ -62,9 +62,12 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
 
-    private EditText edtProofNo1;
+    /*private EditText edtProofNo1;
     private TextView txtUploadProof1;
-    private Spinner spnIdProofType1;
+    private Spinner spnIdProofType1;*/
+
+    private EditText edtPanCardNumber;
+    private TextView txtUploadPan;
 
     private EditText edtProofNo2;
     private TextView txtUploadProof2;
@@ -94,10 +97,14 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
-        edtProofNo1 = findViewById(R.id.edtProof1);
+        /*edtProofNo1 = findViewById(R.id.edtProof1);
         txtUploadProof1 = findViewById(R.id.txtUploadProof1);
         txtUploadProof1.setOnClickListener(this);
-        spnIdProofType1 = findViewById(R.id.spnIdProofType1);
+        spnIdProofType1 = findViewById(R.id.spnIdProofType1);*/
+
+        edtPanCardNumber = findViewById(R.id.edtPanCardNo);
+        txtUploadPan = findViewById(R.id.txtUploadPanCard);
+        txtUploadPan.setOnClickListener(this);
 
         edtProofNo2 = findViewById(R.id.edtProof2);
         txtUploadProof2 = findViewById(R.id.txtUploadProof2);
@@ -108,7 +115,7 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
         btnSubmit.setOnClickListener(this);
 
         getPersonIdProofType();
-        spnIdProofType1.setEnabled(false);
+        /*spnIdProofType1.setEnabled(false);
 
         spnIdProofType1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -121,7 +128,7 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
         spnIdProofType2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -171,28 +178,21 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
     @Override
     public void onClick(View v) {
         if (CommonUtils.haveNetworkConnection(getApplicationContext())) {
-            if (v == txtUploadProof1) {
+            if (v == txtUploadPan) {
                 if (validateFields()) {
-                    storeDocumentNumber = edtProofNo1.getText().toString();
-                    storeDocumentMasterId = spinnerValue1;
+                    storeDocumentNumber = edtPanCardNumber.getText().toString();
+                    storeDocumentMasterId = "3";
                     showFileChooser();
                 }
             } else if (v == txtUploadProof2) {
                 if (flag == 2) {
                     if (validateFields()) {
-                        String spn1 = spnIdProofType1.getSelectedItem().toString();
-                        String spn2 = spnIdProofType2.getSelectedItem().toString();
-
-                        if (spn2.equalsIgnoreCase(spn1)) {
-                            Toast.makeText(getApplicationContext(), "Try some other Id proof", Toast.LENGTH_LONG).show();
-                        } else {
-                            storeDocumentMasterId = spinnerValue2;
-                            storeDocumentNumber = edtProofNo2.getText().toString();
-                            showFileChooser();
-                        }
+                        storeDocumentNumber = edtProofNo2.getText().toString();
+                        storeDocumentMasterId = spinnerValue2;
+                        showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete first proof upload", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Complete Aadhaar card upload", Toast.LENGTH_LONG).show();
                 }
             } else if (v == btnSubmit) {
                 if (flag == 3) {
@@ -416,12 +416,11 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
                 Toast.makeText(getApplicationContext(), "Uploaded successfully!", Toast.LENGTH_SHORT).show();
 
                 if (flag == 1) {
-                    edtProofNo1.setEnabled(false);
-                    edtProofNo1.setFocusable(false);
-                    spnIdProofType1.setEnabled(false);
-                    txtUploadProof1.setText("");
-                    txtUploadProof1.setEnabled(false);
-                    txtUploadProof1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+                    edtPanCardNumber.setEnabled(false);
+                    edtPanCardNumber.setFocusable(false);
+                    txtUploadPan.setText("");
+                    txtUploadPan.setEnabled(false);
+                    txtUploadPan.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
                     flag = 2;
                 } else if (flag == 2) {
                     edtProofNo2.setEnabled(false);
@@ -446,9 +445,9 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
     private boolean validateFields() {
 
         if (flag == 1) {
-            if (!SkilExValidator.checkNullString(this.edtProofNo1.getText().toString().trim())) {
-                edtProofNo1.setError(getString(R.string.empty_entry));
-                requestFocus(edtProofNo1);
+            if (!SkilExValidator.checkNullString(this.edtPanCardNumber.getText().toString().trim())) {
+                edtPanCardNumber.setError(getString(R.string.empty_entry));
+                requestFocus(edtPanCardNumber);
                 return false;
             }
         }
@@ -531,9 +530,9 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
                         docNumberList.add(new StoreMasterId(docId, docName));
                     }
 
-                    //fill data in spinner
+                    /*//fill data in spinner
                     ArrayAdapter<StoreMasterId> adapter = new ArrayAdapter<StoreMasterId>(getApplicationContext(), R.layout.spinner_item_ns, docNumberList);
-                    spnIdProofType1.setAdapter(adapter);
+                    spnIdProofType1.setAdapter(adapter);*/
 
                     //fill data in spinner
                     ArrayAdapter<StoreMasterId> adapter1 = new ArrayAdapter<StoreMasterId>(getApplicationContext(), R.layout.spinner_item_ns, docNumberList);

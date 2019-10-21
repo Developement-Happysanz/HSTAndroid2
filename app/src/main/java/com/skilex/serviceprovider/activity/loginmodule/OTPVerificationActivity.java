@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -12,12 +13,19 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.LandingPageActivity;
 import com.skilex.serviceprovider.activity.providerregistration.CategorySelectionActivity;
 import com.skilex.serviceprovider.activity.providerregistration.DocumentVerificationStatusActivity;
 import com.skilex.serviceprovider.activity.providerregistration.DocumentVerifySuccessActivity;
+import com.skilex.serviceprovider.activity.providerregistration.InitialDepositActivity;
+import com.skilex.serviceprovider.activity.providerregistration.OrganizationTypeSelectionActivity;
+import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocumentUploadActivity;
+import com.skilex.serviceprovider.activity.providerregistration.RegisteredOrganizationInfoActivity;
+import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocumentUploadActivity;
+import com.skilex.serviceprovider.activity.providerregistration.UnRegisteredOrganizationInfoActivity;
 import com.skilex.serviceprovider.activity.providerregistration.WelcomeActivity;
 import com.skilex.serviceprovider.customview.CustomOtpEditText;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
@@ -46,6 +54,8 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
     private ProgressDialogHelper progressDialogHelper;
     String getUserMasterId, getMobileNumber;
 
+    boolean doubleBackToExitPressedOnce = false;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +71,27 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
         tvResendOTP.setOnClickListener(this);
         btnConfirm = findViewById(R.id.sendcode);
         btnConfirm.setOnClickListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
     @Override
@@ -176,48 +207,107 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
         progressDialogHelper.hideProgressDialog();
         if (validateResponse(response)) {
             try {
+
+                String countCategory = response.getString("categoryCount");
                 JSONObject userData = response.getJSONObject("userData");
-                String loginType = PreferenceStorage.getLoginType(getApplicationContext());
-                if (loginType.equalsIgnoreCase("Register")) {
+                String getCompanyType = userData.getString("company_status");
+                JSONObject docData = response.getJSONObject("docData");
+                String docStatus = docData.getString("status");
+                JSONObject companyData = response.getJSONObject("companyData");
+                String companyStatus = companyData.getString("status");
+                String getServiceProviderBasicStatus = userData.getString("also_service_person");
+                String getBankStatus = userData.getString("bank_name");
+                String getPaymentStatus = userData.getString("deposit_status");
+
+                //If company
+
+                if (countCategory.equalsIgnoreCase("0")) {
                     Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     i.putExtra("ProviderPersonCheck", "Provider");
                     startActivity(i);
-                } else if (loginType.equalsIgnoreCase("Login")) {
-                    if (userData.getString("serv_prov_display_status").equalsIgnoreCase("Inactive")) {
+                    finish();
+                } else if (getCompanyType.isEmpty()) {
+                    Intent intent = new Intent(this, OrganizationTypeSelectionActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                } else if (getServiceProviderBasicStatus.isEmpty()) {
+                    if (getCompanyType.equalsIgnoreCase("Company")) {
+                        Intent intent = new Intent(this, RegisteredOrganizationInfoActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(this, UnRegisteredOrganizationInfoActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    }
+                } else if (getBankStatus.isEmpty()) {
 
-                        if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Pending")) {
+                    if (getCompanyType.equalsIgnoreCase("Company")) {
+                        Intent i = new Intent(this, RegOrgDocumentUploadActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(this, UnRegOrgDocumentUploadActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    }
+                } else if (getPaymentStatus.equalsIgnoreCase("Unpaid")) {
+                    Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+                    finish();
+                } else {
+                    String loginType = PreferenceStorage.getLoginType(getApplicationContext());
+                    if (loginType.equalsIgnoreCase("Register")) {
+                        Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("ProviderPersonCheck", "Provider");
+                        startActivity(i);
+                        finish();
+                    } else if (loginType.equalsIgnoreCase("Login")) {
+                        if (userData.getString("serv_prov_display_status").equalsIgnoreCase("Inactive")) {
 
-                            Intent i = new Intent(OTPVerificationActivity.this, DocumentVerificationStatusActivity.class);
-                            startActivity(i);
-                            finish();
-                        } else if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Approved")) {
+                            if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Pending")) {
 
-                            Intent i = new Intent(OTPVerificationActivity.this, DocumentVerifySuccessActivity.class);
+                                Intent i = new Intent(OTPVerificationActivity.this, DocumentVerificationStatusActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
+                                finish();
+                            } else if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Approved")) {
+
+                                Intent i = new Intent(OTPVerificationActivity.this, DocumentVerifySuccessActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
+                                finish();
+                            }
+                        } else {
+
+                            String userMasterId = userData.getString("user_master_id");
+                            String fullName = userData.getString("full_name");
+                            String phoneNo = userData.getString("phone_no");
+                            String email = userData.getString("email");
+                            String userType = userData.getString("user_type");
+                            String profilePic = userData.getString("profile_pic");
+
+                            PreferenceStorage.saveUserMasterId(this, userMasterId);
+                            PreferenceStorage.saveFullName(this, fullName);
+                            PreferenceStorage.saveMobileNo(this, phoneNo);
+                            PreferenceStorage.saveEmail(this, email);
+                            PreferenceStorage.saveLoginType(this, userType);
+                            PreferenceStorage.saveProfilePicture(this, profilePic);
+
+                            Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(i);
                             finish();
                         }
-                    } else {
-
-                        String userMasterId = userData.getString("user_master_id");
-                        String fullName = userData.getString("full_name");
-                        String phoneNo = userData.getString("phone_no");
-                        String email = userData.getString("email");
-                        String userType = userData.getString("user_type");
-                        String profilePic = userData.getString("profile_pic");
-
-                        PreferenceStorage.saveUserMasterId(this, userMasterId);
-                        PreferenceStorage.saveFullName(this, fullName);
-                        PreferenceStorage.saveMobileNo(this, phoneNo);
-                        PreferenceStorage.saveEmail(this, email);
-                        PreferenceStorage.saveLoginType(this, userType);
-                        PreferenceStorage.saveProfilePicture(this, profilePic);
-
-
-                        Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
-                        startActivity(i);
-                        finish();
                     }
-
                 }
 //                finish();
             } catch (Exception ex) {

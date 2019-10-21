@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.LandingPageActivity;
 import com.skilex.serviceprovider.activity.providerregistration.InitialDepositActivity;
+import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocumentUploadActivity;
 import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocumentUploadActivity;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 import com.skilex.serviceprovider.utils.SkilExValidator;

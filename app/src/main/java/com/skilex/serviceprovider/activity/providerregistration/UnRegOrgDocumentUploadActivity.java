@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -92,6 +93,8 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
     File sizeCge;
     ProgressDialog dialog;
 
+    boolean doubleBackToExitPressedOnce = false;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -127,7 +130,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
         btnSubmit.setOnClickListener(this);
 
         getIdProofType();
-        spnIdProofType1.setEnabled(false);
+//        spnIdProofType1.setEnabled(false);
 
         spnIdProofType1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -156,6 +159,27 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
     @Override
@@ -196,7 +220,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             if (v == txtUploadPan) {
                 if (validateFields()) {
                     storeDocumentNumber = edtPanCardNumber.getText().toString();
-                    storeDocumentMasterId = "1";
+                    storeDocumentMasterId = "3";
                     showFileChooser();
                 }
             } else if (v == txtUploadProof1) {
@@ -209,25 +233,27 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                 } else {
                     Toast.makeText(getApplicationContext(), "Complete PAN card upload", Toast.LENGTH_LONG).show();
                 }
-            } else if (v == txtUploadProof2) {
+            }
+//            else if (v == txtUploadProof2) {
+//                if (flag == 3) {
+//                    if (validateFields()) {
+//                        String spn1 = spnIdProofType1.getSelectedItem().toString();
+//                        String spn2 = spnIdProofType2.getSelectedItem().toString();
+//
+//                        if (spn2.equalsIgnoreCase(spn1)) {
+//                            Toast.makeText(getApplicationContext(), "Try some other Id proof", Toast.LENGTH_LONG).show();
+//                        } else {
+//                            storeDocumentMasterId = spinnerValue2;
+//                            storeDocumentNumber = edtProofNo2.getText().toString();
+//                            showFileChooser();
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Complete first proof upload", Toast.LENGTH_LONG).show();
+//                }
+//            }
+            else if (v == txtUploadPassBook) {
                 if (flag == 3) {
-                    if (validateFields()) {
-                        String spn1 = spnIdProofType1.getSelectedItem().toString();
-                        String spn2 = spnIdProofType2.getSelectedItem().toString();
-
-                        if (spn2.equalsIgnoreCase(spn1)) {
-                            Toast.makeText(getApplicationContext(), "Try some other Id proof", Toast.LENGTH_LONG).show();
-                        } else {
-                            storeDocumentMasterId = spinnerValue2;
-                            storeDocumentNumber = edtProofNo2.getText().toString();
-                            showFileChooser();
-                        }
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Complete first proof upload", Toast.LENGTH_LONG).show();
-                }
-            } else if (v == txtUploadPassBook) {
-                if (flag == 4) {
                     if (validateFields()) {
                         storeDocumentNumber = "PassBook";
                         storeDocumentMasterId = "22";
@@ -237,7 +263,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     Toast.makeText(getApplicationContext(), "Complete second proof upload", Toast.LENGTH_LONG).show();
                 }
             } else if (v == btnSubmit) {
-                if (flag == 5) {
+                if (flag == 4) {
                     checkValue = "bank";
                     JSONObject jsonObject = new JSONObject();
                     try {
@@ -486,15 +512,17 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     txtUploadProof1.setEnabled(false);
                     txtUploadProof1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
                     flag = 3;
-                } else if (flag == 3) {
-                    edtProofNo2.setEnabled(false);
-                    edtProofNo2.setFocusable(false);
-                    spnIdProofType2.setEnabled(false);
-                    txtUploadProof2.setText("");
-                    txtUploadProof2.setEnabled(false);
-                    txtUploadProof2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 4;
-                } else if (flag == 4) {
+                }
+//                else if (flag == 3) {
+//                    edtProofNo2.setEnabled(false);
+//                    edtProofNo2.setFocusable(false);
+//                    spnIdProofType2.setEnabled(false);
+//                    txtUploadProof2.setText("");
+//                    txtUploadProof2.setEnabled(false);
+//                    txtUploadProof2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+//                    flag = 4;
+//                }
+                else if (flag == 3) {
                     edtBankName.setEnabled(false);
                     edtBranchName.setEnabled(false);
                     edtAccNo.setEnabled(false);
@@ -502,7 +530,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     txtUploadPassBook.setText("");
                     txtUploadPassBook.setEnabled(false);
                     txtUploadPassBook.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 5;
+                    flag = 4;
                 }
             } else {
                 Toast.makeText(getApplicationContext(), "Unable to upload file", Toast.LENGTH_SHORT).show();
@@ -531,14 +559,14 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                 return false;
             }
         }
-        if (flag == 3) {
+        /*if (flag == 3) {
             if (!SkilExValidator.checkNullString(this.edtProofNo2.getText().toString().trim())) {
                 edtProofNo2.setError(getString(R.string.empty_entry));
                 requestFocus(edtProofNo2);
                 return false;
             }
-        }
-        if (flag == 4) {
+        }*/
+        if (flag == 3) {
             if (!SkilExValidator.checkNullString(this.edtBankName.getText().toString().trim())) {
                 edtBankName.setError(getString(R.string.empty_entry));
                 requestFocus(edtBankName);
@@ -547,15 +575,17 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                 edtAccNo.setError(getString(R.string.empty_entry));
                 requestFocus(edtAccNo);
                 return false;
-            } else if (!SkilExValidator.checkNullString(this.edtIFSC.getText().toString().trim())) {
-                edtIFSC.setError(getString(R.string.empty_entry));
-                requestFocus(edtIFSC);
-                return false;
-            } else if (!SkilExValidator.checkNullString(this.edtBranchName.getText().toString().trim())) {
-                edtBranchName.setError(getString(R.string.empty_entry));
-                requestFocus(edtBranchName);
-                return false;
             }
+//            else if (!SkilExValidator.checkNullString(this.edtIFSC.getText().toString().trim())) {
+//                edtIFSC.setError(getString(R.string.empty_entry));
+//                requestFocus(edtIFSC);
+//                return false;
+//            }
+//            else if (!SkilExValidator.checkNullString(this.edtBranchName.getText().toString().trim())) {
+//                edtBranchName.setError(getString(R.string.empty_entry));
+//                requestFocus(edtBranchName);
+//                return false;
+//            }
         } else {
             return true;
         }
@@ -644,7 +674,9 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     Toast.makeText(getApplicationContext(), "All documents are submitted for verification!", Toast.LENGTH_LONG).show();
 
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
+                    finish();
                 }
             }
         } catch (Exception ex) {

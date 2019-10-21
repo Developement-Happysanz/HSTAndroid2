@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -103,6 +104,8 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
     File sizeCge;
     ProgressDialog dialog;
 
+    boolean doubleBackToExitPressedOnce = false;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -154,7 +157,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
         btnSubmit.setOnClickListener(this);
 
         getPersonIdProofType();
-        spnIdProofType1.setEnabled(false);
+//        spnIdProofType1.setEnabled(false);
 
         spnIdProofType1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -194,6 +197,27 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
     @Override
@@ -256,7 +280,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             if (v == txtUploadPan) {
                 if (validateFields()) {
                     storeDocumentNumber = edtPanCardNumber.getText().toString();
-                    storeDocumentMasterId = "1";
+                    storeDocumentMasterId = "3";
                     showFileChooser();
                 }
             } else if (v == txtUploadProof1) {
@@ -267,27 +291,29 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete PAN card upload", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Complete Aadhaar card upload", Toast.LENGTH_LONG).show();
                 }
-            } else if (v == txtUploadProof2) {
+            }
+//            else if (v == txtUploadProof2) {
+//                if (flag == 3) {
+//                    if (validateFields()) {
+//                        String spn1 = spnIdProofType1.getSelectedItem().toString();
+//                        String spn2 = spnIdProofType2.getSelectedItem().toString();
+//
+//                        if (spn2.equalsIgnoreCase(spn1)) {
+//                            Toast.makeText(getApplicationContext(), "Try some other Id proof", Toast.LENGTH_LONG).show();
+//                        } else {
+//                            storeDocumentMasterId = spinnerValue2;
+//                            storeDocumentNumber = edtProofNo2.getText().toString();
+//                            showFileChooser();
+//                        }
+//                    }
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Complete first proof upload", Toast.LENGTH_LONG).show();
+//                }
+//            }
+            else if (v == txtUploadRCNumber) {
                 if (flag == 3) {
-                    if (validateFields()) {
-                        String spn1 = spnIdProofType1.getSelectedItem().toString();
-                        String spn2 = spnIdProofType2.getSelectedItem().toString();
-
-                        if (spn2.equalsIgnoreCase(spn1)) {
-                            Toast.makeText(getApplicationContext(), "Try some other Id proof", Toast.LENGTH_LONG).show();
-                        } else {
-                            storeDocumentMasterId = spinnerValue2;
-                            storeDocumentNumber = edtProofNo2.getText().toString();
-                            showFileChooser();
-                        }
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Complete first proof upload", Toast.LENGTH_LONG).show();
-                }
-            } else if (v == txtUploadRCNumber) {
-                if (flag == 4) {
                     if (validateFields()) {
                         storeDocumentNumber = edtRCCertificateNumber.getText().toString();
                         storeDocumentMasterId = "8";
@@ -298,7 +324,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
 
             } else if (v == txtUploadGST) {
-                if (flag == 5) {
+                if (flag == 4) {
                     if (validateFields()) {
                         storeDocumentNumber = edtGSTNumber.getText().toString();
                         storeDocumentMasterId = "9";
@@ -309,7 +335,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
 
             } else if (v == txtUploadOrgPan) {
-                if (flag == 6) {
+                if (flag == 5) {
                     if (validateFields()) {
                         storeDocumentNumber = edtOrgPanCardNumber.getText().toString();
                         storeDocumentMasterId = "2";
@@ -320,7 +346,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
 
             } else if (v == txtUploadAddressProof) {
-                if (flag == 7) {
+                if (flag == 6) {
                     if (validateFields()) {
                         storeDocumentNumber = "";
                         storeDocumentMasterId = spinnerValue3;
@@ -331,7 +357,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
 
             } else if (v == txtUploadPassBook) {
-                if (flag == 8) {
+                if (flag == 7) {
                     if (validateFields()) {
                         storeDocumentNumber = "";
                         storeDocumentMasterId = "22";
@@ -341,7 +367,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     Toast.makeText(getApplicationContext(), "Complete organization address proof upload", Toast.LENGTH_LONG).show();
                 }
             } else if (v == btnSubmit) {
-                if (flag == 9) {
+                if (flag == 8) {
                     checkValue = "bank";
                     JSONObject jsonObject = new JSONObject();
                     try {
@@ -588,7 +614,8 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     txtUploadProof1.setEnabled(false);
                     txtUploadProof1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
                     flag = 3;
-                } else if (flag == 3) {
+                }
+                /*else if (flag == 3) {
                     edtProofNo2.setEnabled(false);
                     edtProofNo2.setFocusable(false);
                     spnIdProofType2.setEnabled(false);
@@ -596,34 +623,35 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     txtUploadProof2.setEnabled(false);
                     txtUploadProof2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
                     flag = 4;
-                } else if (flag == 4) {
+                }*/
+                else if (flag == 3) {
                     edtRCCertificateNumber.setEnabled(false);
                     edtRCCertificateNumber.setFocusable(false);
                     txtUploadRCNumber.setText("");
                     txtUploadRCNumber.setEnabled(false);
                     txtUploadRCNumber.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 5;
-                } else if (flag == 5) {
+                    flag = 4;
+                } else if (flag == 4) {
                     edtGSTNumber.setEnabled(false);
                     edtGSTNumber.setFocusable(false);
                     txtUploadGST.setText("");
                     txtUploadGST.setEnabled(false);
                     txtUploadGST.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 6;
-                } else if (flag == 6) {
+                    flag = 5;
+                } else if (flag == 5) {
                     edtOrgPanCardNumber.setEnabled(false);
                     edtOrgPanCardNumber.setFocusable(false);
                     txtUploadOrgPan.setText("");
                     txtUploadOrgPan.setEnabled(false);
                     txtUploadOrgPan.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 7;
-                } else if (flag == 7) {
+                    flag = 6;
+                } else if (flag == 6) {
                     spnAddressProofType.setEnabled(false);
                     txtUploadAddressProof.setText("");
                     txtUploadAddressProof.setEnabled(false);
                     txtUploadAddressProof.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 8;
-                } else if (flag == 8) {
+                    flag = 7;
+                } else if (flag == 7) {
                     edtBankName.setEnabled(false);
                     edtBranchName.setEnabled(false);
                     edtAccNo.setEnabled(false);
@@ -631,7 +659,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     txtUploadPassBook.setText("");
                     txtUploadPassBook.setEnabled(false);
                     txtUploadPassBook.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 9;
+                    flag = 8;
                 }
             } else {
                 Toast.makeText(getApplicationContext(), "Unable to upload file", Toast.LENGTH_SHORT).show();
@@ -660,35 +688,35 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 return false;
             }
         }
+//        if (flag == 3) {
+//            if (!SkilExValidator.checkNullString(this.edtProofNo2.getText().toString().trim())) {
+//                edtProofNo2.setError(getString(R.string.empty_entry));
+//                requestFocus(edtProofNo2);
+//                return false;
+//            }
+//        }
         if (flag == 3) {
-            if (!SkilExValidator.checkNullString(this.edtProofNo2.getText().toString().trim())) {
-                edtProofNo2.setError(getString(R.string.empty_entry));
-                requestFocus(edtProofNo2);
-                return false;
-            }
-        }
-        if (flag == 4) {
             if (!SkilExValidator.checkNullString(this.edtRCCertificateNumber.getText().toString().trim())) {
                 edtRCCertificateNumber.setError(getString(R.string.empty_entry));
                 requestFocus(edtRCCertificateNumber);
                 return false;
             }
         }
-        if (flag == 5) {
+        if (flag == 4) {
             if (!SkilExValidator.checkNullString(this.edtGSTNumber.getText().toString().trim())) {
                 edtGSTNumber.setError(getString(R.string.empty_entry));
                 requestFocus(edtGSTNumber);
                 return false;
             }
         }
-        if (flag == 6) {
+        if (flag == 5) {
             if (!SkilExValidator.checkNullString(this.edtOrgPanCardNumber.getText().toString().trim())) {
                 edtOrgPanCardNumber.setError(getString(R.string.empty_entry));
                 requestFocus(edtOrgPanCardNumber);
                 return false;
             }
         }
-        if (flag == 8) {
+        if (flag == 7) {
             if (!SkilExValidator.checkNullString(this.edtBankName.getText().toString().trim())) {
                 edtBankName.setError(getString(R.string.empty_entry));
                 requestFocus(edtBankName);
@@ -697,15 +725,17 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 edtAccNo.setError(getString(R.string.empty_entry));
                 requestFocus(edtAccNo);
                 return false;
-            } else if (!SkilExValidator.checkNullString(this.edtIFSC.getText().toString().trim())) {
-                edtIFSC.setError(getString(R.string.empty_entry));
-                requestFocus(edtIFSC);
-                return false;
-            } else if (!SkilExValidator.checkNullString(this.edtBranchName.getText().toString().trim())) {
-                edtBranchName.setError(getString(R.string.empty_entry));
-                requestFocus(edtBranchName);
-                return false;
             }
+//            else if (!SkilExValidator.checkNullString(this.edtIFSC.getText().toString().trim())) {
+//                edtIFSC.setError(getString(R.string.empty_entry));
+//                requestFocus(edtIFSC);
+//                return false;
+//            }
+//            else if (!SkilExValidator.checkNullString(this.edtBranchName.getText().toString().trim())) {
+//                edtBranchName.setError(getString(R.string.empty_entry));
+//                requestFocus(edtBranchName);
+//                return false;
+//            }
         } else {
             return true;
         }
@@ -820,7 +850,9 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     Toast.makeText(getApplicationContext(), "All documents are submitted for verification!", Toast.LENGTH_LONG).show();
 
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
+                    finish();
                 }
 
             }

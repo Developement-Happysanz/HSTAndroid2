@@ -3,6 +3,7 @@ package com.skilex.serviceprovider.activity.providerregistration;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
@@ -50,6 +52,7 @@ public class UnRegisteredOrganizationInfoActivity extends BaseActivity implement
     private String alsoServicePerson = "Y";
 
     private boolean getNoOfServicePersonStatus = false;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,6 +119,27 @@ public class UnRegisteredOrganizationInfoActivity extends BaseActivity implement
 
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
     @Override
@@ -212,7 +236,9 @@ public class UnRegisteredOrganizationInfoActivity extends BaseActivity implement
         if (validateSignInResponse(response)) {
 
             Intent i = new Intent(UnRegisteredOrganizationInfoActivity.this, UnRegOrgDocumentUploadActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
+            finish();
 
         }
     }

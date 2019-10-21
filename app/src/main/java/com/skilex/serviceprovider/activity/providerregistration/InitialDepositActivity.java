@@ -60,6 +60,7 @@ public class InitialDepositActivity extends BaseActivity implements IServiceList
                 i.putExtra("amount", payment);
                 i.putExtra("orderid", orderId);
                 startActivity(i);
+                finish();
             }
 
         } else {

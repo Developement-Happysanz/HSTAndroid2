@@ -2,9 +2,11 @@ package com.skilex.serviceprovider.activity.providerregistration;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
@@ -32,6 +34,8 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
 
     private String organizationType = "";
 
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,27 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
         llUnRegOrg = findViewById(R.id.ll_un_reg_org);
         llUnRegOrg.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
     @Override
@@ -120,12 +145,14 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
             try {
                 if (organizationType.equalsIgnoreCase("Company")) {
                     Intent intent = new Intent(this, RegisteredOrganizationInfoActivity.class);
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 } else if (organizationType.equalsIgnoreCase("Individual")) {
                     Intent intent = new Intent(this, UnRegisteredOrganizationInfoActivity.class);
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();

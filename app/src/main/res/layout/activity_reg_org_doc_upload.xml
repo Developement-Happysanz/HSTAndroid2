@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
-                    android:text="@string/pan_card_title"
+                    android:text="@string/aadhaar_card_title"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal" />
@@ -66,8 +66,10 @@
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
                         android:background="@drawable/rounded_edge_trans_bg_with_border"
-                        android:hint="@string/pan_card_title"
-                        android:maxLength="20"
+                        android:digits="0123456789"
+                        android:hint="@string/aadhaar_card_title"
+                        android:inputType="number"
+                        android:maxLength="12"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
                         android:singleLine="true" />
@@ -111,8 +113,7 @@
                     android:overlapAnchor="false"
                     android:paddingStart="12dp"
                     android:paddingEnd="10dp"
-                    android:prompt="@string/term"
-                    android:saveEnabled="false" />
+                    android:prompt="@string/term" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -128,12 +129,15 @@
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
                         android:background="@drawable/rounded_edge_trans_bg_with_border"
+                        android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:focusableInTouchMode="true"
                         android:hint="@string/id_proof_number"
-                        android:maxLength="20"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="15"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textAllCaps="true" />
 
                     <TextView
                         android:id="@+id/txtUploadProof1"
@@ -157,14 +161,16 @@
                     android:overlapAnchor="false"
                     android:paddingStart="12dp"
                     android:paddingEnd="10dp"
-                    android:prompt="@string/term" />
+                    android:prompt="@string/term"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <EditText
                         android:id="@+id/edtProof2"
@@ -236,11 +242,14 @@
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
                         android:background="@drawable/rounded_edge_trans_bg_with_border"
+                        android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:hint="@string/org_rc_hint"
-                        android:maxLength="20"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="15"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textAllCaps="true" />
 
                     <TextView
                         android:id="@+id/txtUploadRC"
@@ -286,11 +295,14 @@
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
                         android:background="@drawable/rounded_edge_trans_bg_with_border"
+                        android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:hint="@string/org_gst_hint"
-                        android:maxLength="20"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="15"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textAllCaps="true" />
 
                     <TextView
                         android:id="@+id/txtUploadGST"
@@ -336,11 +348,14 @@
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
                         android:background="@drawable/rounded_edge_trans_bg_with_border"
+                        android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:hint="@string/org_pan_hint"
-                        android:maxLength="20"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="10"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textAllCaps="true" />
 
                     <TextView
                         android:id="@+id/txtUploadOrgPanCard"
@@ -427,10 +442,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
+                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
                     android:focusableInTouchMode="true"
                     android:hint="@string/bank_name"
-                    android:maxLength="50"
+                    android:maxLength="80"
                     android:paddingStart="12dp"
+                    android:inputType="textCapCharacters"
                     android:paddingEnd="1dp"
                     android:singleLine="true" />
 
@@ -457,12 +474,15 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
+                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:focusableInTouchMode="true"
                     android:hint="@string/bank_ifsc"
-                    android:maxLength="12"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="11"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textAllCaps="true" />
 
                 <EditText
                     android:id="@+id/edtBankBranch"
@@ -471,9 +491,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
+                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                     android:focusableInTouchMode="true"
                     android:hint="@string/bank_branch"
-                    android:maxLength="50"
+                    android:maxLength="80"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
                     android:singleLine="true" />
