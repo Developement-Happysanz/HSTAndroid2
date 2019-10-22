@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.activity.loginmodule.AboutUsActivity;
 import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
 import com.skilex.serviceprovider.activity.loginmodule.RegisterActivity;
 import com.skilex.serviceprovider.bean.support.StoreMasterId;
@@ -89,7 +90,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
     private int flag = 1;
     private String spinnerValue1 = "";
     private String spinnerValue2 = "";
-    private TextView txtAlsoServicePerson;
+    private TextView txtAlsoServicePerson, txtTerms;
     private RadioGroup rdgIndividualType, rdgAlsoServicePerson;
     private RadioButton rdbIndividual, rdbUnRegOrg, rdbYes, rdbNo;
     private String anyPoliceCaseRecord = "Y";
@@ -136,6 +137,9 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
         rdbYes = findViewById(R.id.rdbYes);
         rdbNo = findViewById(R.id.rdbNo);
         rdgAlsoServicePerson = findViewById(R.id.rdgYesNo);
+
+        txtTerms = findViewById(R.id.txt_terms);
+        txtTerms.setOnClickListener(this);
 
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
@@ -256,7 +260,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete PAN card upload", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Complete Aadhaar card upload", Toast.LENGTH_LONG).show();
                 }
             }
 //            else if (v == txtUploadProof2) {
@@ -285,29 +289,37 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete second proof upload", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Complete id proof upload", Toast.LENGTH_LONG).show();
                 }
             } else if (v == btnSubmit) {
-                if (flag == 4) {
-                    checkValue = "bank";
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
-                        jsonObject.put(SkilExConstants.KEY_BANK_NAME, edtBankName.getText().toString());
-                        jsonObject.put(SkilExConstants.KEY_BANK_ACC_NO, edtAccNo.getText().toString());
-                        jsonObject.put(SkilExConstants.KEY_BANK_BRANCH, edtBranchName.getText().toString());
-                        jsonObject.put(SkilExConstants.KEY_BANK_IFSC, edtIFSC.getText().toString());
-                        jsonObject.put(SkilExConstants.KEY_ANY_POLICE_RECORD, anyPoliceCaseRecord);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-                    String url = SkilExConstants.BUILD_URL + SkilExConstants.UPDATE_UN_ORG_PROVIDER_BANK_INFO;
-                    serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
+                String getAgreementStatus = PreferenceStorage.getTermOfAgreement(getApplicationContext());
 
+                if (flag == 4) {
+                    if (getAgreementStatus.equalsIgnoreCase("Agree")) {
+                        checkValue = "bank";
+                        JSONObject jsonObject = new JSONObject();
+                        try {
+                            jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
+                            jsonObject.put(SkilExConstants.KEY_BANK_NAME, edtBankName.getText().toString());
+                            jsonObject.put(SkilExConstants.KEY_BANK_ACC_NO, edtAccNo.getText().toString());
+                            jsonObject.put(SkilExConstants.KEY_BANK_BRANCH, edtBranchName.getText().toString());
+                            jsonObject.put(SkilExConstants.KEY_BANK_IFSC, edtIFSC.getText().toString());
+                            jsonObject.put(SkilExConstants.KEY_ANY_POLICE_RECORD, anyPoliceCaseRecord);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+                        String url = SkilExConstants.BUILD_URL + SkilExConstants.UPDATE_UN_ORG_PROVIDER_BANK_INFO;
+                        serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Agree the terms & conditions", Toast.LENGTH_LONG).show();
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(), "Complete bank pass book upload", Toast.LENGTH_LONG).show();
                 }
+            } else if (v == txtTerms) {
+                Intent homeIntent = new Intent(getApplicationContext(), TermOfAgreementActivity.class);
+                startActivity(homeIntent);
             }
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");

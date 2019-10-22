@@ -101,7 +101,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
     private String spinnerValue2 = "";
     private String spinnerValue3 = "";
 
-    private TextView txtAlsoServicePerson;
+    private TextView txtAlsoServicePerson, txtTerms;
     private RadioGroup rdgIndividualType, rdgAlsoServicePerson;
     private RadioButton rdbIndividual, rdbUnRegOrg, rdbYes, rdbNo;
     private String anyPoliceCaseRecord = "Y";
@@ -165,6 +165,9 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
         rdbYes = findViewById(R.id.rdbYes);
         rdbNo = findViewById(R.id.rdbNo);
         rdgAlsoServicePerson = findViewById(R.id.rdgYesNo);
+
+        txtTerms = findViewById(R.id.txt_terms);
+        txtTerms.setOnClickListener(this);
 
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
@@ -347,7 +350,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete second proof upload", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Complete id proof upload", Toast.LENGTH_LONG).show();
                 }
 
             } else if (v == txtUploadGST) {
@@ -394,26 +397,33 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     Toast.makeText(getApplicationContext(), "Complete organization address proof upload", Toast.LENGTH_LONG).show();
                 }
             } else if (v == btnSubmit) {
+                String getAgreementStatus = PreferenceStorage.getTermOfAgreement(getApplicationContext());
                 if (flag == 8) {
-                    checkValue = "bank";
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
-                        jsonObject.put(SkilExConstants.KEY_BANK_NAME, edtBankName.getText().toString());
-                        jsonObject.put(SkilExConstants.KEY_BANK_ACC_NO, edtAccNo.getText().toString());
-                        jsonObject.put(SkilExConstants.KEY_BANK_BRANCH, edtBranchName.getText().toString());
-                        jsonObject.put(SkilExConstants.KEY_BANK_IFSC, edtIFSC.getText().toString());
-                        jsonObject.put(SkilExConstants.KEY_ANY_POLICE_RECORD, anyPoliceCaseRecord);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if (getAgreementStatus.equalsIgnoreCase("Agree")) {
+                        checkValue = "bank";
+                        JSONObject jsonObject = new JSONObject();
+                        try {
+                            jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
+                            jsonObject.put(SkilExConstants.KEY_BANK_NAME, edtBankName.getText().toString());
+                            jsonObject.put(SkilExConstants.KEY_BANK_ACC_NO, edtAccNo.getText().toString());
+                            jsonObject.put(SkilExConstants.KEY_BANK_BRANCH, edtBranchName.getText().toString());
+                            jsonObject.put(SkilExConstants.KEY_BANK_IFSC, edtIFSC.getText().toString());
+                            jsonObject.put(SkilExConstants.KEY_ANY_POLICE_RECORD, anyPoliceCaseRecord);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+                        String url = SkilExConstants.BUILD_URL + SkilExConstants.UPDATE_UN_ORG_PROVIDER_BANK_INFO;
+                        serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Agree the terms &amp; conditions", Toast.LENGTH_LONG).show();
                     }
-                    progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-                    String url = SkilExConstants.BUILD_URL + SkilExConstants.UPDATE_UN_ORG_PROVIDER_BANK_INFO;
-                    serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
-
                 } else {
                     Toast.makeText(getApplicationContext(), "Complete bank pass book upload", Toast.LENGTH_LONG).show();
                 }
+            } else if (v == txtTerms) {
+                Intent homeIntent = new Intent(getApplicationContext(), TermOfAgreementActivity.class);
+                startActivity(homeIntent);
             }
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");

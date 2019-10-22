@@ -124,6 +124,20 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name=".activity.providerregistration.UploadProfilePicActivity"
+            android:label="@string/update_profile_pic"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.providerregistration.TermOfAgreementActivity"
+            android:label="@string/term_of_agreement"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name=".activity.providerregistration.DocumentVerificationStatusActivity"
             android:label="@string/initial_deposit_action_bar"
             android:screenOrientation="portrait"

@@ -37,6 +37,9 @@
     <string name="reg_action_bar">Registration</string>
     <string name="reg_name_error">Enter valid name</string>
     <string name="reg_phone_error">Enter valid phone number</string>
+    <string name="update_profile_pic">Update Profile Picture</string>
+    <string name="term_of_agreement">Term of Agreement</string>
+    <string name="agree">I agree the above Terms &amp; Conditions</string>
 
     <!--OTP Page-->
 
@@ -94,7 +97,7 @@
     <string name="check_also_expert">Will you be leading your team in the project you undertake?</string>
     <string name="expert_yes">Yes</string>
     <string name="expert_no">No</string>
-    <string name="check_any_case">Do you have any police case before?</string>
+    <string name="check_any_case">உங்களுக்கு குற்ற பின்னணி ஏதேனும் உண்டா?</string>
 
     <!--Un Reg Org Document Upload-->
     <string name="un_reg_doc_upload_action_bar">Documentation</string>

@@ -12,6 +12,7 @@ public class SkilExConstants {
 
     //BUILD URL
     public static final String BUILD_URL = BASE_URL + "development/apisprovider/";
+    public static final String PERSON_BUILD_URL = BASE_URL + "development/apisperson/";
 //    public static final String BUILD_URL = BASE_URL + "uat/apisprovider/";
 //    public static final String BUILD_URL = BASE_URL + "apisprovider/";
 
@@ -93,6 +94,7 @@ public class SkilExConstants {
     public static final String KEY_COMPANY_STATE = "company_state";
     public static final String KEY_COMPANY_ZIP = "company_zip";
     public static final String KEY_COMPANY_BUILDING_TYPE = "company_building_type";
+    public static final String KEY_AGREEMENT_STATUS = "agreement_status";
 
     // Upload unregistered organization document upload
     public static final String UPLOAD_DOCUMENT = "upload_doc/";

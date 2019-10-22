@@ -256,4 +256,22 @@ public class PreferenceStorage {
     }
     /*End*/
 
+    /*Gender*/
+    public static void saveTermOfAgreement(Context context, String gender) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SkilExConstants.KEY_AGREEMENT_STATUS, gender);
+        editor.apply();
+    }
+
+    public static String getTermOfAgreement(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String gender;
+        gender = sharedPreferences.getString(SkilExConstants.KEY_AGREEMENT_STATUS, "");
+        return gender;
+    }
+    /*End*/
+
 }

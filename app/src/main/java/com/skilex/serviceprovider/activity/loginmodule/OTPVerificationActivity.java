@@ -26,6 +26,7 @@ import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocumentUp
 import com.skilex.serviceprovider.activity.providerregistration.RegisteredOrganizationInfoActivity;
 import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocumentUploadActivity;
 import com.skilex.serviceprovider.activity.providerregistration.UnRegisteredOrganizationInfoActivity;
+import com.skilex.serviceprovider.activity.providerregistration.UploadProfilePicActivity;
 import com.skilex.serviceprovider.activity.providerregistration.WelcomeActivity;
 import com.skilex.serviceprovider.customview.CustomOtpEditText;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
@@ -218,10 +219,17 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                 String getServiceProviderBasicStatus = userData.getString("also_service_person");
                 String getBankStatus = userData.getString("bank_name");
                 String getPaymentStatus = userData.getString("deposit_status");
+                String getProfilePicStatus = userData.getString("profile_pic");
 
                 //If company
 
-                if (countCategory.equalsIgnoreCase("0")) {
+                if (getProfilePicStatus.isEmpty()) {
+                    Intent i = new Intent(OTPVerificationActivity.this, UploadProfilePicActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    i.putExtra("ProviderPersonCheck", "Provider");
+                    startActivity(i);
+                    finish();
+                } else if (countCategory.equalsIgnoreCase("0")) {
                     Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     i.putExtra("ProviderPersonCheck", "Provider");

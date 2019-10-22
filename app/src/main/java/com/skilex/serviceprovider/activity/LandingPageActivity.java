@@ -210,6 +210,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
         progressDialogHelper.hideProgressDialog();
 
         if (validateSignInResponse(response)) {
+
         }
 
     }

@@ -277,6 +277,7 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
                 PreferenceStorage.saveUserMasterId(this, saveUserMasterId);
                 PreferenceStorage.saveMobileNo(this, edtMobileNo.getText().toString());
                 PreferenceStorage.saveLoginType(getApplicationContext(), "Login");
+                PreferenceStorage.saveTermOfAgreement(getApplicationContext(), "Not Agree");
 
                 Intent i = new Intent(getApplicationContext(), OTPVerificationActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
+import com.skilex.serviceprovider.activity.providerregistration.UploadProfilePicActivity;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
@@ -162,7 +163,9 @@ public class ServicePersonCreationActivity extends BaseActivity implements Dialo
                 String servicePersonId = response.getString("serv_person_id");
                 PreferenceStorage.saveServicePersonId(getApplicationContext(), servicePersonId);
 
-                Intent i = new Intent(getApplicationContext(), ServicePersonDetailInfoActivity.class);
+                Intent i = new Intent(getApplicationContext(), UploadProfilePicActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.putExtra("ProviderPersonCheck", "Person");
                 startActivity(i);
                 finish();
 
