@@ -14,7 +14,10 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skilex.serviceprovider.R;
@@ -61,6 +64,11 @@ public class ServicePersonDetailInfoActivity extends BaseActivity implements Dat
     private DatePickerDialog mDatePicker;
     private SimpleDateFormat mDateFormatter;
 
+    private TextView txtAlsoServicePerson;
+    private RadioGroup rdgIndividualType, rdgAlsoServicePerson;
+    private RadioButton rdbIndividual, rdbUnRegOrg, rdbYes, rdbNo;
+    private String anyPoliceCaseRecord = "Y";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +92,11 @@ public class ServicePersonDetailInfoActivity extends BaseActivity implements Dat
         btnUpdate = findViewById(R.id.btnUpdate);
         btnUpdate.setOnClickListener(this);
 
+        txtAlsoServicePerson = findViewById(R.id.txtAlsoServicePerson);
+        rdbYes = findViewById(R.id.rdbYes);
+        rdbNo = findViewById(R.id.rdbNo);
+        rdgAlsoServicePerson = findViewById(R.id.rdgYesNo);
+
         spnGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -96,9 +109,21 @@ public class ServicePersonDetailInfoActivity extends BaseActivity implements Dat
             }
         });
 
-
         mDateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
+        rdgAlsoServicePerson.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rdbYes:
+                        anyPoliceCaseRecord = "Y";
+                        break;
+                    case R.id.rdbNo:
+                        anyPoliceCaseRecord = "N";
+                        break;
+                }
+            }
+        });
     }
 
     @Override
@@ -143,6 +168,7 @@ public class ServicePersonDetailInfoActivity extends BaseActivity implements Dat
                         jsonObject.put(SkilExConstants.KEY_STATE, spState);
                         jsonObject.put(SkilExConstants.KEY_LANGUAGE_KNOWN, spLang);
                         jsonObject.put(SkilExConstants.KEY_EDUCATION_QUALIFICATION, spEdu);
+                        jsonObject.put(SkilExConstants.KEY_ANY_POLICE_RECORD, anyPoliceCaseRecord);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

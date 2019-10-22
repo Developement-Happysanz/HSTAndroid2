@@ -103,6 +103,7 @@ public class SkilExConstants {
     public static final String KEY_BANK_ACC_NO = "acc_no";
     public static final String KEY_BANK_BRANCH = "branch_name";
     public static final String KEY_BANK_IFSC = "ifsc_code";
+    public static final String KEY_ANY_POLICE_RECORD = "any_police_case";
 
     //Document verify status
     public static final String API_PROVIDER_DOCUMENT_STATUS = "list_provider_doc/";

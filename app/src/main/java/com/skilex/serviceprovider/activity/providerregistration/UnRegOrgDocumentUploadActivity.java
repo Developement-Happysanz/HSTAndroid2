@@ -18,6 +18,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,6 +89,10 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
     private int flag = 1;
     private String spinnerValue1 = "";
     private String spinnerValue2 = "";
+    private TextView txtAlsoServicePerson;
+    private RadioGroup rdgIndividualType, rdgAlsoServicePerson;
+    private RadioButton rdbIndividual, rdbUnRegOrg, rdbYes, rdbNo;
+    private String anyPoliceCaseRecord = "Y";
 
     private static final int PICK_FILE_REQUEST = 1;
     private String selectedFilePath;
@@ -126,6 +132,11 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
         txtUploadPassBook = findViewById(R.id.txtUploadPassBook);
         txtUploadPassBook.setOnClickListener(this);
 
+        txtAlsoServicePerson = findViewById(R.id.txtAlsoServicePerson);
+        rdbYes = findViewById(R.id.rdbYes);
+        rdbNo = findViewById(R.id.rdbNo);
+        rdgAlsoServicePerson = findViewById(R.id.rdgYesNo);
+
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
 
@@ -156,6 +167,20 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        rdgAlsoServicePerson.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rdbYes:
+                        anyPoliceCaseRecord = "Y";
+                        break;
+                    case R.id.rdbNo:
+                        anyPoliceCaseRecord = "N";
+                        break;
+                }
             }
         });
 
@@ -272,6 +297,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                         jsonObject.put(SkilExConstants.KEY_BANK_ACC_NO, edtAccNo.getText().toString());
                         jsonObject.put(SkilExConstants.KEY_BANK_BRANCH, edtBranchName.getText().toString());
                         jsonObject.put(SkilExConstants.KEY_BANK_IFSC, edtIFSC.getText().toString());
+                        jsonObject.put(SkilExConstants.KEY_ANY_POLICE_RECORD, anyPoliceCaseRecord);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

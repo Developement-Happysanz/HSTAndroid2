@@ -94,6 +94,7 @@
     <string name="check_also_expert">Will you be leading your team in the project you undertake?</string>
     <string name="expert_yes">Yes</string>
     <string name="expert_no">No</string>
+    <string name="check_any_case">Do you have any police case before?</string>
 
     <!--Un Reg Org Document Upload-->
     <string name="un_reg_doc_upload_action_bar">Documentation</string>

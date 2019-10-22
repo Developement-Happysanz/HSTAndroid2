@@ -299,6 +299,42 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/txtAnyPoliceCase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="1dp"
+                    android:text="@string/check_any_case"
+                    android:textColor="@color/black" />
+
+                <RadioGroup
+                    android:id="@+id/rdgYesNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="1dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rdbYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/expert_yes"
+                        android:textColor="@color/black" />
+
+                    <RadioButton
+                        android:id="@+id/rdbNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/expert_no"
+                        android:checked="true"
+                        android:textColor="@color/black" />
+                </RadioGroup>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
