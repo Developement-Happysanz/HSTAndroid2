@@ -238,7 +238,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
 
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

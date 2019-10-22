@@ -155,7 +155,7 @@ public class UploadProfilePicActivity extends BaseActivity implements IServiceLi
                 finish();
             }
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

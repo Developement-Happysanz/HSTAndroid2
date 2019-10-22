@@ -256,7 +256,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 }
             }
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

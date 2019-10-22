@@ -37,7 +37,7 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
                 finish();
             }
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 }

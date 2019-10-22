@@ -65,7 +65,7 @@ public class OnGoingServicesActivity extends BaseActivity implements IServiceLis
             progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
             loadReqService();
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

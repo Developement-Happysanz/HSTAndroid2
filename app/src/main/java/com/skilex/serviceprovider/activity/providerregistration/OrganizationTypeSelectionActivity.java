@@ -85,7 +85,7 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
                 setOrganizationType();
             }
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

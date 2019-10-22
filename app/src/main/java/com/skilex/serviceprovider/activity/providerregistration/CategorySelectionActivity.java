@@ -214,7 +214,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
 
 
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 
@@ -242,7 +242,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
             serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
 
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 
@@ -343,9 +343,9 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
                 setPreferences();
             } else {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setTitle("Not enough categories selected");
-                alertDialogBuilder.setMessage("Please select at least one categories");
-                alertDialogBuilder.setPositiveButton("OK",
+                alertDialogBuilder.setTitle(R.string.select_enough_cat);
+                alertDialogBuilder.setMessage(R.string.select_atleaset);
+                alertDialogBuilder.setPositiveButton(R.string.alert_button_ok,
                         new DialogInterface.OnClickListener() {
 
                             @Override

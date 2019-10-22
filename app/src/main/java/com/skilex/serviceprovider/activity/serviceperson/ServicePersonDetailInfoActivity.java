@@ -180,7 +180,7 @@ public class ServicePersonDetailInfoActivity extends BaseActivity implements Dat
             }
 
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

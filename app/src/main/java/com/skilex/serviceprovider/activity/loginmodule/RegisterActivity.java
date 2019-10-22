@@ -95,7 +95,7 @@ public class RegisterActivity extends BaseActivity implements IServiceListener, 
                 }
             }
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

@@ -169,7 +169,7 @@ public class UnRegisteredOrganizationInfoActivity extends BaseActivity implement
                 }
             }
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

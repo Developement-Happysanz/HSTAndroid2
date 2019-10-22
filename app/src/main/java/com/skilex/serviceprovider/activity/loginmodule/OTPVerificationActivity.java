@@ -108,9 +108,9 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
         if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
             if (v == tvResendOTP) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setTitle("Do you want to resend OTP ?");
-                alertDialogBuilder.setMessage("Confirm your mobile number : " + PreferenceStorage.getMobileNo(getApplicationContext()));
-                alertDialogBuilder.setPositiveButton("Proceed",
+                alertDialogBuilder.setTitle(R.string.resend_otp);
+                alertDialogBuilder.setMessage(R.string.otp_confirm_no + PreferenceStorage.getMobileNo(getApplicationContext()));
+                alertDialogBuilder.setPositiveButton(R.string.otp_proceed,
                         new DialogInterface.OnClickListener() {
 
                             @Override
@@ -131,7 +131,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                             }
                         });
-                alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -159,11 +159,11 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                     String url = SkilExConstants.BUILD_URL + SkilExConstants.LOGIN;
                     serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
                 } else {
-                    AlertDialogHelper.showSimpleAlertDialog(this, "Invalid OTP");
+                    AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.otp_invalid));
                 }
             }
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

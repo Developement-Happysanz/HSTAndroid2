@@ -127,7 +127,7 @@ public class CancelRequestedServiceActivity extends BaseActivity implements ISer
 //        if (PreferenceStorage.getLang(this).equalsIgnoreCase("tamil")) {
 //            header.setText("காரணத்தைத் தேர்ந்தெடுக்கவும்");
 //        } else {
-        header.setText("Select Reason");
+        header.setText(R.string.reason);
 //        }
         builderSingle.setCustomTitle(view);
 

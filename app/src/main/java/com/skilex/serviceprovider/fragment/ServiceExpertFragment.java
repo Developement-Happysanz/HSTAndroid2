@@ -42,7 +42,7 @@ public class ServiceExpertFragment extends Fragment implements IServiceListener,
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_service_expert, container, false);
-        getActivity().setTitle("Service Experts");
+        getActivity().setTitle(R.string.service_expert);
         return rootView;
     }
 

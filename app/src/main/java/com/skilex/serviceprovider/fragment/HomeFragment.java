@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment implements IServiceListener, DialogCl
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        getActivity().setTitle("Dashboard");
+        getActivity().setTitle(R.string.dashboard);
         init();
         return rootView;
     }

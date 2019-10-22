@@ -171,7 +171,7 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
             serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
 
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 
@@ -204,7 +204,7 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
                 }
             }
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 

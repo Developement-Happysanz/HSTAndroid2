@@ -66,7 +66,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, I
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_user_profile, container, false);
-        getActivity().setTitle("Profile");
+        getActivity().setTitle(R.string.profile_title);
 
         serviceHelper = new ServiceHelper(rootView.getContext());
         serviceHelper.setServiceListener(this);

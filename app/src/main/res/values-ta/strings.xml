@@ -4,325 +4,330 @@
     <string name="app_name">ஸ்கில்எக்ஸ்</string>
 
     <string name="empty" />
-    <string name="error_occurred">Failed to connect to the server. Please try again.</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="error_occurred">இணைய சேவையக சிக்கல் ஏற்பட்டுள்ளது. சிறிது நேரம் கழித்து முயற்சி செய்யவும்.</string>
+    <string name="error_no_net">இணையத்தை அணுக இயலவில்லை. உங்கள் இணைப்பை சரிப்பார்க்கவும்.</string>
+    <string name="navigation_drawer_open">நாவிகேஷன் ட்ராயரை திறக்கவும்.</string>
+    <string name="navigation_drawer_close">நாவிகேஷன் ட்ராயரை மூடவும்.</string>
+    <string name="nav_header_title">ஆண்ட்ராய்டு ஸ்டூடியோ</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="nav_header_desc">நாவிகேஷன் ஹெடெர்</string>
+    <string name="action_settings">ஸ்கில்எக்ஸ் அமைப்புகள்</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
-
+    <string name="menu_home">முகப்பு பக்கம்</string>
+    <string name="menu_gallery">கேலரி</string>
+    <string name="menu_slideshow">ஸ்லைடு ஷோ</string>
+    <string name="menu_tools">டூல்ஸ்</string>
+    <string name="menu_share">பகிரவும்</string>
+    <string name="menu_send">அனுப்பவும்</string>
 
     <!--Login-->
-    <string name="welcome">Welcome!</string>
-    <string name="enter_text">Enter Mobile Number</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
+    <string name="welcome">நல்வரவு!</string>
+    <string name="enter_text">உங்கள் மொபைல் நம்பரை என்டர் செய்யவும்</string>
+    <string name="login">உள்நுழை</string>
+    <string name="register">ஸ்கில்எக்ஸில் பதிவு செய்ய </string>
 
     <!--Register-->
-    <string name="reg_name">Name *</string>
+    <string name="reg_name">பெயர்  *</string>
     <string name="reg_name_hint">John</string>
-    <string name="reg_mob_no">Phone Number *</string>
+    <string name="reg_mob_no">மொபைல் நம்பர் *</string>
     <string name="reg_mob_no_hint">0123456789</string>
-    <string name="reg_mail_id">Email ID (Optional)</string>
+    <string name="reg_mail_id">ஈமெயில் ஐ. டி. (கட்டாயமற்றது)</string>
     <string name="reg_mail_id_hint">info@demo.com</string>
-    <string name="reg_submit">Submit</string>
-    <string name="reg_action_bar">Registration</string>
-    <string name="reg_name_error">Enter valid name</string>
-    <string name="reg_phone_error">Enter valid phone number</string>
-    <string name="update_profile_pic">Update Profile Picture</string>
-    <string name="term_of_agreement">Term of Agreement</string>
-    <string name="agree">I agree the above Terms &amp; Conditions</string>
+    <string name="reg_submit">சமர்ப்பி</string>
+    <string name="reg_action_bar">ஸ்கில்எக்ஸ் பதிவு</string>
+    <string name="reg_name_error">அளித்த பெயர் தவறாக உள்ளது.</string>
+    <string name="reg_phone_error">சரியான தொலைபேசி எண்ணை என்டர் செய்யவும்.</string>
+    <string name="update_profile_pic">சுயவிவரப் படத்தைப் புதுப்பிக்கவும்</string>
+    <string name="term_of_agreement">ஒப்பந்த விதிமுறைகள்</string>
+    <string name="agree">மேலே உள்ள விதிமுறைகளையும் நிபந்தனைகளையும் நான் ஒப்புக்கொள்கிறேன்</string>
 
     <!--OTP Page-->
 
-    <string name="verificationcode">Verification Code</string>
-    <string name="didntrecievecode">Didn\'t receive the code?\t</string>
-    <string name="entercodetxt">We have sent you 4 digit verification code to\nyour mobile number</string>
-    <string name="resend">Resend now</string>
-    <string name="resend_otp">Resend OTP?</string>
-    <string name="changenumber">Change number</string>
+    <string name="verificationcode">சரிபார்ப்பு குறியீடு</string>
+    <string name="didntrecievecode">குறியீட்டை பெறவில்லையா?</string>
+    <string name="entercodetxt">உங்கள் மொபைல் எண் +91 ##### #####ற்கு அனுப்பப்பட்டுள்ள கடவுச்சொல்லை என்டர் செய்யவும்.</string>
+    <string name="resend">கடவுச்சொல்லை மீண்டும் அனுப்புக</string>
+    <string name="resend_otp">கடவுச்சொல்லை மீண்டும் அனுப்ப வேண்டுமா?</string>
+    <string name="changenumber">எண்ணை மாற்றவும்</string>
     <string name="otp_action_bar">OTP</string>
+    <string name="otp_confirm_no">உங்கள் மொபைல் எண்ணை உறுதிப்படுத்தவும்: </string>
+    <string name="otp_proceed">தொடர்க</string>
+    <string name="otp_invalid">தவறான OTP</string>
 
     <!--Category Selection-->
 
-    <string name="category_action_bar">Select Category</string>
-    <string name="go_next">Next</string>
+    <string name="category_action_bar">நிபுணத்துவ பிரிவுகள்</string>
+    <string name="go_next">அடுத்தது</string>
+    <string name="select_enough_cat">போதுமான பிரிவுகள் தேர்ந்தெடுக்கப்படவில்லை</string>
+    <string name="select_atleaset">குறைந்தது ஒரு வகைகளையாவது தேர்ந்தெடுக்கவும்</string>
 
     <!--Organization Selection-->
-    <string name="org_type_action_bar">Select Organization</string>
-    <string name="org_info">*How would you like to identify yourself?</string>
-    <string name="reg_org">A registered organization</string>
-    <string name="un_org">An individual / an unregistered organization</string>
+    <string name="org_type_action_bar">சேவை வழங்குநர் விவரங்கள் </string>
+    <string name="org_info">*உங்களை நீங்கள் எவ்வாறு அடையாளப்படுத்தி கொள்ள விரும்புகிறீர்கள்?</string>
+    <string name="reg_org">பதிவு செய்யப்பட்ட நிறுவனம்</string>
+    <string name="un_org">தனி நபர் / பதிவு செய்யப்படாத நிறுவனம்</string>
 
     <!--Registered Organization-->
-    <string name="reg_org_action_bar">Organization details</string>
-    <string name="reg_org_title">Tell us about your business</string>
-    <string name="reg_org_company_name">Enter your registered company name</string>
-    <string name="reg_org_no_of_people">How many people work for you?</string>
-    <string name="reg_org_address_1">Enter your business address (line 1)</string>
-    <string name="reg_org_address_2">Enter your business address (line 2)</string>
-    <string name="reg_org_city">Enter city</string>
-    <string name="reg_org_postal">Enter postal code</string>
-    <string name="reg_org_state">Enter state</string>
-    <string name="reg_org_building_own">Own</string>
-    <string name="reg_org_building_rental">Tenancy</string>
-    <string name="reg_org_building_title">Details of office premises</string>
+    <string name="reg_org_action_bar">நிறுவன விபரங்கள்</string>
+    <string name="reg_org_title">நிறுவன விபரங்களை பதிவு செய்க</string>
+    <string name="reg_org_company_name">பதிவு செய்யப்பட்ட நிறுவனத்தின் பெயர்</string>
+    <string name="reg_org_no_of_people">பணியாளர்களின் எண்ணிக்கை?</string>
+    <string name="reg_org_address_1">நிறுவனத்தின் முகவரி (வரி 1)</string>
+    <string name="reg_org_address_2">நிறுவனத்தின் முகவரி (வரி 2)</string>
+    <string name="reg_org_city">நகரம்</string>
+    <string name="reg_org_postal">அஞ்சல் குறியீடு</string>
+    <string name="reg_org_state">மாநிலம்</string>
+    <string name="reg_org_building_own">எங்களுடைய அலுவலக கட்டிடம் சொந்தமானது</string>
+    <string name="reg_org_building_rental">எங்கள் அலுவலக கட்டிடம் குத்தகைக்கு எடுக்கப்பட்டது.</string>
+    <string name="reg_org_building_title">அலுவலக கட்டிட விபரங்கள்</string>
 
     <!--Registered organization document upload-->
-    <string name="reg_doc_upload_action_bar">Documentation</string>
-    <string name="reg_doc_upload_title">Documentation of Service Organization</string>
-    <string name="org_rc">RC Certificate Number</string>
-    <string name="org_rc_hint">Enter RC Certificate Number</string>
-    <string name="org_gst">GST Certificate Number</string>
-    <string name="org_gst_hint">Enter GST Number</string>
-    <string name="org_pan">Organization PAN Number</string>
-    <string name="org_pan_hint">Enter PAN Number</string>
-    <string name="org_authority">Are you going to be a signing authority</string>
+    <string name="reg_doc_upload_action_bar">ஆவணங்கள்</string>
+    <string name="reg_doc_upload_title">சேவை நிறுவனத்தின் ஆவணங்கள்</string>
+    <string name="org_rc">ஆர். சி. சான்றிதழ் எண்</string>
+    <string name="org_rc_hint">ஆர். சி. சான்றிதழ் எண்ணை என்டர் செய்யவும்</string>
+    <string name="org_gst">ஜி. எஸ். டி. சான்றிதழ் எண்</string>
+    <string name="org_gst_hint">ஜி. எஸ். டி.  சான்றிதழ் எண்ணை என்டர் செய்யவும்</string>
+    <string name="org_pan">PAN கார்டு எண்</string>
+    <string name="org_pan_hint">10 இலக்க PAN கார்டு எண்</string>
+    <string name="org_authority">கையெழுத்திடும் அதிகாரம் உள்ளவரா?</string>
 
 
     <!--Un Registered Organization-->
-    <string name="un_reg_org_action_bar">Enter individual details</string>
-    <string name="individual_title">Individual details</string>
-    <string name="check_box_1">Are you an individual service expert?</string>
-    <string name="check_box_2">Someone who also coordinates other experts?</string>
-    <string name="un_reg_emp_count_box">What is the strength of your team?</string>
-    <string name="check_also_expert">Will you be leading your team in the project you undertake?</string>
-    <string name="expert_yes">Yes</string>
-    <string name="expert_no">No</string>
+    <string name="un_reg_org_action_bar">தனி நபர் / பதிவு செய்யப்படாத நிறுவனம்</string>
+    <string name="individual_title">உங்கள் விபரங்கள்</string>
+    <string name="check_box_1">நீங்கள் தனியாக செயல்படும் சேவை நிபுணரா?</string>
+    <string name="check_box_2">பிற சேவை நிபுணர்களை ஒருங்கிணைக்கவும் செய்வீர்களா?</string>
+    <string name="un_reg_emp_count_box">உங்களின் கீழ் உள்ள நிபுணர்களின் எண்ணிக்கை எவ்வளவு?</string>
+    <string name="check_also_expert">நீங்கள் ஒருங்கிணைக்கும் சேவைகளில் நீங்களும் பணியாற்றுவீர்களா?</string>
+    <string name="expert_yes">ஆம்</string>
+    <string name="expert_no">இல்லை</string>
     <string name="check_any_case">உங்களுக்கு குற்ற பின்னணி ஏதேனும் உண்டா?</string>
 
     <!--Un Reg Org Document Upload-->
-    <string name="un_reg_doc_upload_action_bar">Documentation</string>
-    <string name="un_reg_doc_upload">Documentation of Individual Service Expert</string>
-    <string name="pan_card_title">PAN Card Number</string>
-    <string name="aadhaar_card_title">Aadhaar Card Number</string>
-    <string name="upload">Upload</string>
-    <string name="id_selection_title">ID Proof and Address Proof</string>
-    <string name="id_address_title">Address proof of your office</string>
-    <string name="id_selection_type">Select the ID proof you want to submit</string>
-    <string name="id_proof_number">Enter your proof number</string>
-    <string name="bank_details_title">Bank Account Details</string>
-    <string name="bank_name">Enter the bank name</string>
-    <string name="bank_acc_no">Enter bank account number</string>
-    <string name="bank_ifsc">Enter bank IFSC number</string>
-    <string name="bank_branch">Enter bank branch name</string>
-    <string name="bank_pass_book">Kindly scan and upload your passbook\'s \nfront page</string>
-    <string name="term"><u>Term of Agreement</u></string>
+    <string name="un_reg_doc_upload_action_bar">ஆவணங்கள் </string>
+    <string name="un_reg_doc_upload">தனி நபர் சேவை நிபுணர் ஆவணங்கள்</string>
+    <string name="pan_card_title">PAN கார்டு எண்</string>
+    <string name="aadhaar_card_title">ஆதார் கார்டு எண்</string>
+    <string name="upload">பதிவேற்று</string>
+    <string name="id_selection_title">ஐ. டி. மற்றும் முகவரிக்கான ஆதாரம்</string>
+    <string name="id_address_title">அலுவலகத்தின் முகவரி சான்று</string>
+    <string name="id_selection_type">ஐ. டி. ஆதாரத்தை தேர்வு செய்யவும்</string>
+    <string name="id_proof_number">ஆதார எண்ணை என்டர் செய்யவும்</string>
+    <string name="bank_details_title">வங்கி கணக்கு விபரங்கள்</string>
+    <string name="bank_name">வங்கியை தேர்வு செய்யவும்</string>
+    <string name="bank_acc_no">வங்கி கணக்கு எண்ணை என்டர் செய்யவும்</string>
+    <string name="bank_ifsc">வங்கி IFSC எண்ணை என்டர் செய்யவும்</string>
+    <string name="bank_branch">வங்கி கிளையை என்டர் செய்யவும்</string>
+    <string name="bank_pass_book">வங்கி இருப்புக்கையேட்டை ஸ்கேன் செய்து பதிவேற்றம் செய்யவும்.</string>
+    <string name="term"><u>ஒப்பந்த விதிமுறைகள்</u></string>
 
     <!--Initial deposit-->
-    <string name="initial_deposit_action_bar">Deposit</string>
-    <string name="deposit_title">Refundable Deposit</string>
-    <string name="pay">Pay</string>
-    <string name="deposit_description">* The amount you deposit will be refunded when you end your agreement with SkilEx or when you manage to have a good service record via SkilEx.</string>
+    <string name="initial_deposit_action_bar">வைப்புத்தொகை</string>
+    <string name="deposit_title">திரும்பப்பெறக்கூடிய வைப்பு</string>
+    <string name="pay">செலுத்து</string>
+    <string name="deposit_description">* வைப்பாக பெறப்படும் தொகை நீங்கள் ஸ்கில் எக்ஸ் உடனான ஒப்பந்தத்தை முடித்துக்கொள்ளும் போது அல்லது நீங்கள் தரமான சேவையை வழங்கும் பட்சத்தில் திருப்பித்தரப்படும்.</string>
     <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advnace.php</string>
-<!--    <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advnace.php</string>-->
-<!--    <string name="advance_redirect_url">http://skilex.in/ccavenue_app/serv_provider_advnace.php</string>-->
+    <!--    <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advnace.php</string>-->
+    <!--    <string name="advance_redirect_url">http://skilex.in/ccavenue_app/serv_provider_advnace.php</string>-->
     <!--    <string name="advance_redirect_url">https://test.ccavenue.com/transaction/initTrans</string>-->
-    <string name="redirect_page">Please wait your are redirecting to \nthe payment page&#8230;</string>
+    <string name="redirect_page">தயவுசெய்து நீங்கள் கட்டண பக்கத்திற்கு திருப்பி விடும் வரை காத்திருங்கள்&#8230;</string>
 
     <!--Uploaded document verify status-->
-    <string name="upload_doc_verify_display_title">Document Verification</string>
-    <string name="success">Success</string>
-    <string name="success_desc">Your document is verified successfully.\nYou can now Proceed\n to get started.</string>
+    <string name="upload_doc_verify_display_title">ஆவண சரிபார்ப்பு</string>
+    <string name="success">வெற்றி</string>
+    <string name="success_desc">உங்கள் ஆவணங்கள் வெற்றிகரமாக சரிபார்க்கப்பட்டன. இப்பொழுது நீங்கள் ஸ்கில்எக்ஸுடன் சேவையை தொடங்கலாம்.</string>
     <string name="upload_doc_verify_pending_status">Pending</string>
     <string name="pending_desc">Your document is under verification process.\nKindly be patient\n to get start.</string>
     <string name="close">Close</string>
 
     <!--Document verify display-->
-    <string name="doc_verify_display_title">Document Verification</string>
-    <string name="welcome_desc">To the platform where expertise is served\nwith convenience</string>
-    <string name="get_start">Get Started</string>
+    <string name="doc_verify_display_title">ஸ்கில்எக்ஸ் உங்களை வரவேற்கிறது.</string>
+    <string name="welcome_desc">நிபுணத்துவம் வழங்கப்படும் தளத்திற்கு \ n வசதியுடன்</string>
+    <string name="get_start">தொடங்கவும்</string>
 
 
     <!--Daily transaction payment-->
     <string name="payment_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_payment.php</string>
 
     <!--Payment module-->
-    <string name="advance_amount">Advance Amount</string>
-    <string name="access_code">Access Code</string>
-    <string name="merchant_id">Merchant Id</string>
-    <string name="currency">Currency</string>
-    <string name="amount">Amount</string>
+    <string name="advance_amount">முன் பணம்</string>
+    <string name="access_code">அணுகல் குறியீடு</string>
+    <string name="merchant_id">வணிகர் அடையாள எண்</string>
+    <string name="currency">நாணயம்</string>
+    <string name="amount">தொகை</string>
     <string name="redirect_url">Redirect Url</string>
     <string name="cancel_url">Cancel Url</string>
     <string name="rsa_url">RSA Key Url</string>
-    <string name="payment_success">Awesome!</string>
-    <string name="payment_failed">Something\'s wrong!</string>
-    <string name="payment_success_comment">Your payment transaction \ncompleted successfully</string>
-    <string name="payment_failed_comment">Your payment transaction failed</string>
-    <string name="go_home">Back to Home </string>
-    <string name="try_again">Try Again</string>
+    <string name="payment_success">அற்புதம்!</string>
+    <string name="payment_failed">ஏதோ தவறு நடந்துள்ளது!</string>
+    <string name="payment_success_comment">உங்களுக்கான சேவை வெற்றிகரமாக நிறைவுற்றது.</string>
+    <string name="payment_failed_comment">உங்கள் சேவைக்கான ஆர்டர் தோல்வியுற்றது.</string>
+    <string name="go_home">முகப்பு பக்கத்திற்கு செல்க</string>
+    <string name="try_again">மீண்டும் முயற்சி செய்யவும்</string>
 
     <!--Service person document upload-->
-    <string name="service_person_doc_upload">Documentation of Service Expert</string>
-    <string name="back_home">Back to Home</string>
-    <string name="on_upload_success">Thank you! Your documents have been\nuploaded successfully</string>
+    <string name="service_person_doc_upload">சேவை நிபுணர் ஆவணங்கள்</string>
+    <string name="back_home">முகப்புப்பக்கத்திற்கு செல்க</string>
+    <string name="on_upload_success">நன்றி! உங்கள் ஆவணங்கள் வெற்றிகரமாக பதிவேற்றம் செய்யப்பட்டன.</string>
 
     <!--Requested service list-->
-    <string name="category">Category</string>
-    <string name="subcategory">Sub Category</string>
-    <string name="date">Select Date</string>
-    <string name="time">Select Time Slot</string>
+    <string name="category">பிரிவுகள்</string>
+    <string name="subcategory">துணைப்பிரிவுகள்</string>
+    <string name="date">தேதி</string>
+    <string name="time">நேரம்</string>
     <string name="location">Select Service Location</string>
-    <string name="cancel">Cancel Service</string>
-    <string name="accept">Accept Service</string>
-    <string name="assign">Assign</string>
+    <string name="cancel">ரத்து செய்</string>
+    <string name="accept">ஏற்றுக்கொள்</string>
+    <string name="assign">நியமி</string>
 
-    <string name="cancel_service_noadvance_alert1">Are you sure you want to cancel your service?</string>
+    <string name="cancel_service_noadvance_alert1">உங்கள் சேவையை ரத்து செய்ய விரும்புகிறீர்களா?</string>
 
-    <string name="alert_button_yes">Yes</string>
-    <string name="alert_button_no">No</string>
+    <string name="alert_button_yes">ஆம்</string>
+    <string name="alert_button_no">இல்லை</string>
 
 
-    <string name="comment">Comment</string>
+    <string name="comment">கருத்துக்கள்</string>
 
     <!--Cancel service-->
-    <string name="cancel_title">Cancel Service</string>
-    <string name="cancel_details">Cancellation Details</string>
-    <string name="reason">Reason</string>
+    <string name="cancel_title">ரத்து செய்</string>
+    <string name="cancel_details">ரத்து செய்யப்பட்ட சேவையின் விபரங்கள்</string>
+    <string name="reason">ரத்து செய்ததற்கான காரணம்</string>
     <string name="reason_hint">Due to non availability</string>
-    <string name="reason_comments">Comments(if any)</string>
+    <string name="reason_comments">கருத்துக்கள் (ஏதேனும் இருந்தால்)</string>
     <string name="reason_comments_hint">I will book the service once i am available</string>
-    <string name="service_number">Service Number</string>
+    <string name="service_number">சேவை எண் </string>
     <string name="service_number_hint">Service Number Hint</string>
     <string name="cancelled_by">Cancelled By</string>
     <string name="cancelled_by_hint">Cancelled By Hint</string>
 
     <!--Assigned service-->
-    <string name="customer_name">Customer Name</string>
+    <string name="customer_name">வாடிக்கையாளர் பெயர்</string>
     <string name="customer_name_text">Customer Name Text</string>
-    <string name="customer_number">Customer Number</string>
+    <string name="customer_number">வாடிக்கையாளர் தொலைபேசி எண்</string>
     <string name="customer_number_text">Customer Number Text</string>
-    <string name="service_time">Service Time</string>
+    <string name="service_time">சேவை நேரம்</string>
     <string name="service_time_text">Service Time Text</string>
-    <string name="service_cost">Estimated Cost</string>
+    <string name="service_cost">கணிக்கப்பட்ட தொகை</string>
     <string name="service_cost_text">Estimated Cost Text</string>
 
 
     <!--Rating Page-->
-    <string name="rating_title">Rate Service</string>
-    <string name="rating_text">Rate your service</string>
-    <string name="rate">Rate</string>
+    <string name="rating_title">சேவையை மதிப்பிடுங்கள்</string>
+    <string name="rating_text">உங்கள் சேவையை மதிப்பிடுங்கள்</string>
+    <string name="rate">மதிப்பீடு</string>
 
     <!--Landing page-->
-    <string name="home">Home</string>
-    <string name="service_expert">Service Expert</string>
-    <string name="profile_title">Profile</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="about_us">About Us</string>
-    <string name="track">Track</string>
+    <string name="home">முகப்பு பக்கம்</string>
+    <string name="service_expert">சேவை நிபுணர்</string>
+    <string name="profile_title">சுயவிவரம்</string>
+    <string name="dashboard">டாஷ்போர்டு</string>
+    <string name="about_us">விபரங்கள்</string>
+    <string name="track">ட்ராக்கிங்</string>
 
     <string name="sp_category">Electrical</string>
     <string name="sp_sub_category">Generator</string>
-    <string name="sp_customer_name">Customer Name</string>
+    <string name="sp_customer_name">வாடிக்கையாளர் பெயர்</string>
     <string name="sp_customer_name_hint">Customer Name</string>
-    <string name="sp_service_date">Service Date</string>
+    <string name="sp_service_date">தேதி</string>
     <string name="sp_service_date_hint">Service Date</string>
-    <string name="sp_service_time">Service Time</string>
+    <string name="sp_service_time">நேரம்</string>
     <string name="sp_service_time_hint">Service Time</string>
-    <string name="sp_service_provider">Service Provider</string>
+    <string name="sp_service_provider">சேவை வழங்குநர்</string>
     <string name="sp_service_provider_hint">Service Provider</string>
-    <string name="sp_enter_otp">Enter OTP to start the work</string>
-    <string name="sp_enter_otp_hint">Enter OTP</string>
-    <string name="request_otp">Request OTP</string>
-    <string name="start">Start</string>
-    <string name="start_date_time">Date and time at which the service started:</string>
-    <string name="additional_services">Additional Services</string>
-    <string name="submit">Submit</string>
-    <string name="material_used">Material used</string>
-    <string name="attach_bill">Attach bill</string>
+    <string name="sp_enter_otp">சேவையை துவங்க OTP எண்ணை என்டர் செய்க</string>
+    <string name="sp_enter_otp_hint">OTP உள்ளிடவும்</string>
+    <string name="request_otp">OTP எண்ணை கோறுக </string>
+    <string name="start">சேவையை ஆரம்பி</string>
+    <string name="start_date_time">சேவை தொடங்கப்பட்ட நாள் மற்றும் நேரம்:</string>
+    <string name="additional_services">கூடுதல் சேவைகள் </string>
+    <string name="submit">சமர்ப்பி</string>
+    <string name="material_used">உபயோகிக்கப்பட்ட பொருட்கள்</string>
+    <string name="attach_bill">ரசிதை இணைக்கவும்</string>
 
-    <string name="date_selected">Selected Date</string>
-    <string name="time_selected">Requested Time Slot</string>
-    <string name="service_provider">Service Associate</string>
-    <string name="sub_total">Sub Total</string>
-    <string name="coupon_applied">Coupon Applied</string>
-    <string name="coupon">Coupon</string>
-    <string name="select_coupon">Select Coupon</string>
-    <string name="apply_coupon">Apply</string>
-    <string name="grand_total_pay">Grand Total</string>
-    <string name="service_person">Service Expert</string>
-    <string name="share_invoice">Share Invoice</string>
-    <string name="view_bill">View Bill</string>
-    <string name="payment">Payment</string>
-    <string name="service_charge">Service charge</string>
-    <string name="additional_charge">Additional charge</string>
-    <string name="grand_total">Total Service Cost</string>
-    <string name="view_summary">View Summary</string>
-    <string name="service_summary">Service Summary</string>
-    <string name="clear">Clear All</string>
-    <string name="pay_button">Pay</string>
+    <string name="date_selected">தேர்வு செய்யப்பட்ட தேதி</string>
+    <string name="time_selected">கோரப்பட்ட சேவை நேரம்</string>
+    <string name="service_provider">சேவை வழங்குநர்</string>
+    <string name="sub_total">கூட்டுத்தொகை</string>
+    <string name="coupon_applied">கூப்பன் பயன்படுத்தப்பட்டது</string>
+    <string name="coupon">கூப்பன்</string>
+    <string name="select_coupon">கூப்பனை தேர்வு செய்யவும்</string>
+    <string name="apply_coupon">உபயோகி</string>
+    <string name="grand_total_pay">மொத்த தொகை</string>
+    <string name="service_person">சேவகர்</string>
+    <string name="share_invoice">விலைப்பட்டியலை பகிரவும்</string>
+    <string name="view_bill">ரசிதை பார்க்கவும்</string>
+    <string name="payment">கட்டணம்</string>
+    <string name="service_charge">சேவை கட்டணம்</string>
+    <string name="additional_charge">கூடுதல் தொகை</string>
+    <string name="grand_total">மொத்த சேவைக்கான கட்டணம்</string>
+    <string name="view_summary">நிறைவுச்சுருக்கம்</string>
+    <string name="service_summary">சேவை நிறைவுச்சுருக்கம்</string>
+    <string name="clear">அழி</string>
+    <string name="pay_button">செலுத்தவும்</string>
 
-    <string name="GPSAlertDialogTitle">Enable GPS</string>
-    <string name="GPSAlertDialogMessage">Enable GPS</string>
+    <string name="GPSAlertDialogTitle">ஜி.பி.எஸ்ஸை இயக்கு</string>
+    <string name="GPSAlertDialogMessage">ஜி.பி.எஸ்ஸை இயக்கு</string>
 
     <!--General-->
-    <string name="confirm">Confirm</string>
-    <string name="progress_loading">Loading&#8230;</string>
-    <string name="error_entry">Entry Invalid</string>
-    <string name="error_mail">Enter vaild mail ID</string>
-    <string name="error_number">Enter vaild phone number</string>
-    <string name="empty_entry">Field cannot be empty</string>
-    <string name="empty_spinner">Select some value </string>
+    <string name="confirm">உறுதி செய்க</string>
+    <string name="progress_loading">உருவாக்கப்படுகிறது&#8230;</string>
+    <string name="error_entry">அளித்த தகவல் தவறாக உள்ளது.</string>
+    <string name="error_mail">சரியான மின்னஞ்சல் முகவரியை என்டர் செய்யவும்.</string>
+    <string name="error_number">சரியான தொலைபேசி எண்ணை என்டர் செய்யவும்.</string>
+    <string name="empty_entry">கட்டாயமாக நிரப்பப்பட வேண்டிய இடம்.</string>
+    <string name="empty_spinner">Select some value</string>
 
     <!--Home fragment-->
-    <string name="requested_ser">Requested Services</string>
-    <string name="assigned">Assigned Services</string>
-    <string name="ongoing">On going Services</string>
-    <string name="completed">Completed Services</string>
-    <string name="cancelled">Cancelled Services</string>
-    <string name="transaction">Transaction Details</string>
+    <string name="requested_ser">கோரிய சேவைகள்</string>
+    <string name="assigned">நியமிக்கப்பட்ட சேவைகள்</string>
+    <string name="ongoing">நடப்பு சேவைகள்</string>
+    <string name="completed">நிறைவுற்ற சேவைகள்</string>
+    <string name="cancelled">ரத்து செய்யப்பட்ட சேவைகள்</string>
+    <string name="transaction">பரிவர்த்தனை விபரங்கள்</string>
 
     <!--Service person fragment-->
-    <string name="application_status">Service Expert Application Status</string>
+    <string name="application_status">சேவை நிபுணர் விண்ணப்பத்தின் நிலைப்பாடு</string>
 
     <!--Service person creation-->
-    <string name="service_person_title">Service Person Creation</string>
-    <string name="service_person_detail_info_title">Service Expert Details</string>
-    <string name="service_person_document_title">Service Expert Documentation</string>
+    <string name="service_person_title">சேவை நிபுணர் சுயவிவரங்கள்</string>
+    <string name="service_person_detail_info_title">சேவை நிபுணர் விபரங்கள்</string>
+    <string name="service_person_document_title">சேவை நிபுணர் ஆவணங்கள்</string>
     <string name="update">Update</string>
-    <string name="serv_pers_full_name">Full name</string>
-    <string name="gender">Gender</string>
-    <string name="dob">DOB</string>
-    <string name="address">Address</string>
-    <string name="city">City</string>
-    <string name="pincode">PIN</string>
-    <string name="state">State</string>
-    <string name="language_known">Language known</string>
-    <string name="edu_qulifiy">Education qualification</string>
+    <string name="serv_pers_full_name">முழுப்பெயர்</string>
+    <string name="gender">பாலினம்</string>
+    <string name="dob">பிறந்த தேதி</string>
+    <string name="address">முகவரி</string>
+    <string name="city">நகரம்</string>
+    <string name="pincode">அஞ்சல் குறியீடு</string>
+    <string name="state">மாநிலம்</string>
+    <string name="language_known">தெரிந்த மொழிகள்</string>
+    <string name="edu_qulifiy">கல்வித்தகுதி</string>
 
     <string-array name="gender_array">
-        <item>Select gender</item>
-        <item>Male</item>
-        <item>Female</item>
-        <item>Others</item>
+        <item>தேர்ந்தெடுக்கவும்</item>
+        <item>ஆண்</item>
+        <item>பெண்</item>
+        <item>மற்றவைகள்</item>
     </string-array>
 
     <!--Requested Services-->
-    <string name="requested_title">Requested Services</string>
+    <string name="requested_title">கோரிய சேவைகள்</string>
 
     <!--Assigned Services-->
-    <string name="assigned_title">Assigned Services</string>
+    <string name="assigned_title">நியமிக்கப்பட்ட சேவைகள்</string>
 
     <!--OnGoing Services-->
-    <string name="ongoing_title">Ongoing Services</string>
+    <string name="ongoing_title">நடப்பு சேவைகள்</string>
 
     <!--Completed Services-->
-    <string name="completed_title">Completed Services</string>
+    <string name="completed_title">நிறைவுற்ற சேவைகள்</string>
 
     <!--Cancelled Services-->
-    <string name="cancelled_title">Cancelled Services</string>
+    <string name="cancelled_title">ரத்து செய்யப்பட்ட சேவைகள்</string>
 
     <!--Transaction Details-->
-    <string name="transaction_details_title">Transaction Details</string>
+    <string name="transaction_details_title">பரிவர்த்தனை விபரங்கள்</string>
 
 
     <!--Side menu-->
@@ -330,38 +335,37 @@
     <string name="text_english" translatable="false">English</string>
 
     <string-array name="language_selection">
-        <item>Select</item>
+        <item>தேர்வு</item>
         <item>தமிழ்</item>
         <item>English</item>
     </string-array>
 
     <!--Dialog Fragment-->
-    <string name="alert_button_ok">OK</string>
-    <string name="alert_button_cancel">Cancel</string>
+    <string name="alert_button_ok">சரி</string>
+    <string name="alert_button_cancel">ரத்து செய்</string>
 
     <!--Profile Settings Page-->
 
-    <string name="about">About</string>
-    <string name="share">Share app</string>
-    <string name="logout">Logout</string>
-    <string name="update_service">Update Services</string>
-    <string name="bank_details">Edit Bank Details</string>
-    <string name="company_details">Company Details</string>
+    <string name="about">ஸ்கில்எக்ஸ் பற்றி அறிய</string>
+    <string name="share">ஸ்கில்எக்ஸை பகிர </string>
+    <string name="logout">வெளியேறு</string>
+    <string name="update_service">புதிய சேவைகளை இணைக்க </string>
+    <string name="bank_details">வங்கி விபரங்களை மாற்ற</string>
+    <string name="company_details">நிறுவன விபரங்கள்</string>
 
-    <string name="user_name">Name</string>
-    <string name="user_address">Address</string>
-    <string name="user_mail">E-Mail</string>
-    <string name="user_gender">Gender</string>
-    <string name="select_user_gender">Select Gender</string>
+    <string name="user_name">முழுப்பெயர்</string>
+    <string name="user_address">முகவரி</string>
+    <string name="user_mail">ஈமெயில் ஐ. டி. (கட்டாயமற்றது)</string>
+    <string name="user_gender">பாலினம்</string>
+    <string name="select_user_gender">தேர்ந்தெடுக்கவும்</string>
 
 
-    <string name="mobile_number">Mobile Number</string>
+    <string name="mobile_number">மொபைல் நம்பர்</string>
 
     <string name="google_android_map_api_key">AIzaSyD428E0W4-pf4kJuJ3rsqG5vCELRgmR2ok</string>
 
     <!--About Us Page-->
-    <string name="about_content">SkilEx is an emerging Indian start up that aims to build a scalable business model which serves as a platform connecting people, who are in need of local and personal services, with service associates. When there is need of service there is always a void in reaching to service experts at any given time. SkilEx comes into this scene of desperation to help consumers get the required service done at the right time. One can access a range of local services like refurbishment, renovation, restoration etc.; and personal services like fitness training, massages, physiotherapy, counselling, etc., via SkilEx and get things done in a convenient and affordable way.
-\n\nInitially aimed at launching in major cities of South India, SkilEx’s vision is to expand its base across the country including all the cities, building a bond between the service associates and their customers.
-</string>
+    <string name="about_content">ஸ்கில்எக்ஸ், வீட்டு சேவைகள் (பிளம்பிங், மின்னியல் சேவை, வீட்டு சாதன பராமரிப்பு முதலியன) மற்றும் தனிப்பயனாக்கப்பட்ட சேவைகள் (ஒப்பனை, அழகு பராமரிப்பு மற்றும் உடற்பயிற்சி சேவை முதலியன) ஆகியவற்றை தேவைப்படுவோர் அச்சேவை வழங்குநரை தொடர்பு கொண்டு பயன்பெற இந்தியாவில் உருவாக்கப்பட்ட ஆன்லைன் வாடிக்கையாளர் சேவை தளம் ஆகும். வாடிக்கையாளர்களுக்கு தேவைப்படும் சேவைகளை தரமாகவும், மலிவாகவும், தேவைப்படும் நேரத்திற்கு வழங்கவும் ஸ்கில்எக்ஸ் வழிவகை செய்கிறது.
+\n\nஆரம்ப நிலையில் ஸ்கில்எக்ஸ் தென்னிந்தியாவின் முக்கிய நகரங்களில் துவங்கினாலும் மக்களின் தேவையை கணக்கில் கொண்டு, பின் வரும் நாட்களில் நாடு முழுவதும் தன் சேவையை வழங்க திட்டமிட்டுள்ளது.</string>
 
 </resources>

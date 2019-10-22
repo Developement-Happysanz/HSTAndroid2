@@ -64,7 +64,7 @@ public class InitialDepositActivity extends BaseActivity implements IServiceList
             }
 
         } else {
-            AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
 
     }
