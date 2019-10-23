@@ -198,7 +198,7 @@
     <string name="reason_comments_hint">I will book the service once i am available</string>
     <string name="service_number">சேவை எண் </string>
     <string name="service_number_hint">Service Number Hint</string>
-    <string name="cancelled_by">Cancelled By</string>
+    <string name="cancelled_by">ரத்து செய்தது</string>
     <string name="cancelled_by_hint">Cancelled By Hint</string>
 
     <!--Assigned service-->
@@ -293,7 +293,7 @@
     <string name="service_person_title">சேவை நிபுணர் சுயவிவரங்கள்</string>
     <string name="service_person_detail_info_title">சேவை நிபுணர் விபரங்கள்</string>
     <string name="service_person_document_title">சேவை நிபுணர் ஆவணங்கள்</string>
-    <string name="update">Update</string>
+    <string name="update">புதுப்பிக்க</string>
     <string name="serv_pers_full_name">முழுப்பெயர்</string>
     <string name="gender">பாலினம்</string>
     <string name="dob">பிறந்த தேதி</string>

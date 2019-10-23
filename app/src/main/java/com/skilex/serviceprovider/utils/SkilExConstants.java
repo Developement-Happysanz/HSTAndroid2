@@ -10,11 +10,24 @@ public class SkilExConstants {
     //    BASE URL
     private static final String BASE_URL = "https://skilex.in/";
 
+    //Development Mode
+    //delopment
+    public static final String JOINT_URL = "development/";
+    //uat
+//    public static final String JOINT_URL = "uat/";
+    //live
+//    public static final String JOINT_URL = "";
+
     //BUILD URL
-    public static final String BUILD_URL = BASE_URL + "development/apisprovider/";
-    public static final String PERSON_BUILD_URL = BASE_URL + "development/apisperson/";
+    public static final String BUILD_URL = BASE_URL + JOINT_URL + "apisprovider/";
+    public static final String PERSON_BUILD_URL = BASE_URL + JOINT_URL + "apisperson/";
 //    public static final String BUILD_URL = BASE_URL + "uat/apisprovider/";
 //    public static final String BUILD_URL = BASE_URL + "apisprovider/";
+
+
+    //Payment Gateway
+    public static final String API_ADVANCE_PAYMENT_URL = BASE_URL + JOINT_URL + "ccavenue_app/serv_provider_advance.php";
+    public static final String API_RSA_URL = BASE_URL + JOINT_URL + "ccavenue_app/GetRSA.php";
 
     //NUMBER VERIFICATION URL FOR LOGIN
     public static final String MOBILE_VERIFICATION = "mobile_check/";

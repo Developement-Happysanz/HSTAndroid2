@@ -20,6 +20,9 @@ import com.skilex.serviceprovider.ccavenue.utility.AvenuesParams;
 import com.skilex.serviceprovider.ccavenue.utility.ServiceUtility;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 
+import static com.skilex.serviceprovider.utils.SkilExConstants.API_ADVANCE_PAYMENT_URL;
+import static com.skilex.serviceprovider.utils.SkilExConstants.API_RSA_URL;
+
 
 public class InitialScreenActivity extends AppCompatActivity {
 
@@ -50,11 +53,13 @@ public class InitialScreenActivity extends AppCompatActivity {
         orderId.setText(orderID);
         amount.setText(value);
         if (redirectURL.equalsIgnoreCase("advance")) {
-            redirectUrl.setText(R.string.advance_redirect_url);
-            cancelUrl.setText(R.string.advance_redirect_url);
+            redirectUrl.setText(API_ADVANCE_PAYMENT_URL);
+            cancelUrl.setText(API_ADVANCE_PAYMENT_URL);
+            rsaKeyUrl.setText(API_RSA_URL);
         } else {
-            redirectUrl.setText(R.string.advance_redirect_url);
-            cancelUrl.setText(R.string.advance_redirect_url);
+            redirectUrl.setText(API_ADVANCE_PAYMENT_URL);
+            cancelUrl.setText(API_ADVANCE_PAYMENT_URL);
+            rsaKeyUrl.setText((API_RSA_URL));
         }
 
         new Handler().postDelayed(new Runnable() {
