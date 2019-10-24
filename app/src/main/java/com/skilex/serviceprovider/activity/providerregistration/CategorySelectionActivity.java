@@ -338,7 +338,16 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         if (v == txtGoNext) {
-            if (selectedList.size() >= 1) {
+
+            int totalAmount = 0;
+            for (int i = 0; i < selectedList.size(); i++) {
+                String totalprice = selectedList.get(i).getCategoryPreference();
+                if (totalprice.equalsIgnoreCase("Y")) {
+                    totalAmount = +1;
+                }
+            }
+
+            if (selectedList.size() >= 2) {
 
                 setPreferences();
             } else {

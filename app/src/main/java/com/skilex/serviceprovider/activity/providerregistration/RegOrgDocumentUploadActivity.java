@@ -104,7 +104,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
     private TextView txtAlsoServicePerson, txtTerms;
     private RadioGroup rdgIndividualType, rdgAlsoServicePerson;
     private RadioButton rdbIndividual, rdbUnRegOrg, rdbYes, rdbNo;
-    private String anyPoliceCaseRecord = "Y";
+    private String anyPoliceCaseRecord = "N";
 
 
     private static final int PICK_FILE_REQUEST = 1;
@@ -321,7 +321,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete Aadhaar card upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
             }
 //            else if (v == txtUploadProof2) {
@@ -350,7 +350,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete id proof upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
 
             } else if (v == txtUploadGST) {
@@ -361,7 +361,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete RC certificate upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
 
             } else if (v == txtUploadOrgPan) {
@@ -372,7 +372,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete GST certificate upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
 
             } else if (v == txtUploadAddressProof) {
@@ -383,7 +383,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete organization PAN card upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
 
             } else if (v == txtUploadPassBook) {
@@ -394,7 +394,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete organization address proof upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
             } else if (v == btnSubmit) {
                 String getAgreementStatus = PreferenceStorage.getTermOfAgreement(getApplicationContext());
@@ -416,10 +416,10 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                         String url = SkilExConstants.BUILD_URL + SkilExConstants.UPDATE_UN_ORG_PROVIDER_BANK_INFO;
                         serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Agree the terms &amp; conditions", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Agree the terms & conditions", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete bank pass book upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
             } else if (v == txtTerms) {
                 Intent homeIntent = new Intent(getApplicationContext(), TermOfAgreementActivity.class);
@@ -427,6 +427,34 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             }
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
+        }
+    }
+
+    private void checkFlag() {
+        switch (flag) {
+            case 1:
+                Toast.makeText(getApplicationContext(), "Complete Aadhaar card upload", Toast.LENGTH_LONG).show();
+                break;
+            case 2:
+                Toast.makeText(getApplicationContext(), "Complete id proof upload", Toast.LENGTH_LONG).show();
+                break;
+            case 3:
+                Toast.makeText(getApplicationContext(), "Complete RC certificate upload", Toast.LENGTH_LONG).show();
+                break;
+            case 4:
+                Toast.makeText(getApplicationContext(), "Complete GST certificate upload", Toast.LENGTH_LONG).show();
+                break;
+            case 5:
+                Toast.makeText(getApplicationContext(), "Complete organization PAN card upload", Toast.LENGTH_LONG).show();
+                break;
+            case 6:
+                Toast.makeText(getApplicationContext(), "Complete organization address proof upload", Toast.LENGTH_LONG).show();
+                break;
+            case 7:
+                Toast.makeText(getApplicationContext(), "Complete bank pass book upload", Toast.LENGTH_LONG).show();
+                break;
+            default:
+                break;
         }
     }
 

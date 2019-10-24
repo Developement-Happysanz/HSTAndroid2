@@ -84,6 +84,7 @@ public class InitialScreenActivity extends AppCompatActivity {
                     intent.putExtra(AvenuesParams.RSA_KEY_URL, ServiceUtility.chkNull(rsaKeyUrl.getText()).toString().trim());
 
                     startActivity(intent);
+                    finish();
 //            finish();
                 } else {
                     showToast("All parameters are mandatory.");

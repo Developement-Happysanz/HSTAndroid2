@@ -93,7 +93,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
     private TextView txtAlsoServicePerson, txtTerms;
     private RadioGroup rdgIndividualType, rdgAlsoServicePerson;
     private RadioButton rdbIndividual, rdbUnRegOrg, rdbYes, rdbNo;
-    private String anyPoliceCaseRecord = "Y";
+    private String anyPoliceCaseRecord = "N";
 
     private static final int PICK_FILE_REQUEST = 1;
     private String selectedFilePath;
@@ -260,7 +260,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete Aadhaar card upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
             }
 //            else if (v == txtUploadProof2) {
@@ -289,7 +289,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                         showFileChooser();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete id proof upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
             } else if (v == btnSubmit) {
                 String getAgreementStatus = PreferenceStorage.getTermOfAgreement(getApplicationContext());
@@ -315,7 +315,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                         Toast.makeText(getApplicationContext(), "Agree the terms & conditions", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Complete bank pass book upload", Toast.LENGTH_LONG).show();
+                    checkFlag();
                 }
             } else if (v == txtTerms) {
                 Intent homeIntent = new Intent(getApplicationContext(), TermOfAgreementActivity.class);
@@ -323,6 +323,22 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
             }
         } else {
             AlertDialogHelper.showSimpleAlertDialog(this, "No Network connection available");
+        }
+    }
+
+    private void checkFlag(){
+        switch (flag) {
+            case 1:
+                Toast.makeText(getApplicationContext(), "Complete Aadhaar card upload", Toast.LENGTH_LONG).show();
+                break;
+            case 2:
+                Toast.makeText(getApplicationContext(), "Complete id proof upload", Toast.LENGTH_LONG).show();
+                break;
+            case 3:
+                Toast.makeText(getApplicationContext(), "Complete bank pass book upload", Toast.LENGTH_LONG).show();
+                break;
+            default:
+                break;
         }
     }
 

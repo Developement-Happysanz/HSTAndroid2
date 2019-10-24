@@ -215,6 +215,13 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name=".activity.fragmentactivity.completed.CompletedServiceDetailActivity"
+            android:label="@string/completed_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name=".activity.fragmentactivity.cancelled.CancelledServicesActivity"
             android:label="@string/cancelled_title"
             android:screenOrientation="portrait"
@@ -283,7 +290,7 @@
 
         <activity
             android:name=".activity.ProfileActivity"
-            android:label="@string/completed_title"
+            android:label="@string/profile_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
