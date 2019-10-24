@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +64,9 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
     private EditText edtMaterialUsed;
     private Button btnUpdate, btnSubmit;
 
+    private LinearLayout layoutResumeSection;
+    private TextView txtResumeDateTime;
+
     String res = "";
     String expertId = "";
 
@@ -101,6 +105,9 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
         btnUpdate.setOnClickListener(this);
         btnSubmit = findViewById(R.id.btn_submit);
         btnSubmit.setOnClickListener(this);
+
+        layoutResumeSection = findViewById(R.id.ll_resume_section);
+        txtResumeDateTime = findViewById(R.id.txt_resume_date_time);
     }
 
     private void loadServiceDetail() {
@@ -444,15 +451,20 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
                     JSONArray getData = response.getJSONArray("detail_services_order");
                     Gson gson = new Gson();
                     JSONObject getServiceData = getData.getJSONObject(0);
+                    String getStatus = getServiceData.getString("status");
 
                     txtServiceCategory.setText(getServiceData.getString("main_cat_name"));
                     txtSubCategory.setText(getServiceData.getString("sub_cat_name"));
                     txtCustomerName.setText(getServiceData.getString("contact_person_name"));
                     txtServiceDate.setText(getServiceData.getString("order_date"));
                     txtServiceTime.setText(getServiceData.getString("from_time"));
-                    txtServiceProvider.setText(getServiceData.getString("service_provider"));
+                    txtServiceProvider.setText(getServiceData.getString("service_person"));
                     txtStartDateTime.setText(getServiceData.getString("start_datetime"));
                     edtMaterialUsed.setText(getServiceData.getString("material_notes"));
+                    if (getStatus.equalsIgnoreCase("Hold")) {
+                        layoutResumeSection.setVisibility(View.VISIBLE);
+                        txtResumeDateTime.setText(getServiceData.getString("resume_date") + " - " + getServiceData.getString("r_fr_time") + " - " + getServiceData.getString("r_to_time"));
+                    }
                 } else if (res.equalsIgnoreCase("update")) {
 
                     Toast.makeText(getApplicationContext(), "Service order updated!", Toast.LENGTH_LONG).show();

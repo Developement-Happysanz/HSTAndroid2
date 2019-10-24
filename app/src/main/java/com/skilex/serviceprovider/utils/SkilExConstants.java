@@ -29,6 +29,10 @@ public class SkilExConstants {
     public static final String API_ADVANCE_PAYMENT_URL = BASE_URL + JOINT_URL + "ccavenue_app/serv_provider_advance.php";
     public static final String API_RSA_URL = BASE_URL + JOINT_URL + "ccavenue_app/GetRSA.php";
 
+//    Deposit amount
+    public static final String API_DEPOSIT_AMOUNT = "get_deposit_amt/";
+
+
     //NUMBER VERIFICATION URL FOR LOGIN
     public static final String MOBILE_VERIFICATION = "mobile_check/";
 

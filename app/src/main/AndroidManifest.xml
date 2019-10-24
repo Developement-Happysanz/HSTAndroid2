@@ -201,6 +201,13 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name=".activity.fragmentactivity.ongoing.OngoingServiceDetailActivity"
+            android:label="@string/ongoing_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name=".activity.fragmentactivity.completed.CompletedServicesActivity"
             android:label="@string/completed_title"
             android:screenOrientation="portrait"

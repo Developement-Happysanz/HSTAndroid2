@@ -20,10 +20,11 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/txt_deposit_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="₹ 100"
+        android:text=""
         android:textColor="@color/blue"
         android:textSize="18sp"
         android:textStyle="bold" />

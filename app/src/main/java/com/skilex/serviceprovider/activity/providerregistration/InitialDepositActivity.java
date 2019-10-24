@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
@@ -21,7 +22,13 @@ import com.skilex.serviceprovider.utils.CommonUtils;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 import com.skilex.serviceprovider.utils.SkilExConstants;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.DecimalFormat;
+
+import static android.util.Log.d;
+import static android.util.Log.println;
 
 public class InitialDepositActivity extends BaseActivity implements IServiceListener, DialogClickListener, View.OnClickListener {
 
@@ -29,6 +36,7 @@ public class InitialDepositActivity extends BaseActivity implements IServiceList
 
     private Button btnPay;
     private String payment = "100.00", orderId;
+    private TextView txtDeposit;
 
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
@@ -44,9 +52,27 @@ public class InitialDepositActivity extends BaseActivity implements IServiceList
 
         btnPay = findViewById(R.id.btnPay);
         btnPay.setOnClickListener(this);
+        txtDeposit = findViewById(R.id.txt_deposit_amount);
 
         Integer randomNum = ServiceUtility.randInt(0, 9999999);
         orderId = randomNum.toString() + "-" + PreferenceStorage.getUserMasterId(getApplicationContext());
+
+        getPayableAmount();
+
+    }
+
+    private void getPayableAmount() {
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+        String url = SkilExConstants.BUILD_URL + SkilExConstants.API_DEPOSIT_AMOUNT;
+        serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
 
     }
 
@@ -79,8 +105,53 @@ public class InitialDepositActivity extends BaseActivity implements IServiceList
 
     }
 
+    private boolean validateSignInResponse(JSONObject response) {
+        boolean signInSuccess = false;
+        if ((response != null)) {
+            try {
+                String status = response.getString("status");
+                String msg = response.getString(SkilExConstants.PARAM_MESSAGE);
+                d(TAG, "status val" + status + "msg" + msg);
+
+                if ((status != null)) {
+                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
+                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
+                        signInSuccess = false;
+                        d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+
+                    } else {
+                        signInSuccess = true;
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return signInSuccess;
+    }
+
     @Override
     public void onResponse(JSONObject response) {
+
+        progressDialogHelper.hideProgressDialog();
+
+        if (validateSignInResponse(response)) {
+
+            try {
+
+//                JSONObject depositAmount = response.getJSONObject("deposit_data");
+                String getDepositAmount = response.getString("deposit_data");
+                double f = Double.parseDouble(getDepositAmount);
+                payment = Double.toString(f);
+                System.out.println(payment);
+                txtDeposit.setText("₹ " + payment);
+
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
 
     }
 
