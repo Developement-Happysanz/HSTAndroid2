@@ -109,7 +109,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
             if (v == tvResendOTP) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle(R.string.resend_otp);
-                alertDialogBuilder.setMessage(R.string.otp_confirm_no + PreferenceStorage.getMobileNo(getApplicationContext()));
+                alertDialogBuilder.setMessage(getString(R.string.otp_confirm_no) + " " + PreferenceStorage.getMobileNo(getApplicationContext()));
                 alertDialogBuilder.setPositiveButton(R.string.otp_proceed,
                         new DialogInterface.OnClickListener() {
 
@@ -131,7 +131,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                             }
                         });
-                alertDialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton(R.string.alert_button_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
