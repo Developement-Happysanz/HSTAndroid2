@@ -20,11 +20,15 @@ import com.skilex.serviceprovider.utils.SkilExValidator;
 public class SplashScreenActivity extends Activity {
 
     private static int SPLASH_TIME_OUT = 2000;
+    //    AppSignatureHelper appSignatureHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_display);
+
+        //        appSignatureHelper = new AppSignatureHelper(this);
+//        appSignatureHelper.getAppSignatures();
 
         String GCMKey = PreferenceStorage.getGCM(getApplicationContext());
         if (GCMKey.equalsIgnoreCase("")) {
