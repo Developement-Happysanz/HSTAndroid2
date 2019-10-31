@@ -1,7 +1,7 @@
 package com.skilex.serviceprovider.activity.fragmentactivity.cancelled;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.languagesupport.BaseActivity;

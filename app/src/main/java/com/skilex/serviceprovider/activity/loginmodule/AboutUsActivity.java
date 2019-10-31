@@ -1,7 +1,7 @@
 package com.skilex.serviceprovider.activity.loginmodule;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.BaseAdapter;
 
 import com.skilex.serviceprovider.R;

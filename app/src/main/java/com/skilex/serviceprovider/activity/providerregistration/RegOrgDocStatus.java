@@ -1,6 +1,5 @@
 package com.skilex.serviceprovider.activity.providerregistration;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import android.util.Log;
@@ -8,9 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.skilex.serviceprovider.R;
-import com.skilex.serviceprovider.activity.loginmodule.LoginActivity;
-import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
-import com.skilex.serviceprovider.activity.loginmodule.RegisterActivity;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
@@ -24,9 +20,9 @@ import com.skilex.serviceprovider.utils.SkilExConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DocumentVerificationStatusActivity extends BaseActivity implements IServiceListener, DialogClickListener, View.OnClickListener {
+public class RegOrgDocStatus extends BaseActivity implements IServiceListener, DialogClickListener, View.OnClickListener {
 
-    private static final String TAG = DocumentVerificationStatusActivity.class.getName();
+    private static final String TAG = RegOrgDocStatus.class.getName();
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
     private Button btnClose;
@@ -34,13 +30,13 @@ public class DocumentVerificationStatusActivity extends BaseActivity implements 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doc_verify_display_status);
+        setContentView(R.layout.activity_reg_doc_stauts);
 
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
-        btnClose = findViewById(R.id.btnClose);
+        btnClose = findViewById(R.id.btnSubmit);
         btnClose.setOnClickListener(this);
 
         checkDocumentStatus();
@@ -66,14 +62,6 @@ public class DocumentVerificationStatusActivity extends BaseActivity implements 
     @Override
     public void onClick(View v) {
 
-        if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
-            if (v == btnClose) {
-                Intent i = new Intent(DocumentVerificationStatusActivity.this, LoginActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                finish();
-            }
-        }
     }
 
     @Override

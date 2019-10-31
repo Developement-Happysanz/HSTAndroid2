@@ -139,21 +139,35 @@
 
         <activity
             android:name=".activity.providerregistration.DocumentVerificationStatusActivity"
-            android:label="@string/initial_deposit_action_bar"
+            android:label="@string/doc_verify_display_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.providerregistration.UnRegOrgDocStatus"
+            android:label="@string/doc_verify_display_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.providerregistration.RegOrgDocStatus"
+            android:label="@string/doc_verify_display_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activity.providerregistration.DocumentVerifySuccessActivity"
-            android:label="@string/service_person_document_title"
+            android:label="@string/doc_verify_display_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activity.providerregistration.WelcomeActivity"
-            android:label="@string/service_person_document_title"
+            android:label="@string/doc_verify_display_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBarLogin"
             android:windowSoftInputMode="stateHidden" />

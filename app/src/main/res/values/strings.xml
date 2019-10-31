@@ -102,7 +102,7 @@
 
     <!--Un Reg Org Document Upload-->
     <string name="un_reg_doc_upload_action_bar">Documentation</string>
-    <string name="un_reg_doc_upload">Documentation of Individual Service Expert</string>
+    <string name="un_reg_doc_upload">Documentation of Individual Service Commando</string>
     <string name="pan_card_title">PAN Card Number</string>
     <string name="aadhaar_card_title">Aadhaar Card Number</string>
     <string name="upload">Upload</string>
