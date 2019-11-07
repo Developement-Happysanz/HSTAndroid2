@@ -16,6 +16,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.LandingPageActivity;
+import com.skilex.serviceprovider.activity.loginmodule.SplashScreenActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +28,7 @@ import org.json.JSONObject;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
+    public static final String NOTIFICATION_CHANNEL_ID = "10001";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -52,13 +54,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     //This method is only generating push notification
     //It is same as we did in earlier posts
     private void sendNotification(String messageBody) {
-        Intent intent = new Intent(this, LandingPageActivity.class);
+        Intent intent = new Intent(this, SplashScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Firebase Push Notification")
                 .setContentText(messageBody)
@@ -91,16 +93,16 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             MyNotificationManager mNotificationManager = new MyNotificationManager(getApplicationContext());
 
             //creating an intent for the notification
-            Intent intent = new Intent(getApplicationContext(), LandingPageActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SplashScreenActivity.class);
 
             //if there is no image
             if(imageUrl.equals("null")){
                 //displaying small notification
-                mNotificationManager.showSmallNotification(title, message, intent);
+                mNotificationManager.createNotification(title, message);
             }else{
                 //if there is an image
                 //displaying a big notification
-                mNotificationManager.showBigNotification(title, message, imageUrl, intent);
+                mNotificationManager.showBigNotification(title, message, imageUrl);
             }
         } catch (JSONException e) {
             Log.e(TAG, "Json Exception: " + e.getMessage());

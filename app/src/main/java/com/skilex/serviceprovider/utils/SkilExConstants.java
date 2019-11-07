@@ -11,7 +11,7 @@ public class SkilExConstants {
     private static final String BASE_URL = "https://skilex.in/";
 
     //Development Mode
-    //delopment
+    //development
     public static final String JOINT_URL = "development/";
     //uat
 //    public static final String JOINT_URL = "uat/";
@@ -24,14 +24,12 @@ public class SkilExConstants {
 //    public static final String BUILD_URL = BASE_URL + "uat/apisprovider/";
 //    public static final String BUILD_URL = BASE_URL + "apisprovider/";
 
-
     //Payment Gateway
     public static final String API_ADVANCE_PAYMENT_URL = BASE_URL + JOINT_URL + "ccavenue_app/serv_provider_advance.php";
     public static final String API_RSA_URL = BASE_URL + JOINT_URL + "ccavenue_app/GetRSA.php";
 
 //    Deposit amount
     public static final String API_DEPOSIT_AMOUNT = "get_deposit_amt/";
-
 
     //NUMBER VERIFICATION URL FOR LOGIN
     public static final String MOBILE_VERIFICATION = "mobile_check/";
@@ -168,7 +166,6 @@ public class SkilExConstants {
 
     public static String KEY_MATERIAL_NOTES = "material_notes";
 
-
     //Login
     public static String LOGIN = "login/";
     // Login Parameters
@@ -188,7 +185,6 @@ public class SkilExConstants {
     public static String API_SERVICE_PERSON_UPDATE = "update_serv_person_details/";
     public static String API_SERVICE_PERSON_LIST = "list_serv_persons/";
 
-
     public static String KEY_SERVICE_PERSON_ID = "serv_person_id";
     public static String KEY_FULL_NAME = "full_name";
     public static String KEY_GENDER = "gender";
@@ -198,7 +194,6 @@ public class SkilExConstants {
     public static String KEY_STATE = "state";
     public static String KEY_LANGUAGE_KNOWN = "language_known";
     public static String KEY_EDUCATION_QUALIFICATION = "edu_qualification";
-
 
     // Service provider active status
     public static String API_SERVICE_PROVIDER_STATUS = "provider_status/";
@@ -214,6 +209,4 @@ public class SkilExConstants {
     public static final String PROFILE_INFO = "user_info/";
     public static final String UPDATE_PROFILE = "profile_update/";
     public static final String UPLOAD_IMAGE = "profile_pic_upload/";
-
-
 }
