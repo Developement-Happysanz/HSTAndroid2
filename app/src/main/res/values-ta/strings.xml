@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ஸ்கில்எக்ஸ்</string>
+    <string name="app_name">ஸ்கிலெக்ஸ்</string>
 
     <string name="empty" />
     <string name="error_occurred">இணைய சேவையக சிக்கல் ஏற்பட்டுள்ளது. சிறிது நேரம் கழித்து முயற்சி செய்யவும்.</string>
@@ -11,7 +11,7 @@
     <string name="nav_header_title">ஆண்ட்ராய்டு ஸ்டூடியோ</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">நாவிகேஷன் ஹெடெர்</string>
-    <string name="action_settings">ஸ்கில்எக்ஸ் அமைப்புகள்</string>
+    <string name="action_settings">ஸ்கிலெக்ஸ் அமைப்புகள்</string>
 
     <string name="menu_home">முகப்பு பக்கம்</string>
     <string name="menu_gallery">கேலரி</string>
@@ -34,7 +34,7 @@
     <string name="reg_mail_id">ஈமெயில் ஐ. டி. (கட்டாயமற்றது)</string>
     <string name="reg_mail_id_hint">info@demo.com</string>
     <string name="reg_submit">சமர்ப்பி</string>
-    <string name="reg_action_bar">ஸ்கில்எக்ஸ் பதிவு</string>
+    <string name="reg_action_bar">ஸ்கிலெக்ஸ் பதிவு</string>
     <string name="reg_name_error">அளித்த பெயர் தவறாக உள்ளது.</string>
     <string name="reg_phone_error">சரியான தொலைபேசி எண்ணை என்டர் செய்யவும்.</string>
     <string name="update_profile_pic">சுயவிவரப் படத்தைப் புதுப்பிக்கவும்</string>
@@ -142,7 +142,7 @@
     <string name="close">Close</string>
 
     <!--Document verify display-->
-    <string name="doc_verify_display_title">ஸ்கில்எக்ஸ் உங்களை வரவேற்கிறது.</string>
+    <string name="doc_verify_display_title">ஸ்கிலெக்ஸ் உங்களை வரவேற்கிறது.</string>
     <string name="welcome_desc">நிபுணத்துவம் வழங்கப்படும் தளத்திற்கு \ n வசதியுடன்</string>
     <string name="get_start">தொடங்கவும்</string>
 
@@ -240,6 +240,7 @@
     <string name="request_otp">OTP எண்ணை கோறுக </string>
     <string name="start">சேவையை ஆரம்பி</string>
     <string name="start_date_time">சேவை தொடங்கப்பட்ட நாள் மற்றும் நேரம்:</string>
+    <string name="resume_date_time">சேவையை மீண்டும் துவங்கும் நாள் மற்றும் நேரம்:</string>
     <string name="additional_services">கூடுதல் சேவைகள் </string>
     <string name="submit">சமர்ப்பி</string>
     <string name="material_used">உபயோகிக்கப்பட்ட பொருட்கள்</string>
@@ -346,8 +347,8 @@
 
     <!--Profile Settings Page-->
 
-    <string name="about">ஸ்கில்எக்ஸ் பற்றி அறிய</string>
-    <string name="share">ஸ்கில்எக்ஸை பகிர </string>
+    <string name="about">ஸ்கிலெக்ஸ் பற்றி அறிய</string>
+    <string name="share">ஸ்கிலெக்ஸை பகிர </string>
     <string name="logout">வெளியேறு</string>
     <string name="update_service">புதிய சேவைகளை இணைக்க </string>
     <string name="bank_details">வங்கி விபரங்களை மாற்ற</string>
@@ -365,7 +366,7 @@
     <string name="google_android_map_api_key">AIzaSyD428E0W4-pf4kJuJ3rsqG5vCELRgmR2ok</string>
 
     <!--About Us Page-->
-    <string name="about_content">ஸ்கில்எக்ஸ், வீட்டு சேவைகள் (பிளம்பிங், மின்னியல் சேவை, வீட்டு சாதன பராமரிப்பு முதலியன) மற்றும் தனிப்பயனாக்கப்பட்ட சேவைகள் (ஒப்பனை, அழகு பராமரிப்பு மற்றும் உடற்பயிற்சி சேவை முதலியன) ஆகியவற்றை தேவைப்படுவோர் அச்சேவை வழங்குநரை தொடர்பு கொண்டு பயன்பெற இந்தியாவில் உருவாக்கப்பட்ட ஆன்லைன் வாடிக்கையாளர் சேவை தளம் ஆகும். வாடிக்கையாளர்களுக்கு தேவைப்படும் சேவைகளை தரமாகவும், மலிவாகவும், தேவைப்படும் நேரத்திற்கு வழங்கவும் ஸ்கில்எக்ஸ் வழிவகை செய்கிறது.
-\n\nஆரம்ப நிலையில் ஸ்கில்எக்ஸ் தென்னிந்தியாவின் முக்கிய நகரங்களில் துவங்கினாலும் மக்களின் தேவையை கணக்கில் கொண்டு, பின் வரும் நாட்களில் நாடு முழுவதும் தன் சேவையை வழங்க திட்டமிட்டுள்ளது.</string>
+    <string name="about_content">ஸ்கிலெக்ஸ், வீட்டு சேவைகள் (பிளம்பிங், மின்னியல் சேவை, வீட்டு சாதன பராமரிப்பு முதலியன) மற்றும் தனிப்பயனாக்கப்பட்ட சேவைகள் (ஒப்பனை, அழகு பராமரிப்பு மற்றும் உடற்பயிற்சி சேவை முதலியன) ஆகியவற்றை தேவைப்படுவோர் அச்சேவை வழங்குநரை தொடர்பு கொண்டு பயன்பெற இந்தியாவில் உருவாக்கப்பட்ட ஆன்லைன் வாடிக்கையாளர் சேவை தளம் ஆகும். வாடிக்கையாளர்களுக்கு தேவைப்படும் சேவைகளை தரமாகவும், மலிவாகவும், தேவைப்படும் நேரத்திற்கு வழங்கவும் ஸ்கிலெக்ஸ் வழிவகை செய்கிறது.
+\n\nஆரம்ப நிலையில் ஸ்கிலெக்ஸ் தென்னிந்தியாவின் முக்கிய நகரங்களில் துவங்கினாலும் மக்களின் தேவையை கணக்கில் கொண்டு, பின் வரும் நாட்களில் நாடு முழுவதும் தன் சேவையை வழங்க திட்டமிட்டுள்ளது.</string>
 
 </resources>

@@ -139,21 +139,35 @@
 
         <activity
             android:name=".activity.providerregistration.DocumentVerificationStatusActivity"
-            android:label="@string/initial_deposit_action_bar"
+            android:label="@string/doc_verify_display_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.providerregistration.UnRegOrgDocStatus"
+            android:label="@string/doc_verify_display_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.providerregistration.RegOrgDocStatus"
+            android:label="@string/doc_verify_display_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activity.providerregistration.DocumentVerifySuccessActivity"
-            android:label="@string/service_person_document_title"
+            android:label="@string/doc_verify_display_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activity.providerregistration.WelcomeActivity"
-            android:label="@string/service_person_document_title"
+            android:label="@string/doc_verify_display_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBarLogin"
             android:windowSoftInputMode="stateHidden" />
@@ -209,6 +223,13 @@
 
         <activity
             android:name=".activity.fragmentactivity.completed.CompletedServicesActivity"
+            android:label="@string/completed_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.fragmentactivity.completed.CompletedServiceDetailActivity"
             android:label="@string/completed_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -283,7 +304,7 @@
 
         <activity
             android:name=".activity.ProfileActivity"
-            android:label="@string/completed_title"
+            android:label="@string/profile_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
@@ -296,11 +317,11 @@
             android:windowSoftInputMode="stateHidden" />
 
 
-        <service android:name=".fcm.MyFirebaseInstanceIDService">
+        <!--<service android:name=".fcm.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
-        </service>
+        </service>-->
 
         <service android:name=".fcm.MyFirebaseMessagingService">
             <intent-filter>

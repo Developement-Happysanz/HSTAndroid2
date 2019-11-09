@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -169,12 +170,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener, I
             startActivity(service);
         }
         if (v == share) {
-//            Intent i = new Intent(android.content.Intent.ACTION_SEND);
-//            i.setType("text/plain");
-//            i.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share");
-//            i.putExtra(android.content.Intent.EXTRA_TEXT, "Hey! Get Heyla app and win some exciting rewards. https://goo.gl/JTmdEX");
-//            startActivity(Intent.createChooser(i, "Share via"));
-
+            Intent i = new Intent(android.content.Intent.ACTION_SEND);
+            i.setType("text/plain");
+            i.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share");
+            i.putExtra(android.content.Intent.EXTRA_TEXT, "Hey! Get SkilEx app. https://bit.ly/2JgIyom");
+            startActivity(Intent.createChooser(i, "Share via"));
         }
         if (v == logout) {
             doLogout();

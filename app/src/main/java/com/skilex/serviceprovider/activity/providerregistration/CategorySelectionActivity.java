@@ -6,9 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -338,7 +339,16 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         if (v == txtGoNext) {
-            if (selectedList.size() >= 1) {
+
+            int totalAmount = 0;
+            for (int i = 0; i < selectedList.size(); i++) {
+                String totalprice = selectedList.get(i).getCategoryPreference();
+                if (totalprice.equalsIgnoreCase("Y")) {
+                    totalAmount = +1;
+                }
+            }
+
+            if (selectedList.size() >= 2) {
 
                 setPreferences();
             } else {

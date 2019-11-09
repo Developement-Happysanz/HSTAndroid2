@@ -3,19 +3,18 @@ package com.skilex.serviceprovider.activity;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.loginmodule.GPSTracker;
 import com.skilex.serviceprovider.activity.loginmodule.LoginActivity;

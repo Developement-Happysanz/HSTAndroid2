@@ -3,6 +3,7 @@
     <color name="colorPrimary">#135aa0</color>
     <color name="colorPrimaryDark">#0D3779</color>
     <color name="colorAccent">#3C2E7D</color>
+    <color name="appColorBase">#642160</color>
 
     <color name="black">#000000</color>
     <color name="blue">#135aa0</color>
@@ -26,6 +27,7 @@
     <color name="ongoing">#ae84bb</color>
     <color name="history">#f0515d</color>
     <color name="completed">#8dc63f</color>
+    <color name="onhold">#ed1c24</color>
 
     <color name="green">#4CB748</color>
     <color name="dark_grey">#939394</color>

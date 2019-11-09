@@ -1,12 +1,17 @@
 package com.skilex.serviceprovider.activity.loginmodule;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,6 +20,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.phone.SmsRetriever;
+import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.LandingPageActivity;
 import com.skilex.serviceprovider.activity.providerregistration.CategorySelectionActivity;
@@ -22,8 +34,10 @@ import com.skilex.serviceprovider.activity.providerregistration.DocumentVerifica
 import com.skilex.serviceprovider.activity.providerregistration.DocumentVerifySuccessActivity;
 import com.skilex.serviceprovider.activity.providerregistration.InitialDepositActivity;
 import com.skilex.serviceprovider.activity.providerregistration.OrganizationTypeSelectionActivity;
+import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocStatus;
 import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocumentUploadActivity;
 import com.skilex.serviceprovider.activity.providerregistration.RegisteredOrganizationInfoActivity;
+import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocStatus;
 import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocumentUploadActivity;
 import com.skilex.serviceprovider.activity.providerregistration.UnRegisteredOrganizationInfoActivity;
 import com.skilex.serviceprovider.activity.providerregistration.UploadProfilePicActivity;
@@ -42,6 +56,9 @@ import com.skilex.serviceprovider.utils.SkilExConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class OTPVerificationActivity extends BaseActivity implements View.OnClickListener, IServiceListener, DialogClickListener {
 
     private static final String TAG = OTPVerificationActivity.class.getName();
@@ -56,6 +73,8 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
     String getUserMasterId, getMobileNumber;
 
     boolean doubleBackToExitPressedOnce = false;
+
+    private SmsBrReceiver smsReceiver;
 
 
     @Override
@@ -72,6 +91,38 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
         tvResendOTP.setOnClickListener(this);
         btnConfirm = findViewById(R.id.sendcode);
         btnConfirm.setOnClickListener(this);
+
+        // Start listening for SMS User Consent broadcasts from senderPhoneNumber
+        // The Task<Void> will be successful if SmsRetriever was able to start
+        // SMS User Consent, and will error if there was an error starting.
+        SmsRetrieverClient client = SmsRetriever.getClient(this);
+        Task<Void> task = client.startSmsRetriever();
+//        Task<Void> task = SmsRetriever.getClient(this).startSmsUserConsent(senderPhoneNumber /* or null */);
+        task.addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                // Successfully started retriever, expect broadcast intent
+                // ...
+                Toast.makeText(OTPVerificationActivity.this, "Listening for otp...", Toast.LENGTH_SHORT).show();
+                IntentFilter filter = new IntentFilter();
+                filter.addAction(SmsRetriever.SMS_RETRIEVED_ACTION);
+                if (smsReceiver == null) {
+                    smsReceiver = new OTPVerificationActivity.SmsBrReceiver();
+                }
+                getApplicationContext().registerReceiver(smsReceiver, filter);
+//                            startActivity(homeIntent);
+//                            finish();
+            }
+        });
+
+        task.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Failed to start retriever, inspect Exception for more details
+                // ...
+                Toast.makeText(OTPVerificationActivity.this, "Failed listening for otp...", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -109,7 +160,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
             if (v == tvResendOTP) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle(R.string.resend_otp);
-                alertDialogBuilder.setMessage(R.string.otp_confirm_no + PreferenceStorage.getMobileNo(getApplicationContext()));
+                alertDialogBuilder.setMessage(getString(R.string.otp_confirm_no) + " " + PreferenceStorage.getMobileNo(getApplicationContext()));
                 alertDialogBuilder.setPositiveButton(R.string.otp_proceed,
                         new DialogInterface.OnClickListener() {
 
@@ -131,7 +182,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                             }
                         });
-                alertDialogBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton(R.string.alert_button_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -282,11 +333,18 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                         if (userData.getString("serv_prov_display_status").equalsIgnoreCase("Inactive")) {
 
                             if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Pending")) {
+                                if (getCompanyType.equalsIgnoreCase("Company")) {
+                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Intent intent = new Intent(this, UnRegOrgDocStatus.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    finish();
+                                }
 
-                                Intent i = new Intent(OTPVerificationActivity.this, DocumentVerificationStatusActivity.class);
-                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(i);
-                                finish();
                             } else if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Approved")) {
 
                                 Intent i = new Intent(OTPVerificationActivity.this, DocumentVerifySuccessActivity.class);
@@ -328,5 +386,64 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
     public void onError(String error) {
         progressDialogHelper.hideProgressDialog();
         AlertDialogHelper.showSimpleAlertDialog(this, error);
+    }
+
+    class SmsBrReceiver extends BroadcastReceiver {
+
+        private String parseCode(String message) {
+            Pattern p = Pattern.compile("\\b\\d{4}\\b");
+            Matcher m = p.matcher(message);
+            String code = "";
+            while (m.find()) {
+                code = m.group(0);
+            }
+            return code;
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (SmsRetriever.SMS_RETRIEVED_ACTION.equals(intent.getAction())) {
+                Bundle extras = intent.getExtras();
+                Status status = (Status) extras.get(SmsRetriever.EXTRA_STATUS);
+
+                switch (status.getStatusCode()) {
+                    case CommonStatusCodes.SUCCESS:
+                        // Get SMS message contents
+                        String smsMessage = (String) extras.get(SmsRetriever.EXTRA_SMS_MESSAGE);
+                        // Extract one-time code from the message and complete verification
+                        // by sending the code back to your server.
+                        Log.d(TAG, "Retrieved sms code: " + smsMessage);
+                        if (smsMessage != null) {
+                            String sms = parseCode(smsMessage);
+                            verifyMessage(sms);
+                        }
+                        break;
+                    case CommonStatusCodes.TIMEOUT:
+                        // Waiting for SMS timed out (5 minutes)
+                        // Handle the error ...
+                        break;
+                }
+            }
+        }
+
+    }
+
+    public void verifyMessage(String otp) {
+        checkVerify = "verified";
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
+            jsonObject.put(SkilExConstants.PHONE_NUMBER, PreferenceStorage.getMobileNo(getApplicationContext()));
+            jsonObject.put(SkilExConstants.OTP, otp);
+            jsonObject.put(SkilExConstants.DEVICE_TOKEN, PreferenceStorage.getGCM(getApplicationContext()));
+            jsonObject.put(SkilExConstants.MOBILE_TYPE, "1");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+        String url = SkilExConstants.BUILD_URL + SkilExConstants.LOGIN;
+        serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
     }
 }

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -15,16 +15,30 @@ import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocumentUp
 import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocumentUploadActivity;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 import com.skilex.serviceprovider.utils.SkilExValidator;
+import com.skilex.serviceprovider.utils.SmsVerification;
+
+import java.util.ArrayList;
 
 
 public class SplashScreenActivity extends Activity {
 
     private static int SPLASH_TIME_OUT = 2000;
+    //    AppSignatureHelper appSignatureHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_display);
+
+        //        appSignatureHelper = new AppSignatureHelper(this);
+//        appSignatureHelper.getAppSignatures();
+
+        ArrayList<String> appCodes = new ArrayList<>();
+        SmsVerification hash = new SmsVerification(getBaseContext());
+        appCodes = hash.getAppSignatures();
+        String yourhash = appCodes.get(0);
+        Log.d("Hash Key: ", yourhash);
+        System.out.println("Hash Key: " + yourhash);
 
         String GCMKey = PreferenceStorage.getGCM(getApplicationContext());
         if (GCMKey.equalsIgnoreCase("")) {
@@ -48,7 +62,6 @@ public class SplashScreenActivity extends Activity {
                         startActivity(i);
                         finish();
                     }
-
                 } else {
 
                     Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
