@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.annotation.Nullable;
+
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.skilex.serviceprovider.R;
@@ -39,6 +42,8 @@ public class SplashScreenActivity extends Activity {
         String yourhash = appCodes.get(0);
         Log.d("Hash Key: ", yourhash);
         System.out.println("Hash Key: " + yourhash);
+
+        Toast.makeText(SplashScreenActivity.this, "Hash key...  " + yourhash, Toast.LENGTH_SHORT).show();
 
         String GCMKey = PreferenceStorage.getGCM(getApplicationContext());
         if (GCMKey.equalsIgnoreCase("")) {
