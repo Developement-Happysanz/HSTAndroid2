@@ -234,7 +234,7 @@ public class ServicePersonDocumentUploadActivity extends BaseActivity implements
 
                 if (selectedFilePath != null && !selectedFilePath.equals("")) {
                     sizeCge = new File(selectedFilePath);
-                    if (sizeCge.length() >= 40000000) {
+                    if (sizeCge.length() >= 3670016) {
                         AlertDialogHelper.showSimpleAlertDialog(this, "File size too large");
                         selectedFilePath = null;
                     } else {
