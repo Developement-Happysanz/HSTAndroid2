@@ -334,12 +334,14 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                             if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Pending")) {
                                 if (getCompanyType.equalsIgnoreCase("Company")) {
-                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
+//                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
+                                    Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    Intent intent = new Intent(this, UnRegOrgDocStatus.class);
+//                                    Intent intent = new Intent(this, UnRegOrgDocStatus.class);
+                                    Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                     finish();

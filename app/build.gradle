@@ -19,8 +19,8 @@ android {
         applicationId "com.skilex.serviceprovider"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 12
-        versionName "1.029"
+        versionCode 15
+        versionName "1.032"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -69,7 +69,6 @@ android {
 //            output.outputFile = new File(
 //                    output.outputFile.parent,
 //                    output.outputFile.name.replace(".apk", "-${variant.versionName}.apk"))
-
         }
     }
 

@@ -45,7 +45,7 @@ public class SplashScreenActivity extends Activity {
         Log.d("Hash Key: ", yourhash);
         System.out.println("Hash Key: " + yourhash);
 
-        Toast.makeText(SplashScreenActivity.this, "Hash key...  " + yourhash, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(SplashScreenActivity.this, "Hash key...  " + yourhash, Toast.LENGTH_SHORT).show();
 
 //        String GCMKey = PreferenceStorage.getGCM(getApplicationContext());
 //        if (GCMKey.equalsIgnoreCase("")) {
