@@ -368,7 +368,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
 
                 if (selectedFilePath != null && !selectedFilePath.equals("")) {
                     sizeCge = new File(selectedFilePath);
-                    if (sizeCge.length() >= 40000000) {
+                    if (sizeCge.length() >= 3000000) {
                         AlertDialogHelper.showSimpleAlertDialog(this, "File size too large");
                         selectedFilePath = null;
                     } else {
