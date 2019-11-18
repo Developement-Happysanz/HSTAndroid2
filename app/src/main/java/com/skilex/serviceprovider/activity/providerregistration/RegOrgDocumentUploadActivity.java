@@ -484,8 +484,8 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
 
                 if (selectedFilePath != null && !selectedFilePath.equals("")) {
                     sizeCge = new File(selectedFilePath);
-                    if (sizeCge.length() >= 30000000) {
-                        AlertDialogHelper.showSimpleAlertDialog(this, "File size too large");
+                    if (sizeCge.length() >= 12000000) {
+                        AlertDialogHelper.showSimpleAlertDialog(this, "File size too large. File should be at least 12MB");
                         selectedFilePath = null;
                     } else {
                         Toast.makeText(this, "Uploading...", Toast.LENGTH_SHORT).show();
