@@ -80,6 +80,7 @@ public class RequestedServiceDetailActivity extends BaseActivity implements ISer
         btnCancel.setOnClickListener(this);
         btnAccept = findViewById(R.id.btnAccept);
         btnAccept.setOnClickListener(this);
+
         serviceNumber = findViewById(R.id.txtServiceNumber);
         serviceNumber.setText("Service Number: " + requestedServiceArray.getServiceOrderId());
         spnExpertDropDown = findViewById(R.id.spnExpertList);
@@ -100,6 +101,12 @@ public class RequestedServiceDetailActivity extends BaseActivity implements ISer
 
             }
         });
+        if (requestedServiceArray.getServiceOrderStatus().equalsIgnoreCase("Accepted")) {
+            btnAccept.setVisibility(View.GONE);
+            spnExpertDropDown.setEnabled(true);
+            btnAssign.setEnabled(true);
+            loadServicePerson();
+        }
     }
 
     @Override
