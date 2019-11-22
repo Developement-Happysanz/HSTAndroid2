@@ -3,9 +3,12 @@ package com.skilex.serviceprovider.activity.providerregistration;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.loginmodule.OTPVerificationActivity;
@@ -30,6 +33,8 @@ public class DocumentVerifySuccessActivity extends BaseActivity implements IServ
 
     private Button btnNext;
 
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,27 @@ public class DocumentVerifySuccessActivity extends BaseActivity implements IServ
         btnNext = findViewById(R.id.btnNext);
         btnNext.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
     @Override
@@ -101,6 +127,7 @@ public class DocumentVerifySuccessActivity extends BaseActivity implements IServ
         progressDialogHelper.hideProgressDialog();
         if (validateResponse(response)) {
             Intent i = new Intent(DocumentVerifySuccessActivity.this, WelcomeActivity.class);
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
             startActivity(i);
             finish();
         }

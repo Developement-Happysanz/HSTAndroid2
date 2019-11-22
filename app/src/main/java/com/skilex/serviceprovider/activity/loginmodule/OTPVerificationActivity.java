@@ -278,28 +278,35 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                     Intent i = new Intent(OTPVerificationActivity.this, UploadProfilePicActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     i.putExtra("ProviderPersonCheck", "Provider");
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 } else if (countCategory.equalsIgnoreCase("0")) {
                     Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     i.putExtra("ProviderPersonCheck", "Provider");
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 } else if (getCompanyType.isEmpty()) {
                     Intent intent = new Intent(this, OrganizationTypeSelectionActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(intent);
                     finish();
                 } else if (getServiceProviderBasicStatus.isEmpty()) {
                     if (getCompanyType.equalsIgnoreCase("Company")) {
                         Intent intent = new Intent(this, RegisteredOrganizationInfoActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("backArrowFlag", "OTP");
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         startActivity(intent);
                         finish();
                     } else {
                         Intent intent = new Intent(this, UnRegisteredOrganizationInfoActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("backArrowFlag", "OTP");
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         startActivity(intent);
                         finish();
                     }
@@ -308,17 +315,20 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                     if (getCompanyType.equalsIgnoreCase("Company")) {
                         Intent i = new Intent(this, RegOrgDocumentUploadActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         startActivity(i);
                         finish();
                     } else {
                         Intent intent = new Intent(this, UnRegOrgDocumentUploadActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         startActivity(intent);
                         finish();
                     }
                 } else if (getPaymentStatus.equalsIgnoreCase("Unpaid")) {
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 } else {
@@ -327,6 +337,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                         Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         i.putExtra("ProviderPersonCheck", "Provider");
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         startActivity(i);
                         finish();
                     } else if (loginType.equalsIgnoreCase("Login")) {
@@ -337,12 +348,14 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 //                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
                                     Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                                     startActivity(intent);
                                     finish();
                                 } else {
 //                                    Intent intent = new Intent(this, UnRegOrgDocStatus.class);
                                     Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -351,6 +364,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                                 Intent i = new Intent(OTPVerificationActivity.this, DocumentVerifySuccessActivity.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                                 startActivity(i);
                                 finish();
                             }
@@ -372,6 +386,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                             Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                             startActivity(i);
                             finish();
                         }

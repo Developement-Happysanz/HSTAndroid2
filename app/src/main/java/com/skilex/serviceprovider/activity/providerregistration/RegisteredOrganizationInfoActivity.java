@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.annotation.Nullable;
+
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -51,10 +53,24 @@ public class RegisteredOrganizationInfoActivity extends BaseActivity implements 
 
     boolean doubleBackToExitPressedOnce = false;
 
+    private String checkBackArrowFlag = "";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_org_details);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            checkBackArrowFlag = extras.getString("backArrowFlag");
+            //The key argument here must match that used in the other activity
+        }
+
+        if (checkBackArrowFlag.equalsIgnoreCase("OTP")) {
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            }
+        }
 
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
@@ -238,6 +254,7 @@ public class RegisteredOrganizationInfoActivity extends BaseActivity implements 
         if (validateSignInResponse(response)) {
             Intent i = new Intent(getApplicationContext(), RegOrgDocumentUploadActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
             startActivity(i);
             finish();
         }

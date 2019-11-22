@@ -86,6 +86,7 @@ public class StatusActivity extends AppCompatActivity implements IServiceListene
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         startActivity(intent);
                         finish();
                     }

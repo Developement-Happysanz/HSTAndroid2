@@ -172,6 +172,7 @@ public class RegisterActivity extends BaseActivity implements IServiceListener, 
                 PreferenceStorage.saveLoginType(getApplicationContext(), "Register");
 
                 Intent i = new Intent(RegisterActivity.this, OTPVerificationActivity.class);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 startActivity(i);
 
             } catch (Exception ex) {

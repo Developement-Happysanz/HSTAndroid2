@@ -307,6 +307,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
                 if (checkProviderAndPerson.equalsIgnoreCase("Provider")) {
                     Intent intent = new Intent(this, OrganizationTypeSelectionActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(intent);
                     finish();
                 } else if (checkProviderAndPerson.equalsIgnoreCase("ProviderUpdate")) {

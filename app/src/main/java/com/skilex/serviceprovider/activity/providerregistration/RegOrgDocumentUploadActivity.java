@@ -423,6 +423,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
             } else if (v == txtTerms) {
                 Intent homeIntent = new Intent(getApplicationContext(), TermOfAgreementActivity.class);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 startActivity(homeIntent);
             }
         } else {
@@ -917,6 +918,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
 
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 }

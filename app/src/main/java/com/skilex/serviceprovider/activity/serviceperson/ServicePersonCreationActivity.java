@@ -46,6 +46,10 @@ public class ServicePersonCreationActivity extends BaseActivity implements Dialo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_person_creation);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -57,6 +61,12 @@ public class ServicePersonCreationActivity extends BaseActivity implements Dialo
         btnSubmit = findViewById(R.id.btnSubmitCreation);
         btnSubmit.setOnClickListener(this);
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
