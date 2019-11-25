@@ -115,7 +115,7 @@ public class InitialScreenActivity extends AppCompatActivity {
             intent.putExtra(AvenuesParams.REDIRECT_URL, ServiceUtility.chkNull(redirectUrl.getText()).toString().trim());
             intent.putExtra(AvenuesParams.CANCEL_URL, ServiceUtility.chkNull(cancelUrl.getText()).toString().trim());
             intent.putExtra(AvenuesParams.RSA_KEY_URL, ServiceUtility.chkNull(rsaKeyUrl.getText()).toString().trim());
-
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
             startActivity(intent);
 //            finish();
         } else {

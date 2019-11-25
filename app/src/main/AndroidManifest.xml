@@ -54,6 +54,14 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBarLogin"
+            android:windowSoftInputMode="stateHidden" />
+
+
+        <activity
+            android:name=".activity.loginmodule.RegisterActivity"
+            android:label="@string/reg_action_bar"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -61,18 +69,15 @@
         </activity>
 
         <activity
-            android:name=".activity.loginmodule.RegisterActivity"
-            android:label="@string/reg_action_bar"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" />
-
-        <activity
             android:name=".activity.loginmodule.OTPVerificationActivity"
             android:label="@string/otp_action_bar"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.loginmodule.LoginActivity" />
+        </activity>
 
         <activity
             android:name=".activity.providerregistration.CategorySelectionActivity"
@@ -93,7 +98,11 @@
             android:label="@string/reg_org_action_bar"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.providerregistration.OrganizationTypeSelectionActivity" />
+        </activity>
 
         <activity
             android:name=".activity.providerregistration.RegOrgDocumentUploadActivity"
@@ -107,7 +116,11 @@
             android:label="@string/un_reg_org_action_bar"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.providerregistration.OrganizationTypeSelectionActivity" />
+        </activity>
 
         <activity
             android:name=".activity.providerregistration.UnRegOrgDocumentUploadActivity"
@@ -178,6 +191,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+
 
         <activity
             android:name=".activity.fragmentactivity.requested.RequestedServiceDetailActivity"
@@ -276,6 +290,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
+
 
         <activity
             android:name=".activity.serviceperson.ServicePersonDetailInfoActivity"

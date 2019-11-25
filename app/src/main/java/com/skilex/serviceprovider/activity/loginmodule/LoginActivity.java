@@ -196,6 +196,7 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
             if (v == txtRegister) {
 //                callGetSubCategoryService();
                 Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 startActivity(i);
 //                finish();
             } if(v==lang){
@@ -277,9 +278,10 @@ public class LoginActivity extends BaseActivity implements DialogClickListener, 
                 PreferenceStorage.saveTermOfAgreement(getApplicationContext(), "Not Agree");
 
                 Intent i = new Intent(getApplicationContext(), OTPVerificationActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 startActivity(i);
-                finish();
+//                finish();
 
             } catch (Exception ex) {
                 ex.printStackTrace();

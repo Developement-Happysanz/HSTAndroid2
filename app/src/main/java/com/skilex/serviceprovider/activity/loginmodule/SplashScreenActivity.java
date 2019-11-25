@@ -2,6 +2,7 @@ package com.skilex.serviceprovider.activity.loginmodule;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -61,9 +62,19 @@ public class SplashScreenActivity extends Activity {
                     if (PreferenceStorage.getActiveStatus(getApplicationContext()).equalsIgnoreCase("Live")) {
                         Intent i = new Intent(SplashScreenActivity.this, LandingPageActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         startActivity(i);
                         finish();
                     } else {
+
+                        // Check if we're running on Android 5.0 or higher
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            // Apply activity transition
+                        } else {
+                            // Swap without transition
+                        }
+
+
                         Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(SplashScreenActivity.this, new OnSuccessListener<InstanceIdResult>() {
                             @Override
@@ -75,6 +86,7 @@ public class SplashScreenActivity extends Activity {
                             }
                         });
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                         startActivity(i);
                         finish();
                     }
@@ -91,6 +103,7 @@ public class SplashScreenActivity extends Activity {
                         }
                     });
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 }

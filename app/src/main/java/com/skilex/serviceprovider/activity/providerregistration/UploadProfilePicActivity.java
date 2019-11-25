@@ -16,6 +16,7 @@ import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.provider.MediaStore;
 import androidx.annotation.Nullable;
@@ -94,6 +95,8 @@ public class UploadProfilePicActivity extends BaseActivity implements IServiceLi
 
     private String checkProviderAndPerson = "";
 
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,6 +133,27 @@ public class UploadProfilePicActivity extends BaseActivity implements IServiceLi
     }
 
     @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         if (CommonUtils.haveNetworkConnection(getApplicationContext())) {
             if (v == profilePic) {
@@ -152,6 +176,7 @@ public class UploadProfilePicActivity extends BaseActivity implements IServiceLi
                 Intent i = new Intent(UploadProfilePicActivity.this, CategorySelectionActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i.putExtra("ProviderPersonCheck", checkProviderAndPerson);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                 startActivity(i);
                 finish();
             }

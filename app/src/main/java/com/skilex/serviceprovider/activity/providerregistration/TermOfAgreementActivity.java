@@ -18,6 +18,10 @@ public class TermOfAgreementActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agreement);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         chbAgreement = findViewById(R.id.chb_agreement);
 
         chbAgreement.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -30,7 +34,11 @@ public class TermOfAgreementActivity extends BaseActivity {
                 }
             }
         });
+    }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

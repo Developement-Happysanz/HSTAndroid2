@@ -3,9 +3,12 @@ package com.skilex.serviceprovider.activity.providerregistration;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.loginmodule.LoginActivity;
@@ -31,6 +34,8 @@ public class DocumentVerificationStatusActivity extends BaseActivity implements 
     private ProgressDialogHelper progressDialogHelper;
     private Button btnClose;
 
+    boolean doubleBackToExitPressedOnce = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +50,27 @@ public class DocumentVerificationStatusActivity extends BaseActivity implements 
 
         checkDocumentStatus();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
     void checkDocumentStatus() {

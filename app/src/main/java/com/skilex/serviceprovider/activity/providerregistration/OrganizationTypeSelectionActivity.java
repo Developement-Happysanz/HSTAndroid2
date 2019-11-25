@@ -145,14 +145,16 @@ public class OrganizationTypeSelectionActivity extends BaseActivity implements V
             try {
                 if (organizationType.equalsIgnoreCase("Company")) {
                     Intent intent = new Intent(this, RegisteredOrganizationInfoActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(intent);
-                    finish();
+//                    finish();
                 } else if (organizationType.equalsIgnoreCase("Individual")) {
                     Intent intent = new Intent(this, UnRegisteredOrganizationInfoActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
                     startActivity(intent);
-                    finish();
+//                    finish();
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
