@@ -26,6 +26,7 @@ public class SkilExConstants {
 
     //Payment Gateway
     public static final String API_ADVANCE_PAYMENT_URL = BASE_URL + JOINT_URL + "ccavenue_app/serv_provider_advance.php";
+    public static final String API_SKILEX_PAYMENT_URL = BASE_URL + JOINT_URL + "ccavenue_app/serv_provider_payment.php";
     public static final String API_RSA_URL = BASE_URL + JOINT_URL + "ccavenue_app/GetRSA.php";
 
 //    Deposit amount
@@ -160,6 +161,7 @@ public class SkilExConstants {
     public static final String API_ONGOING_SERVICE_DETAIL_UPDATE = "update_ongoing_services/";
     public static final String API_ONGOING_SERVICE_COMPLETE = "complete_services/";
     public static final String UPLOAD_BILL_DOCUMENT = "upload_service_bills/";
+    public static final String VIEW_ADDITIONAL_SERVICES = "view_addtional_service/";
 
     //Completed service
     public static final String API_COMPLETED_SERVICE_LIST = "list_completed_services/";
@@ -180,11 +182,13 @@ public class SkilExConstants {
     public static String UNIQUE_NUMBER = "unique_number";
     public static String MOBILE_KEY = "mobile_key";
     public static String USER_STATUS = "user_stat";
+    public static String EXPERT_STATUS = "status";
 
     // Service person creation
     public static String API_SERVICE_PERSON_CREATION = "create_serv_person/";
     public static String API_SERVICE_PERSON_UPDATE = "update_serv_person_details/";
     public static String API_SERVICE_PERSON_LIST = "list_serv_persons/";
+    public static String API_CHECK_SERVICE_PERSON_LIST = "check_application_status/";
 
     public static String KEY_SERVICE_PERSON_ID = "serv_person_id";
     public static String KEY_FULL_NAME = "full_name";
@@ -210,4 +214,10 @@ public class SkilExConstants {
     public static final String PROFILE_INFO = "user_info/";
     public static final String UPDATE_PROFILE = "profile_update/";
     public static final String UPLOAD_IMAGE = "profile_pic_upload/";
+
+    //TRANSACTION URLS
+    public static final String TRANSACTION_DETAILS = "transaction_details/";
+    public static final String TRANSACTION_LIST = "transaction_list/";
+    public static final String TRANSACTION_LIST_DETAIL = "view_transaction_details/";
+    public static String DAILY_ID = "daily_payment_id";
 }

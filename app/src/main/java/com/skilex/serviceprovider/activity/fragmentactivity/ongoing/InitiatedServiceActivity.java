@@ -248,8 +248,8 @@ public class InitiatedServiceActivity  extends FragmentActivity implements OnMap
                 String string = getServiceData.getString("service_location");
                 if (!string.isEmpty()) {
                     String[] parts = string.split(",");
-                    String part1 = parts[0]; // 004
-                    String part2 = parts[1]; // 034556
+                    String part1 = parts[0]; // lat
+                    String part2 = parts[1]; // long
                     Double lat = Double.valueOf(part1);
                     Double longi = Double.valueOf(part2);
                     LatLng latLng = new LatLng(lat, longi);

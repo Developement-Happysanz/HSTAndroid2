@@ -7,21 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.skilex.serviceprovider.R;
-import com.skilex.serviceprovider.bean.support.RequestedServiceArray;
+import com.skilex.serviceprovider.bean.support.ServicePerson;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.servicehelpers.ServiceHelper;
-import com.skilex.serviceprovider.utils.PreferenceStorage;
 
 import java.util.ArrayList;
 
-public class RequestedServiceListAdapter extends BaseAdapter {
+public class ExpertListAdapter  extends BaseAdapter {
 
     //    private final Transformation transformation;
     private Context context;
-    private ArrayList<RequestedServiceArray> services;
+    private ArrayList<ServicePerson> services;
     private boolean mSearching = false;
     private boolean mAnimateSearch = false;
     Boolean click = false;
@@ -31,7 +33,7 @@ public class RequestedServiceListAdapter extends BaseAdapter {
 
 //    RejectedFragment dsf = new RejectedFragment();
 
-    public RequestedServiceListAdapter(Context context, ArrayList<RequestedServiceArray> services) {
+    public ExpertListAdapter(Context context, ArrayList<ServicePerson> services) {
         this.context = context;
         this.services = services;
 //        Collections.reverse(services);
@@ -70,48 +72,40 @@ public class RequestedServiceListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final RequestedServiceListAdapter.ViewHolder holder;
+        final ExpertListAdapter.ViewHolder holder;
 //        ViewHolder holder;
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.requested_service_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.service_person_list_item, parent, false);
 
-            holder = new RequestedServiceListAdapter.ViewHolder();
-            holder.txtCatName = convertView.findViewById(R.id.category_name);
-            holder.txtSubCatName = convertView.findViewById(R.id.sub_category_name);
-//            if (PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
-//                holder.txtCatName.setText(services.get(position).getServiceCategoryMainNameTA());
-//                holder.txtSubCatName.setText(services.get(position).getServiceNameTA());
-//            } else {
-            holder.txtCatName.setText(services.get(position).getServiceCategoryMainName());
-            holder.txtSubCatName.setText(services.get(position).getServiceName());
-//            }
-            holder.txtDate = convertView.findViewById(R.id.service_date);
-            holder.txtDate.setText(services.get(position).getServiceOrderDate());
-            holder.txtTime = convertView.findViewById(R.id.service_time_slot);
-            holder.txtTime.setText(services.get(position).getServiceOrderFromTime());
-            holder.txtLocation = convertView.findViewById(R.id.service_location);
-            holder.txtLocation.setText(services.get(position).getServiceLocation());
+            holder = new ExpertListAdapter.ViewHolder();
+            holder.txtCatName = convertView.findViewById(R.id.service_person_name);
+            holder.txtSubCatName = convertView.findViewById(R.id.service_person_number);
+            holder.status = convertView.findViewById(R.id.service_person_status);
+            holder.txtCatName.setText(services.get(position).getFull_name());
+            holder.txtSubCatName.setText("Phone: " +services.get(position).getPhone_no());
             convertView.setTag(holder);
 
         } else {
-            holder = (RequestedServiceListAdapter.ViewHolder) convertView.getTag();
+            holder = (ExpertListAdapter.ViewHolder) convertView.getTag();
 
-            holder.txtCatName = convertView.findViewById(R.id.category_name);
-            holder.txtSubCatName = convertView.findViewById(R.id.sub_category_name);
+            holder.txtCatName = convertView.findViewById(R.id.service_person_name);
+            holder.txtSubCatName = convertView.findViewById(R.id.service_person_number);
             /*if (PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
                 holder.txtCatName.setText(services.get(position).getServiceCategoryMainNameTA());
                 holder.txtSubCatName.setText(services.get(position).getServiceNameTA());
             } else {*/
-            holder.txtCatName.setText(services.get(position).getServiceCategoryMainName());
-            holder.txtSubCatName.setText(services.get(position).getServiceName());
-//            }
-            holder.txtDate = convertView.findViewById(R.id.service_date);
-            holder.txtDate.setText(services.get(position).getServiceOrderDate());
-            holder.txtTime = convertView.findViewById(R.id.service_time_slot);
-            holder.txtTime.setText(services.get(position).getServiceOrderFromTime());
-            holder.txtLocation = convertView.findViewById(R.id.service_location);
-            holder.txtLocation.setText(services.get(position).getServiceLocation());
+            holder.txtCatName.setText(services.get(position).getFull_name());
+            holder.txtSubCatName.setText(services.get(position).getPhone_no());
+            if(services.get(position).getServ_pers_verify_status().equalsIgnoreCase("Approved")){
+                holder.status.setVisibility(View.VISIBLE);
+                holder.status.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_servicebook_success));
+            } else if (services.get(position).getServ_pers_verify_status().equalsIgnoreCase("Rejected")){
+                holder.status.setVisibility(View.VISIBLE);
+                holder.status.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_servicebook_failed));
+            } else {
+                holder.status.setVisibility(View.GONE);
+            }
         }
 
         if (mSearching) {
@@ -130,7 +124,7 @@ public class RequestedServiceListAdapter extends BaseAdapter {
         Log.d("EventListAdapter", "serach for event" + eventName);
         mValidSearchIndices.clear();
         for (int i = 0; i < services.size(); i++) {
-            String homeWorkTitle = services.get(i).getServiceName();
+            String homeWorkTitle = services.get(i).getService_person_id();
             if ((homeWorkTitle != null) && !(homeWorkTitle.isEmpty())) {
                 if (homeWorkTitle.toLowerCase().contains(eventName.toLowerCase())) {
                     mValidSearchIndices.add(i);
@@ -151,7 +145,8 @@ public class RequestedServiceListAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        public TextView txtCatName, txtSubCatName, txtDate, txtTime, txtLocation;
+        public TextView txtCatName, txtSubCatName;
+        public ImageView status;
     }
 
     public boolean ismSearching() {

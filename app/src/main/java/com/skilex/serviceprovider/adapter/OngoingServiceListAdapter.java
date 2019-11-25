@@ -28,7 +28,7 @@ public class OngoingServiceListAdapter extends BaseAdapter {
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
 
-//    DynamicSubCatFragment dsf = new DynamicSubCatFragment();
+//    RejectedFragment dsf = new RejectedFragment();
 
     public OngoingServiceListAdapter(Context context, ArrayList<OngoingService> services) {
         this.context = context;

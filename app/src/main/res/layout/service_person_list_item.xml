@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shadow_round"
+        android:elevation="6dp">
+
+        <TextView
+            android:id="@+id/service_person_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TEST"
+            android:layout_margin="10dp"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/service_person_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:layout_below="@+id/service_person_name"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/service_person_status"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="TEST"
+            android:padding="10dp"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/blue"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_servicebook_success"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

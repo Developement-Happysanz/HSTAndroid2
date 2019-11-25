@@ -14,9 +14,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.serviceperson.ServicePersonCreationActivity;
+import com.skilex.serviceprovider.activity.serviceperson.ServicePersonStatusActivity;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
 import com.skilex.serviceprovider.interfaces.DialogClickListener;
 import com.skilex.serviceprovider.servicehelpers.ServiceHelper;
@@ -24,7 +26,7 @@ import com.skilex.serviceprovider.serviceinterfaces.IServiceListener;
 
 import org.json.JSONObject;
 
-public class ServiceExpertFragment extends Fragment implements IServiceListener, DialogClickListener {
+public class ServiceExpertFragment extends Fragment implements IServiceListener, DialogClickListener, View.OnClickListener {
 
     private static final String TAG = HomeFragment.class.getName();
     Context context;
@@ -32,6 +34,7 @@ public class ServiceExpertFragment extends Fragment implements IServiceListener,
     private ProgressDialogHelper progressDialogHelper;
     Handler mHandler = new Handler();
     private View rootView;
+    private TextView next;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class ServiceExpertFragment extends Fragment implements IServiceListener,
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_service_expert, container, false);
         getActivity().setTitle(R.string.service_expert);
+        next = rootView.findViewById(R.id.service_person_status);
+        next.setOnClickListener(this);
         return rootView;
     }
 
@@ -83,5 +88,13 @@ public class ServiceExpertFragment extends Fragment implements IServiceListener,
     @Override
     public void onError(String error) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == next) {
+            Intent intent = new Intent(getActivity(), ServicePersonStatusActivity.class);
+            startActivity(intent);
+        }
     }
 }

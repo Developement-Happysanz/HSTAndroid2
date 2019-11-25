@@ -257,6 +257,20 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name=".activity.fragmentactivity.transaction.TransactionHistoryActivity"
+            android:label="@string/transaction_details_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.fragmentactivity.transaction.TransactionHistoryDetailActivity"
+            android:label="@string/transaction_details_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name=".activity.serviceperson.ServicePersonCreationActivity"
             android:label="@string/service_person_title"
             android:screenOrientation="portrait"
@@ -279,6 +293,13 @@
 
         <activity
             android:name=".activity.serviceperson.DocUploadOnSuccessActivity"
+            android:label="@string/service_person_document_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.serviceperson.ServicePersonStatusActivity"
             android:label="@string/service_person_document_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -311,6 +332,13 @@
 
         <activity
             android:name=".activity.fragmentactivity.ongoing.InitiatedServiceActivity"
+            android:label="@string/ongoing_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.fragmentactivity.ongoing.AdditionalServicesListActivity"
             android:label="@string/ongoing_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"

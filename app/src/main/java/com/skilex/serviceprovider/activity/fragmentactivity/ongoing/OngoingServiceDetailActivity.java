@@ -62,8 +62,7 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
     private TextView txtServiceCategory, txtSubCategory, txtCustomerName, txtServiceDate, txtServiceTime, txtServiceProvider,
             txtStartDateTime, txtAttachBill;
     private EditText edtMaterialUsed;
-    private Button btnUpdate, btnSubmit;
-
+    private Button btnUpdate, btnSubmit,btnAdditional;
     private LinearLayout layoutResumeSection;
     private TextView txtResumeDateTime;
 
@@ -105,7 +104,8 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
         btnUpdate.setOnClickListener(this);
         btnSubmit = findViewById(R.id.btn_submit);
         btnSubmit.setOnClickListener(this);
-
+        btnAdditional = findViewById(R.id.btn_additional_services);
+        btnAdditional.setOnClickListener(this);
         layoutResumeSection = findViewById(R.id.ll_resume_section);
         txtResumeDateTime = findViewById(R.id.txt_resume_date_time);
     }
@@ -398,6 +398,11 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
 //                updateService();
             } else if (v == btnSubmit) {
 //                completeService();
+                finish();
+            } else if (v == btnAdditional) {
+                Intent intent = new Intent(getApplicationContext(), AdditionalServicesListActivity.class);
+                intent.putExtra("serviceObj", ongoingService);
+                startActivity(intent);
                 finish();
             }
 

@@ -24,6 +24,7 @@ import com.skilex.serviceprovider.utils.PreferenceStorage;
 
 import static com.skilex.serviceprovider.utils.SkilExConstants.API_ADVANCE_PAYMENT_URL;
 import static com.skilex.serviceprovider.utils.SkilExConstants.API_RSA_URL;
+import static com.skilex.serviceprovider.utils.SkilExConstants.API_SKILEX_PAYMENT_URL;
 
 
 public class InitialScreenActivity extends AppCompatActivity {
@@ -59,8 +60,8 @@ public class InitialScreenActivity extends AppCompatActivity {
             cancelUrl.setText(API_ADVANCE_PAYMENT_URL);
             rsaKeyUrl.setText(API_RSA_URL);
         } else {
-            redirectUrl.setText(API_ADVANCE_PAYMENT_URL);
-            cancelUrl.setText(API_ADVANCE_PAYMENT_URL);
+            redirectUrl.setText(API_SKILEX_PAYMENT_URL);
+            cancelUrl.setText(API_SKILEX_PAYMENT_URL);
             rsaKeyUrl.setText((API_RSA_URL));
         }
 

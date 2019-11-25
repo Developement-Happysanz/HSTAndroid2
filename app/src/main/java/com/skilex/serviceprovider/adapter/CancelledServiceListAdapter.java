@@ -29,7 +29,7 @@ public class CancelledServiceListAdapter extends BaseAdapter {
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
 
-//    DynamicSubCatFragment dsf = new DynamicSubCatFragment();
+//    RejectedFragment dsf = new RejectedFragment();
 
     public CancelledServiceListAdapter(Context context, ArrayList<CancelledService> services) {
         this.context = context;

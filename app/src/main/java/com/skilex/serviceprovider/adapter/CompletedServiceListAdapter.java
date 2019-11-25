@@ -29,7 +29,7 @@ public class CompletedServiceListAdapter extends BaseAdapter {
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
 
-//    DynamicSubCatFragment dsf = new DynamicSubCatFragment();
+//    RejectedFragment dsf = new RejectedFragment();
 
     public CompletedServiceListAdapter(Context context, ArrayList<CompletedService> services) {
         this.context = context;
