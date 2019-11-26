@@ -1,12 +1,17 @@
 package com.skilex.serviceprovider.activity.fragmentactivity.completed;
 
+import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.activity.fragmentactivity.ongoing.AdditionalServicesListActivity;
 import com.skilex.serviceprovider.activity.fragmentactivity.ongoing.OngoingServiceDetailActivity;
 import com.skilex.serviceprovider.bean.support.CompletedService;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
@@ -34,6 +39,8 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
     private TextView txtCategory, txtServiceName, txtCustomerName, txtServiceDate, txtServiceTimeSlot, txtServiceProvider,
             txtServicePerson, txtServiceStartDate, txtServiceEndDate, txtMaterialUsed, txtServiceAmount, txtAdditionalServiceAmount,
             txtSubTotalAmount, txtCouponContent, txtCouponAmount, txtAdvanceAmount, txtGrandTotal;
+
+    private LinearLayout additional;
 
     String res = "";
 
@@ -70,6 +77,8 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
         txtCouponAmount = findViewById(R.id.coupon_applied_amount);
         txtAdvanceAmount = findViewById(R.id.advance_charge_amount);
         txtGrandTotal = findViewById(R.id.grand_total_amount);
+        additional = findViewById(R.id.additional_layout);
+        additional.setOnClickListener(this);
     }
 
     private void loadServiceDetail() {
@@ -91,7 +100,12 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
 
     @Override
     public void onClick(View v) {
-
+        if (v == additional) {
+            Intent intent = new Intent(getApplicationContext(), AdditionalServicesListActivity.class);
+            intent.putExtra("serviceObj", completedService);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
