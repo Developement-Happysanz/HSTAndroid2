@@ -27,6 +27,7 @@ import com.skilex.serviceprovider.ccavenue.utility.Constants;
 import com.skilex.serviceprovider.ccavenue.utility.LoadingDialog;
 import com.skilex.serviceprovider.ccavenue.utility.RSAUtility;
 import com.skilex.serviceprovider.ccavenue.utility.ServiceUtility;
+import com.skilex.serviceprovider.utils.PreferenceStorage;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -109,7 +110,13 @@ public class WebViewActivity extends AppCompatActivity {
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(webview, url);
                     LoadingDialog.cancelLoading();
-                    if (url.indexOf("/serv_provider_advance.php") != -1) { //ccavResponseHandler.jsp
+                    String paymentUrl = "";
+                    if (PreferenceStorage.getPaymentType(getApplicationContext()).equalsIgnoreCase("advance")){
+                        paymentUrl = "/serv_provider_advance.php";
+                    } else {
+                        paymentUrl = "/serv_provider_payment.php";
+                    }
+                    if (url.indexOf(paymentUrl) != -1) { //ccavResponseHandler.jsp
                         webview.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
                     }
 //                    else if (url.contains("/service_net_amount.php")) {
