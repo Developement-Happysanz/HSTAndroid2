@@ -204,7 +204,7 @@ public class TransactionHistoryDetailActivity extends BaseActivity implements IS
     @Override
     public void onClick(View v) {
         if (v == paySkilex) {
-            PreferenceStorage.savePaymentType(getApplicationContext(), "advance");
+            PreferenceStorage.savePaymentType(getApplicationContext(), "payment");
             Intent i = new Intent(getApplicationContext(), InitialScreenActivity.class);
             String[] parts = toSkilex.getText().toString().split("₹");
             String part1 = parts[0]; // empty

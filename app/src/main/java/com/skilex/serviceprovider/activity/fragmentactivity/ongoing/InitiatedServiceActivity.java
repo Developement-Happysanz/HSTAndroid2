@@ -93,8 +93,6 @@ public class InitiatedServiceActivity  extends FragmentActivity implements OnMap
         btnTrack = findViewById(R.id.btn_track);
         btnTrack.setOnClickListener(this);
 
-        loadServiceDetails();
-
 //        startTimer();
 
         Bundle mapViewBundle = null;
