@@ -84,6 +84,17 @@ public class ExpertListAdapter  extends BaseAdapter {
             holder.status = convertView.findViewById(R.id.service_person_status);
             holder.txtCatName.setText(services.get(position).getFull_name());
             holder.txtSubCatName.setText("Phone: " +services.get(position).getPhone_no());
+            holder.txtCatName.setText(services.get(position).getFull_name());
+            holder.txtSubCatName.setText(services.get(position).getPhone_no());
+            if(services.get(position).getServ_pers_verify_status().equalsIgnoreCase("Approved")){
+                holder.status.setVisibility(View.VISIBLE);
+                holder.status.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_servicebook_success));
+            } else if (services.get(position).getServ_pers_verify_status().equalsIgnoreCase("Rejected")){
+                holder.status.setVisibility(View.VISIBLE);
+                holder.status.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_servicebook_failed));
+            } else {
+                holder.status.setVisibility(View.GONE);
+            }
             convertView.setTag(holder);
 
         } else {
