@@ -3,6 +3,7 @@ package com.skilex.serviceprovider.activity.loginmodule;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 
@@ -112,6 +113,15 @@ public class RegisterActivity extends BaseActivity implements IServiceListener, 
             edtRegisterPhoneNumber.setError(getString(R.string.error_number));
             requestFocus(edtRegisterPhoneNumber);
             return false;
+        } else if (this.edtRegisterEmailID.getText().length() > 0) {
+            if (!SkilExValidator.isEmailValid(this.edtRegisterEmailID.getText().toString().trim())) {
+                edtRegisterEmailID.setError(getString(R.string.error_mail));
+                requestFocus(edtRegisterEmailID);
+                return false;
+            } else {
+                return true;
+            }
+//            return false;
         } else {
             return true;
         }
@@ -172,7 +182,7 @@ public class RegisterActivity extends BaseActivity implements IServiceListener, 
                 PreferenceStorage.saveLoginType(getApplicationContext(), "Register");
 
                 Intent i = new Intent(RegisterActivity.this, OTPVerificationActivity.class);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 startActivity(i);
 
             } catch (Exception ex) {

@@ -115,7 +115,16 @@ public class ServicePersonCreationActivity extends BaseActivity implements Dialo
             edtServicePersonMobileNumber.setError(getString(R.string.error_number));
             requestFocus(edtServicePersonMobileNumber);
             return false;
-        } else {
+        } else if (this.edtServicePersonMailId.getText().length() > 0) {
+            if (!SkilExValidator.isEmailValid(this.edtServicePersonMailId.getText().toString().trim())) {
+                edtServicePersonMailId.setError(getString(R.string.error_mail));
+                requestFocus(edtServicePersonMailId);
+                return false;
+            } else {
+                return true;
+            }
+//            return false;
+        }else {
             return true;
         }
     }

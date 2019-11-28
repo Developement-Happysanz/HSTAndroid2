@@ -8,7 +8,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.annotation.Nullable;
+
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -423,7 +425,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
             } else if (v == txtTerms) {
                 Intent homeIntent = new Intent(getApplicationContext(), TermOfAgreementActivity.class);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                 startActivity(homeIntent);
             }
         } else {
@@ -439,9 +441,9 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
             case 2:
                 Toast.makeText(getApplicationContext(), "Complete id proof upload", Toast.LENGTH_LONG).show();
                 break;
-            case 3:
-                Toast.makeText(getApplicationContext(), "Complete RC certificate upload", Toast.LENGTH_LONG).show();
-                break;
+//            case 3:
+//                Toast.makeText(getApplicationContext(), "Complete RC certificate upload", Toast.LENGTH_LONG).show();
+//                break;
             case 4:
                 Toast.makeText(getApplicationContext(), "Complete GST certificate upload", Toast.LENGTH_LONG).show();
                 break;
@@ -680,7 +682,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     txtUploadProof1.setText("");
                     txtUploadProof1.setEnabled(false);
                     txtUploadProof1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 3;
+                    flag = 4;
                 }
                 /*else if (flag == 3) {
                     edtProofNo2.setEnabled(false);
@@ -747,6 +749,11 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 requestFocus(edtPanCardNumber);
                 return false;
             }
+            else if (!SkilExValidator.checkAadhaarCardLength(this.edtPanCardNumber.getText().toString().trim())) {
+                edtPanCardNumber.setError(getString(R.string.error_aadhaar));
+                requestFocus(edtPanCardNumber);
+                return false;
+            }
         }
         if (flag == 2) {
             if (!SkilExValidator.checkNullString(this.edtProofNo1.getText().toString().trim())) {
@@ -762,13 +769,13 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
 //                return false;
 //            }
 //        }
-        if (flag == 3) {
+        /*if (flag == 3) {
             if (!SkilExValidator.checkNullString(this.edtRCCertificateNumber.getText().toString().trim())) {
                 edtRCCertificateNumber.setError(getString(R.string.empty_entry));
                 requestFocus(edtRCCertificateNumber);
                 return false;
             }
-        }
+        }*/
         if (flag == 4) {
             if (!SkilExValidator.checkNullString(this.edtGSTNumber.getText().toString().trim())) {
                 edtGSTNumber.setError(getString(R.string.empty_entry));
@@ -918,7 +925,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
 
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 }

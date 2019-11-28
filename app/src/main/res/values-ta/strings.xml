@@ -84,7 +84,7 @@
     <!--Registered organization document upload-->
     <string name="reg_doc_upload_action_bar">ஆவணங்கள்</string>
     <string name="reg_doc_upload_title">சேவை நிறுவனத்தின் ஆவணங்கள்</string>
-    <string name="org_rc">ஆர். சி. சான்றிதழ் எண்</string>
+    <string name="org_rc">ஆர். சி. சான்றிதழ் எண் (விருப்பத் தேர்வு)</string>
     <string name="org_rc_hint">ஆர். சி. சான்றிதழ் எண்ணை என்டர் செய்யவும்</string>
     <string name="org_gst">ஜி. எஸ். டி. சான்றிதழ் எண்</string>
     <string name="org_gst_hint">ஜி. எஸ். டி.  சான்றிதழ் எண்ணை என்டர் செய்யவும்</string>
@@ -277,6 +277,8 @@
     <string name="error_mail">சரியான மின்னஞ்சல் முகவரியை என்டர் செய்யவும்.</string>
     <string name="error_number">சரியான தொலைபேசி எண்ணை என்டர் செய்யவும்.</string>
     <string name="empty_entry">கட்டாயமாக நிரப்பப்பட வேண்டிய இடம்.</string>
+    <string name="error_pincode">சரியான பின்கோடை என்டர் செய்யவும்.</string>
+    <string name="error_aadhaar">சரியான ஆதார் எண்ணை என்டர் செய்யவும்.</string>
     <string name="empty_spinner">Select some value</string>
 
     <!--Home fragment-->

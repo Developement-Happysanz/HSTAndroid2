@@ -50,6 +50,11 @@ public class AdditionalServicesListActivity extends BaseActivity implements ISer
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_additional_services_list);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -59,6 +64,12 @@ public class AdditionalServicesListActivity extends BaseActivity implements ISer
 
         loadMoreListView = findViewById(R.id.listSumService);
         callGetSubCategoryService();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 //
 //    @Override

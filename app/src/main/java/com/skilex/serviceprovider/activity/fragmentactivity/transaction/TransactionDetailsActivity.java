@@ -47,6 +47,11 @@ public class TransactionDetailsActivity extends BaseActivity implements IService
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_details);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -69,6 +74,12 @@ public class TransactionDetailsActivity extends BaseActivity implements IService
         goNext.setOnClickListener(this);
 
         callReqService();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     public void callReqService() {

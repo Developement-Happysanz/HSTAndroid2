@@ -181,12 +181,11 @@ public class RegisteredOrganizationInfoActivity extends BaseActivity implements 
             edtRegCompanyPinCode.setError(getString(R.string.empty_entry));
             requestFocus(edtRegCompanyPinCode);
             return false;
+        } else if (!SkilExValidator.checkPinCodeLength(this.edtRegCompanyPinCode.getText().toString().trim())) {
+            edtRegCompanyPinCode.setError(getString(R.string.error_pincode));
+            requestFocus(edtRegCompanyPinCode);
+            return false;
         }
-//        else if (!SkilExValidator.checkPinCodeLength(this.edtRegCompanyPinCode.getText().toString().trim())) {
-//            edtRegCompanyPinCode.setError(getString(R.string.empty_entry));
-//            requestFocus(edtRegCompanyPinCode);
-//            return false;
-//        }
         else if (!SkilExValidator.checkNullString(this.edtRegCompanyState.getText().toString().trim())) {
             edtRegCompanyState.setError(getString(R.string.empty_entry));
             requestFocus(edtRegCompanyState);

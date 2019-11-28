@@ -51,6 +51,10 @@ public class AssignedServiceDetailActivity extends BaseActivity implements IServ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assigned_service_detail);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -60,6 +64,12 @@ public class AssignedServiceDetailActivity extends BaseActivity implements IServ
         setUpUI();
         loadServiceDetails();
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     void setUpUI() {

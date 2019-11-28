@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
@@ -113,6 +114,10 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -178,6 +183,12 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 return view;
             }
         };
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void showGenderList() {
@@ -266,6 +277,15 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             edtName.setError(getString(R.string.error_entry));
             requestFocus(edtName);
             return false;
+        } else if (this.edtMail.getText().length() > 0) {
+            if (!SkilExValidator.isEmailValid(this.edtMail.getText().toString().trim())) {
+                edtMail.setError(getString(R.string.error_mail));
+                requestFocus(edtMail);
+                return false;
+            } else {
+                return true;
+            }
+//            return false;
         }
 //        else if (!SkilExValidator.checkNullString(this.edtMail.getText().toString().trim())) {
 //            edtMail.setError(getString(R.string.error_entry));

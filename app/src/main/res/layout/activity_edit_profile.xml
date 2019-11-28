@@ -52,7 +52,7 @@
                     android:clickable="false"
                     android:fontFamily="@font/helvetica"
                     android:hint="@string/user_name"
-                    android:inputType="text"
+                    android:inputType="textCapSentences"
                     android:singleLine="true"
                     android:textSize="14sp" />
 

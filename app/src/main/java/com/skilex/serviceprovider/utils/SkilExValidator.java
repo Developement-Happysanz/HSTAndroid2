@@ -33,9 +33,17 @@ public class SkilExValidator {
 
     public static boolean checkPinCodeLength(String mobile) {
         if (mobile.length() == 6) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean checkAadhaarCardLength(String mobile) {
+        if (mobile.length() == 12) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

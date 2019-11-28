@@ -57,11 +57,22 @@ public class CancelRequestedServiceActivity extends BaseActivity implements ISer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cancel_service);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
         initVal();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void initVal() {

@@ -51,11 +51,11 @@
                 android:background="@drawable/rounded_edge_trans_bg_with_border"
                 android:drawableStart="@drawable/ic_person_black_24dp"
                 android:hint="@string/reg_name_hint"
+                android:inputType="textCapSentences"
                 android:paddingStart="12dp"
                 android:paddingEnd="1dp"
-
-                android:text=""
                 android:singleLine="true"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -90,9 +90,8 @@
                 android:maxLength="10"
                 android:paddingStart="12dp"
                 android:paddingEnd="1dp"
-
-                android:text=""
                 android:singleLine="true"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -126,9 +125,8 @@
                 android:inputType="textEmailAddress"
                 android:paddingStart="12dp"
                 android:paddingEnd="1dp"
-
-                android:text=""
                 android:singleLine="true"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 

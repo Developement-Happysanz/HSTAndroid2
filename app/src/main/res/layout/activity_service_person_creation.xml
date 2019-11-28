@@ -82,7 +82,9 @@
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
                     android:singleLine="true"
+                    android:inputType="textCapSentences"
                     android:text=""
+                    android:maxLength="50"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -110,11 +112,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
-                    android:drawableStart="@drawable/ic_person_black_24dp"
+                    android:drawableStart="@drawable/ic_phone_android_black_24dp"
                     android:hint="@string/reg_name_hint"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
                     android:singleLine="true"
+                    android:maxLines="10"
+                    android:inputType="number"
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -143,12 +147,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
-                    android:drawableStart="@drawable/ic_person_black_24dp"
+                    android:drawableStart="@drawable/ic_email_black_24dp"
                     android:hint="@string/reg_name_hint"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
+                    android:inputType="textEmailAddress"
                     android:singleLine="true"
                     android:text=""
+                    android:maxLength="50"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
