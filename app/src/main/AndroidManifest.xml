@@ -287,7 +287,6 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
-
         <activity
             android:name=".activity.serviceperson.ServicePersonDetailInfoActivity"
             android:label="@string/service_person_detail_info_title"
