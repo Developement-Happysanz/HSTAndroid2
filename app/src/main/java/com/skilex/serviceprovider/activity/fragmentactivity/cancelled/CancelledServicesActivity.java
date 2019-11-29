@@ -111,9 +111,9 @@ public class CancelledServicesActivity extends BaseActivity implements IServiceL
             service = cancelledServiceArrayList.get(position);
         }
 
-        Intent intent = new Intent(this, CancelledServiceDetailActivity.class);
-        intent.putExtra("serviceObj", service);
-        startActivity(intent);
+//        Intent intent = new Intent(this, CancelledServiceDetailActivity.class);
+//        intent.putExtra("serviceObj", service);
+//        startActivity(intent);
     }
 
     @Override
