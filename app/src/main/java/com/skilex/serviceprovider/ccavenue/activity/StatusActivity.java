@@ -68,9 +68,15 @@ public class StatusActivity extends AppCompatActivity implements IServiceListene
             rate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), InitialDepositActivity.class);
-                    startActivity(intent);
-                    finish();
+                    if (PreferenceStorage.getPaymentType(getApplicationContext()).equalsIgnoreCase("advance")) {
+                        Intent intent = new Intent(getApplicationContext(), InitialDepositActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), TransactionHistoryActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             });
         } else {
@@ -83,9 +89,9 @@ public class StatusActivity extends AppCompatActivity implements IServiceListene
             rate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (PreferenceStorage.getPaymentType(getApplicationContext()).equalsIgnoreCase("advance")){
+                    if (PreferenceStorage.getPaymentType(getApplicationContext()).equalsIgnoreCase("advance")) {
                         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                         startActivity(intent);
                     } else {
                         Intent intent = new Intent(getApplicationContext(), TransactionHistoryActivity.class);

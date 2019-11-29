@@ -48,6 +48,11 @@ public class TransactionHistoryActivity extends BaseActivity implements IService
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trasanction_history);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -55,6 +60,12 @@ public class TransactionHistoryActivity extends BaseActivity implements IService
         transHistoryList.setOnItemClickListener(this);
 
         callReqService();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     public void callReqService() {

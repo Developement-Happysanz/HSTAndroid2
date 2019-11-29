@@ -605,6 +605,10 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                 edtPanCardNumber.setError(getString(R.string.empty_entry));
                 requestFocus(edtPanCardNumber);
                 return false;
+            } else if (!SkilExValidator.checkAadhaarCardLength(this.edtPanCardNumber.getText().toString().trim())) {
+                edtPanCardNumber.setError(getString(R.string.error_aadhaar));
+                requestFocus(edtPanCardNumber);
+                return false;
             }
         }
         if (flag == 2) {

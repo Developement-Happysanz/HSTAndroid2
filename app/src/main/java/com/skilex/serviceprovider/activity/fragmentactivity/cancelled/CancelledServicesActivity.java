@@ -52,6 +52,11 @@ public class CancelledServicesActivity extends BaseActivity implements IServiceL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cancelled_service);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -60,6 +65,12 @@ public class CancelledServicesActivity extends BaseActivity implements IServiceL
         loadMoreListView.setOnItemClickListener(this);
 
         callCancelledService();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     public void callCancelledService() {

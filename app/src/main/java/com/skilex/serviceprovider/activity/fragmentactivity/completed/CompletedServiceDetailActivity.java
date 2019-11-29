@@ -59,6 +59,12 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
         loadServiceDetail();
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     void init() {
         txtCategory = findViewById(R.id.service_category);
         txtServiceName = findViewById(R.id.service_name);

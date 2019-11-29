@@ -209,7 +209,11 @@ public class ServicePersonDetailInfoActivity extends BaseActivity implements Dat
             edtPinCode.setError(getString(R.string.empty_entry));
             requestFocus(edtPinCode);
             return false;
-        } else if (!SkilExValidator.checkNullString(this.edtState.getText().toString().trim())) {
+        } else if (!SkilExValidator.checkPinCodeLength(this.edtPinCode.getText().toString().trim())) {
+            edtPinCode.setError(getString(R.string.error_pincode));
+            requestFocus(edtPinCode);
+            return false;
+        }else if (!SkilExValidator.checkNullString(this.edtState.getText().toString().trim())) {
             edtState.setError(getString(R.string.empty_entry));
             requestFocus(edtState);
             return false;

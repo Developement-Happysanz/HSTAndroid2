@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
@@ -64,15 +65,13 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
     private static final String TAG = OTPVerificationActivity.class.getName();
 
     private CustomOtpEditText otpEditText;
-    private TextView tvResendOTP;
+    private TextView tvResendOTP, tvCountDown;
     private ImageView btnConfirm;
     private String mobileNo;
     private String checkVerify;
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
     String getUserMasterId, getMobileNumber;
-
-    boolean doubleBackToExitPressedOnce = false;
 
     private SmsBrReceiver smsReceiver;
 
@@ -82,6 +81,10 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_verification);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -89,6 +92,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
         otpEditText = findViewById(R.id.otp_view);
         tvResendOTP = findViewById(R.id.resend);
         tvResendOTP.setOnClickListener(this);
+        tvCountDown = findViewById(R.id.contentresend);
         btnConfirm = findViewById(R.id.sendcode);
         btnConfirm.setOnClickListener(this);
 
@@ -123,27 +127,47 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                 Toast.makeText(OTPVerificationActivity.this, "Failed listening for otp...", Toast.LENGTH_SHORT).show();
             }
         });
+
+        /*new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                tvCountDown.setText("Resend again in " + millisUntilFinished / 1000 + " seconds");
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+                tvCountDown.setText("done!");
+            }
+
+        }.start();*/
+        countDownTimers();
+
+    }
+
+    void countDownTimers() {
+        new CountDownTimer(30 * 1000 + 1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                tvResendOTP.setVisibility(View.GONE);
+                int seconds = (int) (millisUntilFinished / 1000);
+                int minutes = seconds / 60;
+                seconds = seconds % 60;
+                tvCountDown.setText("Resend in " + String.format("%02d", minutes)
+                        + ":" + String.format("%02d", seconds) + " seconds");
+            }
+
+            public void onFinish() {
+                tvCountDown.setText("Try again...");
+                tvCountDown.setVisibility(View.GONE);
+                tvResendOTP.setVisibility(View.VISIBLE);
+            }
+        }.start();
     }
 
     @Override
-    public void onBackPressed() {
-        //Checking for fragment count on backstack
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        } else if (!doubleBackToExitPressedOnce) {
-            this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    doubleBackToExitPressedOnce = false;
-                }
-            }, 2000);
-        } else {
-            super.onBackPressed();
-            return;
-        }
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
@@ -166,6 +190,8 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
+                                countDownTimers();
+                                tvCountDown.setVisibility(View.VISIBLE);
                                 checkVerify = "Resend";
                                 JSONObject jsonObject = new JSONObject();
                                 try {
@@ -278,20 +304,20 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                     Intent i = new Intent(OTPVerificationActivity.this, UploadProfilePicActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     i.putExtra("ProviderPersonCheck", "Provider");
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 } else if (countCategory.equalsIgnoreCase("0")) {
                     Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     i.putExtra("ProviderPersonCheck", "Provider");
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 } else if (getCompanyType.isEmpty()) {
                     Intent intent = new Intent(this, OrganizationTypeSelectionActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     startActivity(intent);
                     finish();
                 } else if (getServiceProviderBasicStatus.isEmpty()) {
@@ -299,14 +325,14 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                         Intent intent = new Intent(this, RegisteredOrganizationInfoActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("backArrowFlag", "OTP");
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                         startActivity(intent);
                         finish();
                     } else {
                         Intent intent = new Intent(this, UnRegisteredOrganizationInfoActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("backArrowFlag", "OTP");
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                         startActivity(intent);
                         finish();
                     }
@@ -315,20 +341,20 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                     if (getCompanyType.equalsIgnoreCase("Company")) {
                         Intent i = new Intent(this, RegOrgDocumentUploadActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                         startActivity(i);
                         finish();
                     } else {
                         Intent intent = new Intent(this, UnRegOrgDocumentUploadActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                         startActivity(intent);
                         finish();
                     }
                 } else if (getPaymentStatus.equalsIgnoreCase("Unpaid")) {
                     Intent i = new Intent(getApplicationContext(), InitialDepositActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     startActivity(i);
                     finish();
                 } else {
@@ -337,7 +363,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                         Intent i = new Intent(OTPVerificationActivity.this, CategorySelectionActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         i.putExtra("ProviderPersonCheck", "Provider");
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                         startActivity(i);
                         finish();
                     } else if (loginType.equalsIgnoreCase("Login")) {
@@ -348,14 +374,14 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 //                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
                                     Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                                     startActivity(intent);
                                     finish();
                                 } else {
 //                                    Intent intent = new Intent(this, UnRegOrgDocStatus.class);
                                     Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -364,7 +390,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                                 Intent i = new Intent(OTPVerificationActivity.this, DocumentVerifySuccessActivity.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                                 startActivity(i);
                                 finish();
                             }
@@ -386,7 +412,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
 
                             Intent i = new Intent(OTPVerificationActivity.this, LandingPageActivity.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                             startActivity(i);
                             finish();
                         }

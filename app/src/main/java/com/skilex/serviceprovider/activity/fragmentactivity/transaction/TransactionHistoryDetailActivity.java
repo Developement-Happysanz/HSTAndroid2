@@ -60,6 +60,10 @@ public class TransactionHistoryDetailActivity extends BaseActivity implements IS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trasanction_history_detail);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -71,6 +75,12 @@ public class TransactionHistoryDetailActivity extends BaseActivity implements IS
 
         setUpUI();
         transdetail();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     void setUpUI() {

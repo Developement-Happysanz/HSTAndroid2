@@ -84,6 +84,7 @@ public class ExpertListAdapter  extends BaseAdapter {
             holder.status = convertView.findViewById(R.id.service_person_status);
             holder.txtCatName.setText(services.get(position).getFull_name());
             holder.txtSubCatName.setText("Phone: " +services.get(position).getPhone_no());
+
             holder.txtCatName.setText(services.get(position).getFull_name());
             holder.txtSubCatName.setText(services.get(position).getPhone_no());
             if(services.get(position).getServ_pers_verify_status().equalsIgnoreCase("Approved")){
@@ -95,6 +96,7 @@ public class ExpertListAdapter  extends BaseAdapter {
             } else {
                 holder.status.setVisibility(View.GONE);
             }
+
             convertView.setTag(holder);
 
         } else {

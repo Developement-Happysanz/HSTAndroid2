@@ -81,7 +81,7 @@
     <!--Registered organization document upload-->
     <string name="reg_doc_upload_action_bar">Documentation</string>
     <string name="reg_doc_upload_title">Documentation of Service Organization</string>
-    <string name="org_rc">RC Certificate Number</string>
+    <string name="org_rc">RC Certificate Number (Optional)</string>
     <string name="org_rc_hint">Enter RC Certificate Number</string>
     <string name="org_gst">GST Certificate Number</string>
     <string name="org_gst_hint">Enter GST Number</string>
@@ -193,6 +193,8 @@
     <string name="error_mail">Enter valid mail ID</string>
     <string name="error_number">Enter valid phone number</string>
     <string name="empty_entry">Field cannot be empty</string>
+    <string name="error_pincode">Enter valid pincode</string>
+    <string name="error_aadhaar">Enter valid Aadhaar no</string>
     <string name="empty_spinner">Select some value </string>
 
     <!--Landing page-->

@@ -266,6 +266,7 @@
                     android:maxLength="80"
                     android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                     android:paddingStart="12dp"
+                    android:inputType="textCapSentences"
                     android:paddingEnd="1dp"
                     android:singleLine="true" />
 

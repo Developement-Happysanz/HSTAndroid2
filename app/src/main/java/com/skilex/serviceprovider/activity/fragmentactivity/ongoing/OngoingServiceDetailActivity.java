@@ -79,6 +79,10 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ongoing_service_detail);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -87,6 +91,12 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
 
         init();
         loadServiceDetail();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     void init() {
@@ -403,7 +413,7 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
                 Intent intent = new Intent(getApplicationContext(), AdditionalServicesListActivity.class);
                 intent.putExtra("serviceObj", ongoingService);
                 startActivity(intent);
-                finish();
+//                finish();
             }
 
         } else {

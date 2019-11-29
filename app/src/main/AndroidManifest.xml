@@ -73,11 +73,7 @@
             android:label="@string/otp_action_bar"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.loginmodule.LoginActivity" />
-        </activity>
+            android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activity.providerregistration.CategorySelectionActivity"
@@ -291,7 +287,6 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
-
         <activity
             android:name=".activity.serviceperson.ServicePersonDetailInfoActivity"
             android:label="@string/service_person_detail_info_title"
@@ -350,7 +345,11 @@
             android:label="@string/ongoing_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.fragmentactivity.ongoing.OnGoingServicesActivity" />
+        </activity>
 
         <activity
             android:name=".activity.fragmentactivity.ongoing.AdditionalServicesListActivity"

@@ -34,6 +34,11 @@ public class ServicePersonStatusActivity extends BaseActivity implements IServic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_person_status);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
@@ -75,6 +80,12 @@ public class ServicePersonStatusActivity extends BaseActivity implements IServic
             tab.setTabMode(TabLayout.
                     MODE_SCROLLABLE);
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
