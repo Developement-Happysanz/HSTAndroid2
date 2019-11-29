@@ -121,7 +121,7 @@ public class TransactionListAdapter extends BaseAdapter {
             holder.fromSkilex = convertView.findViewById(R.id.from_skilex);
             holder.fromSkilex.setText("₹" + services.get(position).getOnline_serv_prov_commission());
             holder.toSkilex = convertView.findViewById(R.id.to_skilex);
-            holder.toSkilex.setText("₹" + services.get(position).getOffline_skilex_commission());
+            holder.toSkilex.setText("₹" + services.get(position).getPay_to_serv_prov());
             convertView.setTag(holder);
 
         } else {
@@ -169,7 +169,7 @@ public class TransactionListAdapter extends BaseAdapter {
             holder.fromSkilex = convertView.findViewById(R.id.from_skilex);
             holder.fromSkilex.setText("₹" + services.get(position).getOnline_serv_prov_commission());
             holder.toSkilex = convertView.findViewById(R.id.to_skilex);
-            holder.toSkilex.setText("₹" + services.get(position).getOffline_skilex_commission());
+            holder.toSkilex.setText("₹" + services.get(position).getPay_to_serv_prov());
         }
 
         if (mSearching) {
