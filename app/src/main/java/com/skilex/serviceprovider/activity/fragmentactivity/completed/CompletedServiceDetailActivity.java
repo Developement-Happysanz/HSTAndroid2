@@ -49,6 +49,10 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_completed_service_details);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);

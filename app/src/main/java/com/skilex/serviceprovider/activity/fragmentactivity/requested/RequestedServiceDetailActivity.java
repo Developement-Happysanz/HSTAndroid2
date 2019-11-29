@@ -3,7 +3,9 @@ package com.skilex.serviceprovider.activity.fragmentactivity.requested;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -162,6 +164,7 @@ public class RequestedServiceDetailActivity extends BaseActivity implements ISer
                     finish();
 
                 } else if (res.equalsIgnoreCase("loadExpert")) {
+                    btnAccept.setVisibility(View.GONE);
                     JSONArray getData = response.getJSONArray("list_service_persons");
                     JSONObject userData = getData.getJSONObject(0);
                     int getLength = getData.length();

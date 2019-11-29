@@ -71,27 +71,6 @@ public class AdditionalServicesListActivity extends BaseActivity implements ISer
         onBackPressed();
         return true;
     }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.service_person_menu, menu);
-//        return true;
-//    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.add_service_person:
-//                Intent intent = new Intent(getApplicationContext(), AddAdditionalServices.class);
-//                intent.putExtra("serviceObj", ongoingService);
-//                startActivity(intent);
-//                finish();
-//                break;
-//        }
-        return true;
-    }
-
 
     public void callGetSubCategoryService() {
         if (CommonUtils.isNetworkAvailable(this)) {

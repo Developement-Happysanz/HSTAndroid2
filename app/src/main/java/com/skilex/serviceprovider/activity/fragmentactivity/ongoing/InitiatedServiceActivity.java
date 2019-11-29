@@ -93,6 +93,13 @@ public class InitiatedServiceActivity  extends FragmentActivity implements OnMap
         btnTrack = findViewById(R.id.btn_track);
         btnTrack.setOnClickListener(this);
 
+        findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 //        startTimer();
 
         Bundle mapViewBundle = null;
@@ -240,7 +247,7 @@ public class InitiatedServiceActivity  extends FragmentActivity implements OnMap
 
                 cusName.setText(getServiceData.getString("contact_person_name"));
                 cusPhone.setText(getServiceData.getString("contact_person_number"));
-//                cusAddress.setText(getServiceData.getString("service_address"));
+                cusAddress.setText(getServiceData.getString("status"));
 
                 String string = getServiceData.getString("service_location");
                 if (!string.isEmpty()) {

@@ -247,6 +247,9 @@
     <!--OnGoing Services-->
     <string name="ongoing_title">Ongoing Services</string>
 
+    <!--Additional Services-->
+    <string name="additional_title">Additional Services</string>
+
     <!--Completed Services-->
     <string name="completed_title">Completed Services</string>
 
