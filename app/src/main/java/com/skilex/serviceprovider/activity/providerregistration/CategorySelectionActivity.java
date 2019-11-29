@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -78,6 +79,18 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_selection);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            checkProviderAndPerson = extras.getString("ProviderPersonCheck");
+            //The key argument here must match that used in the other activity
+        }
+
+        if (checkProviderAndPerson.equalsIgnoreCase("ProviderUpdate")) {
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            }
+        }
+
         txtGoNext = findViewById(R.id.text_gonext);
         txtGoNext.setOnClickListener(this);
         txtSelectAll = findViewById(R.id.checkBox);
@@ -105,14 +118,13 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            checkProviderAndPerson = extras.getString("ProviderPersonCheck");
-            //The key argument here must match that used in the other activity
-        }
-
         getCategories();
+    }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
@@ -122,7 +134,11 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
             getSupportFragmentManager().popBackStack();
         } else if (!doubleBackToExitPressedOnce) {
             this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            if (checkProviderAndPerson.equalsIgnoreCase("ProviderUpdate")) {
+                Toast.makeText(this, "Please click again to back.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+            }
             new Handler().postDelayed(new Runnable() {
 
                 @Override
@@ -307,7 +323,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
                 if (checkProviderAndPerson.equalsIgnoreCase("Provider")) {
                     Intent intent = new Intent(this, OrganizationTypeSelectionActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                     startActivity(intent);
                     finish();
                 } else if (checkProviderAndPerson.equalsIgnoreCase("ProviderUpdate")) {
