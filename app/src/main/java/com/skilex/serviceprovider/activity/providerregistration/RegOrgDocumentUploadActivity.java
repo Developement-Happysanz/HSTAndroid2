@@ -448,10 +448,10 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 Toast.makeText(getApplicationContext(), "Complete GST certificate upload", Toast.LENGTH_LONG).show();
                 break;
             case 5:
-                Toast.makeText(getApplicationContext(), "Complete organization PAN card upload", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Complete organization address proof upload", Toast.LENGTH_LONG).show();
                 break;
             case 6:
-                Toast.makeText(getApplicationContext(), "Complete organization address proof upload", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Complete organization PAN card upload", Toast.LENGTH_LONG).show();
                 break;
             case 7:
                 Toast.makeText(getApplicationContext(), "Complete bank pass book upload", Toast.LENGTH_LONG).show();
@@ -708,17 +708,17 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     txtUploadGST.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
                     flag = 5;
                 } else if (flag == 5) {
+                    spnAddressProofType.setEnabled(false);
+                    txtUploadAddressProof.setText("");
+                    txtUploadAddressProof.setEnabled(false);
+                    txtUploadAddressProof.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+                    flag = 6;
+                } else if (flag == 6) {
                     edtOrgPanCardNumber.setEnabled(false);
                     edtOrgPanCardNumber.setFocusable(false);
                     txtUploadOrgPan.setText("");
                     txtUploadOrgPan.setEnabled(false);
                     txtUploadOrgPan.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 6;
-                } else if (flag == 6) {
-                    spnAddressProofType.setEnabled(false);
-                    txtUploadAddressProof.setText("");
-                    txtUploadAddressProof.setEnabled(false);
-                    txtUploadAddressProof.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
                     flag = 7;
                 } else if (flag == 7) {
                     edtBankName.setEnabled(false);

@@ -218,6 +218,59 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
+                <LinearLayout
+                    android:id="@+id/ll_gst_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="1dp"
+                        android:text="@string/org_gst"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/edtGSTNo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="3"
+                            android:background="@drawable/rounded_edge_trans_bg_with_border"
+                            android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            android:hint="@string/org_gst_hint"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="15"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="1dp"
+                            android:singleLine="true"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/txtUploadGST"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.1"
+                            android:drawableTop="@drawable/ic_uploading"
+                            android:gravity="center"
+                            android:text="@string/upload"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -265,7 +318,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_gst_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -276,7 +328,7 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
-                    android:text="@string/org_gst"
+                    android:text="@string/id_address_title"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal" />
@@ -288,27 +340,24 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/edtGSTNo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                    <Spinner
+                        android:id="@+id/spnAddressProofType"
+                        style="@style/spinner_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
-                        android:background="@drawable/rounded_edge_trans_bg_with_border"
-                        android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                        android:hint="@string/org_gst_hint"
-                        android:inputType="textCapCharacters"
-                        android:maxLength="15"
+                        android:overlapAnchor="false"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
-                        android:singleLine="true"
-                        android:textAllCaps="true" />
+                        android:prompt="@string/term" />
 
                     <TextView
-                        android:id="@+id/txtUploadGST"
+                        android:id="@+id/txtUploadAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.1"
+                        android:background="@color/transparent"
                         android:drawableTop="@drawable/ic_uploading"
                         android:gravity="center"
                         android:text="@string/upload"
@@ -370,54 +419,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="1dp"
-                    android:text="@string/id_address_title"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <Spinner
-                        android:id="@+id/spnAddressProofType"
-                        style="@style/spinner_style"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="3"
-                        android:overlapAnchor="false"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="1dp"
-                        android:prompt="@string/term" />
-
-                    <TextView
-                        android:id="@+id/txtUploadAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.1"
-                        android:background="@color/transparent"
-                        android:drawableTop="@drawable/ic_uploading"
-                        android:gravity="center"
-                        android:text="@string/upload"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
