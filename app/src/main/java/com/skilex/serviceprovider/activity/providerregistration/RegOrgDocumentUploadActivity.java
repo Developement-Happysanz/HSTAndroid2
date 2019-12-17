@@ -345,7 +345,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
 //                }
 //            }
             else if (v == txtUploadRCNumber) {
-                if (flag == 3) {
+                if (flag == 4) {
                     if (validateFields()) {
                         storeDocumentNumber = edtRCCertificateNumber.getText().toString();
                         storeDocumentMasterId = "8";
@@ -356,7 +356,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
 
             } else if (v == txtUploadGST) {
-                if (flag == 4) {
+                if (flag == 3) {
                     if (validateFields()) {
                         storeDocumentNumber = edtGSTNumber.getText().toString();
                         storeDocumentMasterId = "9";
@@ -367,7 +367,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
 
             } else if (v == txtUploadOrgPan) {
-                if (flag == 5) {
+                if (flag == 6) {
                     if (validateFields()) {
                         storeDocumentNumber = edtOrgPanCardNumber.getText().toString();
                         storeDocumentMasterId = "2";
@@ -378,7 +378,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 }
 
             } else if (v == txtUploadAddressProof) {
-                if (flag == 6) {
+                if (flag == 5) {
                     if (validateFields()) {
                         storeDocumentNumber = "";
                         storeDocumentMasterId = spinnerValue3;
@@ -444,7 +444,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
 //            case 3:
 //                Toast.makeText(getApplicationContext(), "Complete RC certificate upload", Toast.LENGTH_LONG).show();
 //                break;
-            case 4:
+            case 3:
                 Toast.makeText(getApplicationContext(), "Complete GST certificate upload", Toast.LENGTH_LONG).show();
                 break;
             case 5:
@@ -682,7 +682,7 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     txtUploadProof1.setText("");
                     txtUploadProof1.setEnabled(false);
                     txtUploadProof1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 4;
+                    flag = 3;
                 }
                 /*else if (flag == 3) {
                     edtProofNo2.setEnabled(false);
@@ -694,18 +694,18 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                     flag = 4;
                 }*/
                 else if (flag == 3) {
-                    edtRCCertificateNumber.setEnabled(false);
-                    edtRCCertificateNumber.setFocusable(false);
-                    txtUploadRCNumber.setText("");
-                    txtUploadRCNumber.setEnabled(false);
-                    txtUploadRCNumber.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
-                    flag = 4;
-                } else if (flag == 4) {
                     edtGSTNumber.setEnabled(false);
                     edtGSTNumber.setFocusable(false);
                     txtUploadGST.setText("");
                     txtUploadGST.setEnabled(false);
                     txtUploadGST.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+                    flag = 4;
+                } else if (flag == 4) {
+                    edtRCCertificateNumber.setEnabled(false);
+                    edtRCCertificateNumber.setFocusable(false);
+                    txtUploadRCNumber.setText("");
+                    txtUploadRCNumber.setEnabled(false);
+                    txtUploadRCNumber.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
                     flag = 5;
                 } else if (flag == 5) {
                     spnAddressProofType.setEnabled(false);
@@ -776,14 +776,14 @@ public class RegOrgDocumentUploadActivity extends BaseActivity implements View.O
                 return false;
             }
         }*/
-        if (flag == 4) {
+        if (flag == 3) {
             if (!SkilExValidator.checkNullString(this.edtGSTNumber.getText().toString().trim())) {
                 edtGSTNumber.setError(getString(R.string.empty_entry));
                 requestFocus(edtGSTNumber);
                 return false;
             }
         }
-        if (flag == 5) {
+        if (flag == 6) {
             if (!SkilExValidator.checkNullString(this.edtOrgPanCardNumber.getText().toString().trim())) {
                 edtOrgPanCardNumber.setError(getString(R.string.empty_entry));
                 requestFocus(edtOrgPanCardNumber);

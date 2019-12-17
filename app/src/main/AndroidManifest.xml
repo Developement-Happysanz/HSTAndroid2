@@ -232,6 +232,20 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name=".activity.fragmentactivity.ongoing.ViewBillActivity"
+            android:label="@string/ongoing_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.fragmentactivity.ongoing.ViewBillImageZoom"
+            android:label="@string/ongoing_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name=".activity.fragmentactivity.completed.CompletedServicesActivity"
             android:label="@string/completed_title"
             android:screenOrientation="portrait"

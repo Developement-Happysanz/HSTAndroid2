@@ -60,7 +60,7 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
     OngoingService ongoingService;
 
     private TextView txtServiceCategory, txtSubCategory, txtCustomerName, txtServiceDate, txtServiceTime, txtServiceProvider,
-            txtStartDateTime, txtAttachBill;
+            txtStartDateTime, txtViewBill;
     private EditText edtMaterialUsed;
     private Button btnUpdate, btnSubmit,btnAdditional;
     private LinearLayout layoutResumeSection;
@@ -108,8 +108,8 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
         txtServiceProvider = findViewById(R.id.txt_service_provider);
         txtStartDateTime = findViewById(R.id.txt_start_date_time);
         edtMaterialUsed = findViewById(R.id.edt_material_used);
-        txtAttachBill = findViewById(R.id.txt_attach_bill);
-        txtAttachBill.setOnClickListener(this);
+        txtViewBill = findViewById(R.id.view_bills);
+        txtViewBill.setOnClickListener(this);
         btnUpdate = findViewById(R.id.btn_update_services);
         btnUpdate.setOnClickListener(this);
         btnSubmit = findViewById(R.id.btn_submit);
@@ -402,8 +402,9 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
     @Override
     public void onClick(View v) {
         if (CommonUtils.haveNetworkConnection(getApplicationContext())) {
-            if (v == txtAttachBill) {
-//                showFileChooser();
+            if (v == txtViewBill) {Intent i = new Intent(this, ViewBillActivity.class);
+                i.putExtra("serv", ongoingService.getServiceOrderId());
+                startActivity(i);
             } else if (v == btnUpdate) {
 //                updateService();
             } else if (v == btnSubmit) {

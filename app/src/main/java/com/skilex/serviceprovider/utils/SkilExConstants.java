@@ -162,6 +162,7 @@ public class SkilExConstants {
     public static final String API_ONGOING_SERVICE_COMPLETE = "complete_services/";
     public static final String UPLOAD_BILL_DOCUMENT = "upload_service_bills/";
     public static final String VIEW_ADDITIONAL_SERVICES = "view_addtional_service/";
+    public static final String VIEW_BILLS = "list_service_bills/";
 
     //Completed service
     public static final String API_COMPLETED_SERVICE_LIST = "list_completed_services/";
