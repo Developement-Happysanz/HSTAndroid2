@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.fragmentactivity.ongoing.AdditionalServicesListActivity;
 import com.skilex.serviceprovider.activity.fragmentactivity.ongoing.OngoingServiceDetailActivity;
+import com.skilex.serviceprovider.activity.fragmentactivity.ongoing.ViewBillActivity;
 import com.skilex.serviceprovider.bean.support.CompletedService;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
@@ -38,7 +39,7 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
 
     private TextView txtCategory, txtServiceName, txtCustomerName, txtServiceDate, txtServiceTimeSlot, txtServiceProvider,
             txtServicePerson, txtServiceStartDate, txtServiceEndDate, txtMaterialUsed, txtServiceAmount, txtAdditionalServiceAmount,
-            txtSubTotalAmount, txtCouponContent, txtCouponAmount, txtAdvanceAmount, txtGrandTotal;
+            txtSubTotalAmount, txtCouponContent, txtCouponAmount, txtAdvanceAmount, txtGrandTotal, viewBill;
 
     private LinearLayout additional;
 
@@ -89,6 +90,8 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
         txtGrandTotal = findViewById(R.id.grand_total_amount);
         additional = findViewById(R.id.additional_layout);
         additional.setOnClickListener(this);
+        viewBill = findViewById(R.id.view_bills);
+        viewBill.setOnClickListener(this);
     }
 
     private void loadServiceDetail() {
@@ -115,6 +118,9 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
             intent.putExtra("serviceObj", completedService);
             startActivity(intent);
             finish();
+        }if (v == viewBill) {Intent i = new Intent(this, ViewBillActivity.class);
+            i.putExtra("serv", completedService.getServiceOrderId());
+            startActivity(i);
         }
     }
 

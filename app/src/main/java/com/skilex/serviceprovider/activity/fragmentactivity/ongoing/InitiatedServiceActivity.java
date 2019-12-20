@@ -1,7 +1,12 @@
 package com.skilex.serviceprovider.activity.fragmentactivity.ongoing;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -10,11 +15,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -51,7 +58,7 @@ import static java.lang.Math.sqrt;
 import static java.lang.Math.toDegrees;
 import static java.lang.Math.toRadians;
 
-public class InitiatedServiceActivity  extends FragmentActivity implements OnMapReadyCallback, IServiceListener, DialogClickListener, View.OnClickListener  {
+public class InitiatedServiceActivity extends FragmentActivity implements OnMapReadyCallback, IServiceListener, DialogClickListener, View.OnClickListener {
 
     private static final String TAG = InitiatedServiceActivity.class.getName();
     private MapView mapView;
@@ -69,7 +76,7 @@ public class InitiatedServiceActivity  extends FragmentActivity implements OnMap
     private Button btnTrack;
     private TextView catName, subCatName, custName, servicedate, orderID, serviceProvider, servicePerson, servicePersonPhone,
             serviceStartTime, estimatedCost;
-
+    private RelativeLayout nameLay;
 
     private String res = "";
 
@@ -87,8 +94,11 @@ public class InitiatedServiceActivity  extends FragmentActivity implements OnMap
         cusPhone = findViewById(R.id.txt_customer_number);
         cusAddress = findViewById(R.id.txt_address);
 
-        imgCall = findViewById(R.id.img_call_button);
-        imgCall.setOnClickListener(this);
+//        imgCall = findViewById(R.id.img_call_button);
+//        imgCall.setOnClickListener(this);
+
+        nameLay = findViewById(R.id.name_layout);
+        nameLay.setOnClickListener(this);
 
         btnTrack = findViewById(R.id.btn_track);
         btnTrack.setOnClickListener(this);
@@ -295,7 +305,29 @@ public class InitiatedServiceActivity  extends FragmentActivity implements OnMap
 
     @Override
     public void onClick(View v) {
+        if (v == nameLay) {
+            callNumber();
+        }
+    }
 
+    public void callNumber() {
+        try {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:" + cusPhone.getText().toString()));
+            if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            }
+            startActivity(callIntent);
+        } catch (ActivityNotFoundException activityException) {
+            Log.e("Calling a Phone Number", "Call failed", activityException);
+        }
     }
 
     public static class MarkerAnimation {

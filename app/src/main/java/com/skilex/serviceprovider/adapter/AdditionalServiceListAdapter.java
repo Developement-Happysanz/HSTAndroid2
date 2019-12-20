@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import static android.util.Log.d;
 import static com.android.volley.VolleyLog.TAG;
 
-public class AdditionalServiceListAdapter extends BaseAdapter{
+public class AdditionalServiceListAdapter extends BaseAdapter {
 
     //    private final Transformation transformation;
     private Context context;
@@ -35,7 +35,6 @@ public class AdditionalServiceListAdapter extends BaseAdapter{
     private ArrayList<Integer> mValidSearchIndices = new ArrayList<Integer>();
     private ArrayList<Integer> pos = new ArrayList<>();
     private String res = "";
-//    DynamicSubCatFragment dsf = new DynamicSubCatFragment();
 
     public AdditionalServiceListAdapter(Context context, ArrayList<AdditionalService> services) {
         this.context = context;
@@ -80,19 +79,22 @@ public class AdditionalServiceListAdapter extends BaseAdapter{
         final AdditionalServiceListAdapter.ViewHolder holder;
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            convertView = inflater.inflate(R.layout.category_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.additional_service_list_item, parent, false);
 
             holder = new AdditionalServiceListAdapter.ViewHolder();
             holder.txtCatName = (TextView) convertView.findViewById(R.id.sub_category_name);
-//            if(PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
+            holder.txtCatRate = (TextView) convertView.findViewById(R.id.sub_category_rate);
+//            if (PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
 //                holder.txtCatName.setText(services.get(position).getservice_ta_name());
 //            } else {
-                holder.txtCatName.setText(services.get(position).getservice_name());
+//                holder.txtCatName.setText(services.get(position).getservice_name());
 //            }
             holder.txtCatName.setText(services.get(position).getservice_name());
+            holder.txtCatRate.setText(services.get(position).getRate_card());
             holder.imgCat = (ImageView) convertView.findViewById(R.id.sub_category_image);
             String url = services.get(position).getservice_pic_url();
             if (((url != null) && !(url.isEmpty()))) {
+//                Picasso.get().load(url).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(holder.imgCat);
                 Picasso.get().load(url).into(holder.imgCat);
             }
             holder.addList = (ImageView) convertView.findViewById(R.id.add_to_list);
@@ -104,10 +106,10 @@ public class AdditionalServiceListAdapter extends BaseAdapter{
         } else {
             holder = (AdditionalServiceListAdapter.ViewHolder) convertView.getTag();
             holder.txtCatName = (TextView) convertView.findViewById(R.id.sub_category_name);
-//            if(PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
+//            if (PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
 //                holder.txtCatName.setText(services.get(position).getservice_ta_name());
 //            } else {
-                holder.txtCatName.setText(services.get(position).getservice_name());
+//                holder.txtCatName.setText(services.get(position).getservice_name());
 //            }
             holder.txtCatName.setText(services.get(position).getservice_name());
             holder.imgCat = (ImageView) convertView.findViewById(R.id.sub_category_image);
@@ -183,7 +185,7 @@ public class AdditionalServiceListAdapter extends BaseAdapter{
     }
 
     public class ViewHolder {
-        public TextView txtCatName;
+        public TextView txtCatName, txtCatRate;
         public ImageView imgCat, addList;
     }
 
