@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class AdditionalService implements Serializable {
-    @SerializedName("service_id")
+    @SerializedName("id")
     @Expose
     private String service_id;
 
@@ -25,6 +25,10 @@ public class AdditionalService implements Serializable {
     @SerializedName("selected")
     @Expose
     private String selected;
+
+    @SerializedName("rate_card")
+    @Expose
+    private String rate_card;
 
     @SerializedName("size")
     @Expose
@@ -98,6 +102,20 @@ public class AdditionalService implements Serializable {
      */
     public void setSelected(String selected) {
         this.selected = selected;
+    }
+
+    /**
+     * @return The rate_card
+     */
+    public String getRate_card() {
+        return rate_card;
+    }
+
+    /**
+     * @param rate_card The rate_card
+     */
+    public void setRate_card(String rate_card) {
+        this.rate_card = rate_card;
     }
 
     public int getSize() {

@@ -344,6 +344,8 @@
                         android:fontFamily="@font/helvetica"
                         android:paddingStart="40dp"
                         android:paddingEnd="40dp"
+                        android:clickable="false"
+                        android:focusable="false"
                         android:text="@string/additional_services"
                         android:textAllCaps="false" />
 
