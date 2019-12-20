@@ -115,7 +115,7 @@ public class CompletedServiceDetailActivity extends BaseActivity implements ISer
     public void onClick(View v) {
         if (v == additional) {
             Intent intent = new Intent(getApplicationContext(), AdditionalServicesListActivity.class);
-            intent.putExtra("serviceObj", completedService);
+            intent.putExtra("serviceObj", completedService.getServiceOrderId());
             startActivity(intent);
             finish();
         }if (v == viewBill) {Intent i = new Intent(this, ViewBillActivity.class);

@@ -59,8 +59,8 @@ public class AdditionalServicesListActivity extends BaseActivity implements ISer
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
-//        ser = getIntent().getStringExtra("serviceObj");
-        ongoingService = (OngoingService) getIntent().getSerializableExtra("serviceObj");
+        ser = getIntent().getStringExtra("serviceObj");
+//        ongoingService = (OngoingService) getIntent().getSerializableExtra("serviceObj");
 
         loadMoreListView = findViewById(R.id.listSumService);
         callGetSubCategoryService();
@@ -87,7 +87,7 @@ public class AdditionalServicesListActivity extends BaseActivity implements ISer
         id = ser;
         try {
             jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
-            jsonObject.put(SkilExConstants.SERVICE_ORDER_ID, ongoingService.getServiceOrderId());
+            jsonObject.put(SkilExConstants.SERVICE_ORDER_ID, id);
 
         } catch (JSONException e) {
             e.printStackTrace();

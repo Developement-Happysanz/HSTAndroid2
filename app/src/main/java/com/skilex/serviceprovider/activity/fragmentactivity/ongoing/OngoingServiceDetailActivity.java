@@ -412,7 +412,7 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
                 finish();
             } else if (v == btnAdditional) {
                 Intent intent = new Intent(getApplicationContext(), AdditionalServicesListActivity.class);
-                intent.putExtra("serviceObj", ongoingService);
+                intent.putExtra("serviceObj", ongoingService.getServiceOrderId());
                 startActivity(intent);
 //                finish();
             }
