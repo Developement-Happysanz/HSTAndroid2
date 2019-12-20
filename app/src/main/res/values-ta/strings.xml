@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">ஸ்கிலெக்ஸ்</string>
+    <string name="app_name_display">சேவை வழங்குநர்</string>
     <string name="tag_line">THE ULTIMATE SERVICE APP</string>
 
     <string name="empty" />
