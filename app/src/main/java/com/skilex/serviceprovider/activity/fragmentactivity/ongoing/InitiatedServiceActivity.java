@@ -13,6 +13,8 @@ import android.os.Handler;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.SystemClock;
@@ -62,6 +64,9 @@ import static java.lang.Math.toRadians;
 
 public class InitiatedServiceActivity extends FragmentActivity implements OnMapReadyCallback, IServiceListener, DialogClickListener, View.OnClickListener {
 
+
+    private static final int REQUEST_PHONE_CALL = 1;
+    Intent callIntent = new Intent(Intent.ACTION_CALL);
     private static final String TAG = InitiatedServiceActivity.class.getName();
     private MapView mapView;
     private GoogleMap mMap;
@@ -313,25 +318,32 @@ public class InitiatedServiceActivity extends FragmentActivity implements OnMapR
     }
 
     public void callNumber() {
-        try {
-            Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:" + cusPhone.getText().toString()));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    Activity#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for Activity#requestPermissions for more details.
-                    Toast.makeText(this, "You need to enable permissions to make call !", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+
+        callIntent.setData(Uri.parse("tel:" + cusPhone.getText().toString()));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(InitiatedServiceActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(InitiatedServiceActivity.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
             }
-            startActivity(callIntent);
-        } catch (ActivityNotFoundException activityException) {
-            Log.e("Calling a Phone Number", "Call failed", activityException);
+            else
+            {
+                startActivity(callIntent);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_PHONE_CALL: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    startActivity(callIntent);
+                }
+                else
+                {
+
+                }
+                return;
+            }
         }
     }
 
