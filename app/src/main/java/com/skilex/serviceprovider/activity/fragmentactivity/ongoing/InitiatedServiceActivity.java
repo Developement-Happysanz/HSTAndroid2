@@ -67,6 +67,7 @@ public class InitiatedServiceActivity extends FragmentActivity implements OnMapR
 
     private static final int REQUEST_PHONE_CALL = 1;
     Intent callIntent = new Intent(Intent.ACTION_CALL);
+
     private static final String TAG = InitiatedServiceActivity.class.getName();
     private MapView mapView;
     private GoogleMap mMap;
