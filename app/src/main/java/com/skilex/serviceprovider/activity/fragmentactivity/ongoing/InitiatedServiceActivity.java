@@ -2,6 +2,7 @@ package com.skilex.serviceprovider.activity.fragmentactivity.ongoing;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -38,6 +39,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.skilex.serviceprovider.R;
+import com.skilex.serviceprovider.activity.fragmentactivity.cancelled.CancelRequestedServiceActivity;
 import com.skilex.serviceprovider.bean.support.OngoingService;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
@@ -87,6 +89,7 @@ public class InitiatedServiceActivity extends FragmentActivity implements OnMapR
     private RelativeLayout nameLay;
 
     private String res = "";
+    private Button cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +113,8 @@ public class InitiatedServiceActivity extends FragmentActivity implements OnMapR
 
         btnTrack = findViewById(R.id.btn_track);
         btnTrack.setOnClickListener(this);
+        cancel = findViewById(R.id.btnCancel);
+        cancel.setOnClickListener(this);
 
         findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +139,13 @@ public class InitiatedServiceActivity extends FragmentActivity implements OnMapR
 //        checkProviderAssign();
         loadServiceDetails();
 
+    }
+
+    private void cancelOrder() {
+        Intent intent = new Intent(this, CancelRequestedServiceActivity.class);
+        intent.putExtra("serviceOrderId", ongoingService.getServiceOrderId());
+        startActivity(intent);
+        finish();
     }
 
     void loadServiceDetails() {
@@ -315,6 +327,23 @@ public class InitiatedServiceActivity extends FragmentActivity implements OnMapR
     public void onClick(View v) {
         if (v == nameLay) {
             callNumber();
+        } if (v == cancel) {
+            android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(InitiatedServiceActivity.this);
+            alertDialogBuilder.setTitle(R.string.cancel);
+            alertDialogBuilder.setMessage(R.string.cancel_service_noadvance_alert1);
+            alertDialogBuilder.setPositiveButton(R.string.alert_button_yes, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) {
+                    cancelOrder();
+                }
+            });
+            alertDialogBuilder.setNegativeButton(R.string.alert_button_no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertDialogBuilder.show();
         }
     }
 

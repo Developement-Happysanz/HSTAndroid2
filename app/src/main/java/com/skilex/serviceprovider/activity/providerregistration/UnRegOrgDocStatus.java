@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
@@ -17,6 +18,7 @@ import com.skilex.serviceprovider.utils.CommonUtils;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 import com.skilex.serviceprovider.utils.SkilExConstants;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,18 +28,20 @@ public class UnRegOrgDocStatus extends BaseActivity implements IServiceListener,
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
     private Button btnClose;
+    private TextView one, two , three;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_un_reg_doc_stauts);
 
+        one = findViewById(R.id.txtUploadPanCard);
+        two = findViewById(R.id.txtUploadProof1);
+        three = findViewById(R.id.txtUploadPassBook);
+
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
-
-        btnClose = findViewById(R.id.btnSubmit);
-        btnClose.setOnClickListener(this);
 
         checkDocumentStatus();
 
@@ -105,6 +109,20 @@ public class UnRegOrgDocStatus extends BaseActivity implements IServiceListener,
         progressDialogHelper.hideProgressDialog();
         if (validateResponse(response)) {
             try {
+                JSONArray docData = response.getJSONArray("document_result");
+                for (int i = 0; i < docData.length(); i++) {
+                    if (docData.getJSONObject(i).getString("doc_name").equalsIgnoreCase("Aadhaar Card")) {
+                        String doc_stat ="";
+                        doc_stat = docData.getJSONObject(i).getString("status");
+                        if (doc_stat.equalsIgnoreCase("Approved")) {
+
+                        }
+                    } else if (docData.getJSONObject(i).getString("doc_name").equalsIgnoreCase("Bank Pass Book")) {
+
+                    } else {
+
+                    }
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

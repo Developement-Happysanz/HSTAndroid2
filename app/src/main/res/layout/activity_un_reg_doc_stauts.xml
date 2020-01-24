@@ -55,10 +55,13 @@
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
                         android:background="@drawable/rounded_edge_trans_bg_with_border"
-                        android:hint="@string/aadhaar_card_title"
+                        android:clickable="false"
                         android:digits="0123456789"
-                        android:maxLength="12"
+                        android:focusable="false"
+
+                        android:hint="@string/aadhaar_card_title"
                         android:inputType="number"
+                        android:maxLength="12"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
                         android:singleLine="true" />
@@ -68,7 +71,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.1"
+                        android:clickable="false"
+
                         android:drawableTop="@drawable/ic_uploading"
+                        android:focusable="false"
                         android:gravity="center"
                         android:text="@string/upload"
                         android:textSize="12sp" />
@@ -99,6 +105,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
+                    android:clickable="false"
+
+                    android:focusable="false"
                     android:overlapAnchor="false"
                     android:paddingStart="12dp"
                     android:paddingEnd="10dp"
@@ -118,15 +127,18 @@
                         android:layout_marginEnd="5dp"
                         android:layout_weight="3"
                         android:background="@drawable/rounded_edge_trans_bg_with_border"
-                        android:focusableInTouchMode="true"
-                        android:hint="@string/id_proof_number"
-                        android:maxLength="15"
-                        android:inputType="textCapCharacters"
-                        android:textAllCaps="true"
+                        android:clickable="false"
                         android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
+
+                        android:hint="@string/id_proof_number"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="15"
                         android:paddingStart="12dp"
                         android:paddingEnd="1dp"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textAllCaps="true" />
 
                     <TextView
                         android:id="@+id/txtUploadProof1"
@@ -134,7 +146,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.1"
                         android:background="@color/transparent"
+                        android:clickable="false"
                         android:drawableTop="@drawable/ic_uploading"
+
+                        android:focusable="false"
                         android:gravity="center"
                         android:text="@string/upload"
                         android:textSize="12sp" />
@@ -149,17 +164,17 @@
                     android:layout_marginEnd="5dp"
                     android:overlapAnchor="false"
                     android:paddingStart="12dp"
-                    android:visibility="gone"
                     android:paddingEnd="10dp"
-                    android:prompt="@string/term" />
+                    android:prompt="@string/term"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <EditText
                         android:id="@+id/edtProof2"
@@ -212,12 +227,15 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
+                    android:clickable="false"
+
+                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+                    android:focusable="false"
                     android:focusableInTouchMode="true"
                     android:hint="@string/bank_name"
-                    android:maxLength="80"
-                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
-                    android:paddingStart="12dp"
                     android:inputType="textCapCharacters"
+                    android:maxLength="80"
+                    android:paddingStart="12dp"
                     android:paddingEnd="1dp"
                     android:singleLine="true" />
 
@@ -228,7 +246,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
+                    android:clickable="false"
                     android:digits="0123456789"
+                    android:focusable="false"
+
                     android:focusableInTouchMode="true"
                     android:hint="@string/bank_acc_no"
                     android:inputType="number"
@@ -244,27 +265,33 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
+                    android:clickable="false"
+
+                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:focusable="false"
                     android:focusableInTouchMode="true"
                     android:hint="@string/bank_ifsc"
-                    android:maxLength="11"
-                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:inputType="textCapCharacters"
-                    android:textAllCaps="true"
+                    android:maxLength="11"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textAllCaps="true" />
 
                 <EditText
                     android:id="@+id/edtBankBranch"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="10dp"
+
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/rounded_edge_trans_bg_with_border"
+                    android:clickable="false"
+                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                    android:focusable="false"
                     android:focusableInTouchMode="true"
                     android:hint="@string/bank_branch"
                     android:maxLength="80"
-                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                     android:paddingStart="12dp"
                     android:paddingEnd="1dp"
                     android:singleLine="true" />
@@ -288,77 +315,19 @@
                     <TextView
                         android:id="@+id/txtUploadPassBook"
                         android:layout_width="wrap_content"
+
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
                         android:background="@color/transparent"
+                        android:clickable="false"
                         android:drawableTop="@drawable/ic_uploading"
+                        android:focusable="false"
                         android:gravity="center"
                         android:text="@string/upload"
                         android:textSize="12sp" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/txtAnyPoliceCase"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="1dp"
-                    android:text="@string/check_any_case"
-                    android:textColor="@color/black" />
-
-                <RadioGroup
-                    android:id="@+id/rdgYesNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="1dp"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rdbYes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:text="@string/expert_yes"
-                        android:textColor="@color/black" />
-
-                    <RadioButton
-                        android:id="@+id/rdbNo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/expert_no"
-                        android:checked="true"
-                        android:textColor="@color/black" />
-                </RadioGroup>
-
-                <TextView
-                    android:id="@+id/txt_terms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/term"
-                    android:textColor="@color/blue"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btnSubmit"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/button_round_color"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:text="@string/reg_submit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
 
             </LinearLayout>
 

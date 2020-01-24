@@ -3,11 +3,14 @@ package com.skilex.serviceprovider.activity.fragmentactivity.ongoing;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,6 +24,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.skilex.serviceprovider.R;
 import com.skilex.serviceprovider.activity.LandingPageActivity;
+import com.skilex.serviceprovider.activity.fragmentactivity.cancelled.CancelRequestedServiceActivity;
+import com.skilex.serviceprovider.activity.fragmentactivity.requested.RequestedServiceDetailActivity;
 import com.skilex.serviceprovider.bean.support.OngoingService;
 import com.skilex.serviceprovider.helper.AlertDialogHelper;
 import com.skilex.serviceprovider.helper.ProgressDialogHelper;
@@ -62,7 +67,7 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
     private TextView txtServiceCategory, txtSubCategory, txtCustomerName, txtServiceDate, txtServiceTime, txtServiceProvider,
             txtStartDateTime, txtViewBill;
     private EditText edtMaterialUsed;
-    private Button btnUpdate, btnSubmit,btnAdditional;
+    private Button btnUpdate, btnSubmit, btnAdditional;
     private LinearLayout layoutResumeSection;
     private TextView txtResumeDateTime;
 
@@ -73,6 +78,7 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
     private String selectedFilePath;
     File sizeCge;
     ProgressDialog dialog;
+    private Button cancel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -118,7 +124,17 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
         btnAdditional.setOnClickListener(this);
         layoutResumeSection = findViewById(R.id.ll_resume_section);
         txtResumeDateTime = findViewById(R.id.txt_resume_date_time);
+        cancel = findViewById(R.id.btnCancel);
+        cancel.setOnClickListener(this);
     }
+
+    private void cancelOrder() {
+        Intent intent = new Intent(this, CancelRequestedServiceActivity.class);
+        intent.putExtra("serviceOrderId", ongoingService.getServiceOrderId());
+        startActivity(intent);
+        finish();
+    }
+
 
     private void loadServiceDetail() {
         res = "serviceDetail";
@@ -402,7 +418,8 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
     @Override
     public void onClick(View v) {
         if (CommonUtils.haveNetworkConnection(getApplicationContext())) {
-            if (v == txtViewBill) {Intent i = new Intent(this, ViewBillActivity.class);
+            if (v == txtViewBill) {
+                Intent i = new Intent(this, ViewBillActivity.class);
                 i.putExtra("serv", ongoingService.getServiceOrderId());
                 startActivity(i);
             } else if (v == btnUpdate) {
@@ -415,6 +432,23 @@ public class OngoingServiceDetailActivity extends BaseActivity implements IServi
                 intent.putExtra("serviceObj", ongoingService.getServiceOrderId());
                 startActivity(intent);
 //                finish();
+            } else if (v == cancel) {
+                android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(OngoingServiceDetailActivity.this);
+                alertDialogBuilder.setTitle(R.string.cancel);
+                alertDialogBuilder.setMessage(R.string.cancel_service_noadvance_alert1);
+                alertDialogBuilder.setPositiveButton(R.string.alert_button_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        cancelOrder();
+                    }
+                });
+                alertDialogBuilder.setNegativeButton(R.string.alert_button_no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alertDialogBuilder.show();
             }
 
         } else {

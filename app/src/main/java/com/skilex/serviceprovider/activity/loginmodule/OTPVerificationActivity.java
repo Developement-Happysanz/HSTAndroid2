@@ -54,9 +54,11 @@ import com.skilex.serviceprovider.utils.CommonUtils;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 import com.skilex.serviceprovider.utils.SkilExConstants;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -291,6 +293,7 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                 String getCompanyType = userData.getString("company_status");
                 JSONObject docData = response.getJSONObject("docData");
                 String docStatus = docData.getString("status");
+
                 JSONObject companyData = response.getJSONObject("companyData");
                 String companyStatus = companyData.getString("status");
                 String getServiceProviderBasicStatus = userData.getString("also_service_person");
@@ -370,18 +373,32 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                         if (userData.getString("serv_prov_display_status").equalsIgnoreCase("Inactive")) {
 
                             if (userData.getString("serv_prov_verify_status").equalsIgnoreCase("Pending")) {
+                                JSONArray docList = new JSONArray();
+                                if (docStatus.equalsIgnoreCase("success")) {
+                                    docList = docData.getJSONArray("documents_list");
+                                }
                                 if (getCompanyType.equalsIgnoreCase("Company")) {
-//                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
-                                    Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
+                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
+//                                    Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                                    if (docList.length()>0) {
+                                        Bundle b = new Bundle();
+                                        b.putString("Array",docList.toString());
+                                        intent.putExtras(b);
+                                    }
                                     startActivity(intent);
                                     finish();
                                 } else {
-//                                    Intent intent = new Intent(this, UnRegOrgDocStatus.class);
-                                    Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
+                                    Intent intent = new Intent(this, UnRegOrgDocStatus.class);
+//                                    Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+                                    if (docList.length()>0) {
+                                        Bundle b = new Bundle();
+                                        b.putString("Array",docList.toString());
+                                        intent.putExtras(b);
+                                    }
                                     startActivity(intent);
                                     finish();
                                 }
