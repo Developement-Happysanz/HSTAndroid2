@@ -114,6 +114,7 @@ public class SkilExConstants {
 
     // Upload unregistered organization document upload
     public static final String UPLOAD_DOCUMENT = "upload_doc/";
+    public static final String REUPLOAD_DOCUMENT = "re_upload_doc/";
     public static final String KEY_COMPANY_TYPE = "company_type";
     public static final String ID_PROOF_LIST = "list_idaddress_proofs/";
     public static final String UPDATE_UN_ORG_PROVIDER_BANK_INFO = "update_provider_bank_detail/";
@@ -125,6 +126,9 @@ public class SkilExConstants {
 
     //Document verify status
     public static final String API_PROVIDER_DOCUMENT_STATUS = "list_provider_doc/";
+
+    //Document verify status
+    public static final String API_REJECT_REASON = "document_rejected_details/";
 
     //Document success
     public static final String API_SET_PROVIDER_ACTIVE = "provider_active_status/";
@@ -152,6 +156,7 @@ public class SkilExConstants {
     public static String SERVICE_ORDER_ID = "service_order_id";
     public static String CANCEL_ID = "cancel_master_id";
     public static String CANCEL_COMMENTS = "comments";
+    public static String DOC_ID = "doc_detail_id";
     public static final String API_CANCELLED_SERVICE_LIST = "list_canceled_services/";
 
     //Ongoing service list

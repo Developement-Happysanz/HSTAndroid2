@@ -557,7 +557,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     edtPanCardNumber.setFocusable(false);
                     txtUploadPan.setText("");
                     txtUploadPan.setEnabled(false);
-                    txtUploadPan.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+                    txtUploadPan.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_uploded, 0);
                     flag = 2;
                 } else if (flag == 2) {
                     edtProofNo1.setEnabled(false);
@@ -565,7 +565,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     spnIdProofType1.setEnabled(false);
                     txtUploadProof1.setText("");
                     txtUploadProof1.setEnabled(false);
-                    txtUploadProof1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+                    txtUploadProof1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_uploded, 0);
                     flag = 3;
                 }
 //                else if (flag == 3) {
@@ -574,7 +574,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
 //                    spnIdProofType2.setEnabled(false);
 //                    txtUploadProof2.setText("");
 //                    txtUploadProof2.setEnabled(false);
-//                    txtUploadProof2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+//                    txtUploadProof2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_uploded, 0);
 //                    flag = 4;
 //                }
                 else if (flag == 3) {
@@ -584,7 +584,7 @@ public class UnRegOrgDocumentUploadActivity extends BaseActivity implements View
                     edtIFSC.setEnabled(false);
                     txtUploadPassBook.setText("");
                     txtUploadPassBook.setEnabled(false);
-                    txtUploadPassBook.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_upload_successful, 0);
+                    txtUploadPassBook.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_uploded, 0);
                     flag = 4;
                 }
             } else {
