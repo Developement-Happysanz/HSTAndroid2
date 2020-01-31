@@ -140,8 +140,8 @@ public class UnRegOrgDocStatus extends BaseActivity implements IServiceListener,
         if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
             JSONObject jsonObject = new JSONObject();
             try {
-//                jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
-                jsonObject.put(SkilExConstants.USER_MASTER_ID, "60");
+                jsonObject.put(SkilExConstants.USER_MASTER_ID, PreferenceStorage.getUserMasterId(getApplicationContext()));
+//                jsonObject.put(SkilExConstants.USER_MASTER_ID, "60");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

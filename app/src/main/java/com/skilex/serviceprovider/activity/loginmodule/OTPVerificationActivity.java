@@ -35,7 +35,7 @@ import com.skilex.serviceprovider.activity.providerregistration.DocumentVerifica
 import com.skilex.serviceprovider.activity.providerregistration.DocumentVerifySuccessActivity;
 import com.skilex.serviceprovider.activity.providerregistration.InitialDepositActivity;
 import com.skilex.serviceprovider.activity.providerregistration.OrganizationTypeSelectionActivity;
-import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocStatus;
+//import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocStatus;
 import com.skilex.serviceprovider.activity.providerregistration.RegOrgDocumentUploadActivity;
 import com.skilex.serviceprovider.activity.providerregistration.RegisteredOrganizationInfoActivity;
 import com.skilex.serviceprovider.activity.providerregistration.UnRegOrgDocStatus;
@@ -378,8 +378,8 @@ public class OTPVerificationActivity extends BaseActivity implements View.OnClic
                                     docList = docData.getJSONArray("documents_list");
                                 }
                                 if (getCompanyType.equalsIgnoreCase("Company")) {
-                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
-//                                    Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
+//                                    Intent intent = new Intent(this, RegOrgDocStatus.class);
+                                    Intent intent = new Intent(this, DocumentVerificationStatusActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
                                     if (docList.length()>0) {
