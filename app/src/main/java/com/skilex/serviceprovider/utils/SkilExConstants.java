@@ -226,4 +226,10 @@ public class SkilExConstants {
     public static final String TRANSACTION_LIST = "transaction_list/";
     public static final String TRANSACTION_LIST_DETAIL = "view_transaction_details/";
     public static String DAILY_ID = "daily_payment_id";
+
+    //APPLY COUPON URL
+    public static final String CHECK_VERSION = "version_check/";
+    public static String KEY_APP_VERSION = "version_code";
+
+
 }

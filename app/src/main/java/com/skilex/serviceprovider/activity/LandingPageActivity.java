@@ -2,7 +2,10 @@ package com.skilex.serviceprovider.activity;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -27,6 +30,7 @@ import com.skilex.serviceprovider.interfaces.DialogClickListener;
 import com.skilex.serviceprovider.languagesupport.BaseActivity;
 import com.skilex.serviceprovider.servicehelpers.ServiceHelper;
 import com.skilex.serviceprovider.serviceinterfaces.IServiceListener;
+import com.skilex.serviceprovider.utils.CommonUtils;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
 import com.skilex.serviceprovider.utils.SkilExConstants;
 
@@ -48,6 +52,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
 
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
+    private String resDat = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +62,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
-
+        callGetSubCategoryService();
         // check if GPS enabled
         GPSTracker gpsTracker = new GPSTracker(this);
 
@@ -109,7 +114,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
 
     void setAssociateLiveStatus(Double Lati, Double Longi) {
 
-
+        resDat = "sendStatus";
         String userMasterId = PreferenceStorage.getUserMasterId(getApplicationContext());
 
         JSONObject jsonObject = new JSONObject();
@@ -177,6 +182,33 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
 
     }
 
+
+    public void callGetSubCategoryService() {
+        if (CommonUtils.isNetworkAvailable(this)) {
+            progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+            loadCart();
+        } else {
+            AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
+        }
+    }
+
+    private void loadCart() {
+        resDat = "check";
+        JSONObject jsonObject = new JSONObject();
+        String id = "";
+        try {
+            jsonObject.put(SkilExConstants.KEY_APP_VERSION, "1");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+//        progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
+        String url = SkilExConstants.BUILD_URL + SkilExConstants.CHECK_VERSION;
+        serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
+    }
+
+
     private boolean validateSignInResponse(JSONObject response) {
         boolean signInSuccess = false;
         if ((response != null)) {
@@ -207,11 +239,32 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
     public void onResponse(JSONObject response) {
 
         progressDialogHelper.hideProgressDialog();
-
-        if (validateSignInResponse(response)) {
-
+        if (!resDat.equalsIgnoreCase("sendStatus")) {
+            try {
+                String status = response.getString("status");
+                if (!status.equalsIgnoreCase("success")) {
+                    android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(LandingPageActivity.this);
+                    alertDialogBuilder.setTitle("Update");
+                    alertDialogBuilder.setMessage("A new version of SkilEx is available!");
+                    alertDialogBuilder.setPositiveButton("Get it", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            final String appPackageName = getPackageName(); // getPackageName() from Context or Activity object
+                            try {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                                finish();
+                            } catch (android.content.ActivityNotFoundException anfe) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                            }
+                        }
+                    });
+                    alertDialogBuilder.setCancelable(false);
+                    alertDialogBuilder.show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
-
     }
 
     @Override
