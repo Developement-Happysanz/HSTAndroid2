@@ -755,6 +755,7 @@ public class UnRegOrgDocStatus extends BaseActivity implements IServiceListener,
                     }
                 } else if (checkValue.equalsIgnoreCase("reject")) {
                     String msg = response.getString(SkilExConstants.PARAM_MESSAGE);
+
                     AlertDialogHelper.showSimpleAlertDialog(this, msg);
                 }
 

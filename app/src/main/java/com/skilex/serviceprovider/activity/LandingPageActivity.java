@@ -197,7 +197,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
         JSONObject jsonObject = new JSONObject();
         String id = "";
         try {
-            jsonObject.put(SkilExConstants.KEY_APP_VERSION, "1");
+            jsonObject.put(SkilExConstants.KEY_APP_VERSION, SkilExConstants.KEY_APP_VERSION_VALUE);
 
         } catch (JSONException e) {
             e.printStackTrace();
