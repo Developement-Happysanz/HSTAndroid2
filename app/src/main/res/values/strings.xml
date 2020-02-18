@@ -124,7 +124,7 @@
     <string name="initial_deposit_action_bar">Deposit</string>
     <string name="deposit_title">Registration Fee</string>
     <string name="pay">Pay</string>
-    <string name="deposit_description">* The amount you deposit will be refunded when you end your agreement with SkilEx or when you manage to have a good service record via SkilEx.</string>
+    <string name="deposit_description">* One time Registration fee for administration purpose&#8230;</string>
     <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advance.php</string>
 <!--    <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advance.php</string>-->
 <!--    <string name="advance_redirect_url">http://skilex.in/ccavenue_app/serv_provider_advance.php</string>-->

@@ -128,7 +128,7 @@
     <string name="initial_deposit_action_bar">வைப்புத்தொகை</string>
     <string name="deposit_title">திரும்பப்பெறக்கூடிய வைப்பு</string>
     <string name="pay">செலுத்து</string>
-    <string name="deposit_description">* வைப்பாக பெறப்படும் தொகை நீங்கள் ஸ்கில் எக்ஸ் உடனான ஒப்பந்தத்தை முடித்துக்கொள்ளும் போது அல்லது நீங்கள் தரமான சேவையை வழங்கும் பட்சத்தில் திருப்பித்தரப்படும்.</string>
+    <string name="deposit_description">* One time Registration fee for administration purpose&#8230;</string>
     <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advnace.php</string>
     <!--    <string name="advance_redirect_url">http://skilex.in/development/ccavenue_app/serv_provider_advnace.php</string>-->
     <!--    <string name="advance_redirect_url">http://skilex.in/ccavenue_app/serv_provider_advnace.php</string>-->

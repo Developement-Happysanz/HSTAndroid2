@@ -231,6 +231,8 @@ public class UnRegOrgDocStatus extends BaseActivity implements IServiceListener,
         Intent intent = new Intent();
         //sets the select file to all types of files
         intent.setType("*/*");
+        String[] mimetypes = {"image/*", "application/pdf"};
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
         //allows to select data and return it
         intent.setAction(Intent.ACTION_GET_CONTENT);
         //starts new activity to select file and return data

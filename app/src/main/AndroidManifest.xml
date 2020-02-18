@@ -161,12 +161,12 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
 
-<!--        <activity-->
-<!--            android:name=".activity.providerregistration.RegOrgDocStatus"-->
-<!--            android:label="@string/doc_verify_display_title"-->
-<!--            android:screenOrientation="portrait"-->
-<!--            android:theme="@style/AppTheme"-->
-<!--            android:windowSoftInputMode="stateHidden" />-->
+        <activity
+            android:name=".activity.providerregistration.RegOrgDocStatus"
+            android:label="@string/doc_verify_display_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".activity.providerregistration.DocumentVerifySuccessActivity"
