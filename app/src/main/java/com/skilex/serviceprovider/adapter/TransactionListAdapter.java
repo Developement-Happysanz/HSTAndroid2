@@ -85,43 +85,7 @@ public class TransactionListAdapter extends BaseAdapter {
             holder.payStatus = convertView.findViewById(R.id.pay_status);
             holder.to = convertView.findViewById(R.id.to_skilex_layout);
             holder.from = convertView.findViewById(R.id.from_skilex_layout);
-            if(services.get(position).getPay_to_ser_provider_flag().equalsIgnoreCase("Yes")) {
-                holder.to.setVisibility(View.VISIBLE);
-                holder.from.setVisibility(View.GONE);
-                if (services.get(position).getServ_prov_closing_status().equalsIgnoreCase("Paid")) {
-                    holder.payStatus.setText("Paid");
-                    holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_green_filled));
-                } else {
-                    holder.payStatus.setText("Pending");
-                    holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_red_filled));
-                }
-            } else {
-                holder.to.setVisibility(View.GONE);
-                holder.from.setVisibility(View.VISIBLE);
-                if (services.get(position).getServ_prov_closing_status().equalsIgnoreCase("Paid")) {
-                    holder.payStatus.setText("Paid");
-                    holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_green_filled));
-                } else {
-                    holder.payStatus.setText("Pending");
-                    holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_red_filled));
-                }
-            }
-//            if (PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
-//                holder.txtTransactionDate.setText(services.get(position).getServiceCategoryMainNameTA());
-//                holder.txtTransactionAmt.setText(services.get(position).getServiceNameTA());
-//            } else {
-            holder.txtTransactionDate.setText(services.get(position).getService_date());
-            holder.txtTransactionCount.setText("Total services - " + services.get(position).getTotal_service_per_day());
-            holder.txtTransactionAmt.setText("Total amount: ₹" + services.get(position).getServ_total_amount());
-//            }
-            holder.txtTransactionProviderComm = convertView.findViewById(R.id.self_amount);
-            holder.txtTransactionProviderComm.setText("₹" + services.get(position).getServ_prov_commission_amt());
-            holder.txtTransactionSkilexComm = convertView.findViewById(R.id.skilex_amount);
-            holder.txtTransactionSkilexComm.setText("₹" + services.get(position).getSkilex_commission_amt());
-            holder.fromSkilex = convertView.findViewById(R.id.from_skilex);
-            holder.fromSkilex.setText("₹" + services.get(position).getOnline_serv_prov_commission());
-            holder.toSkilex = convertView.findViewById(R.id.to_skilex);
-            holder.toSkilex.setText("₹" + services.get(position).getPay_to_serv_prov());
+
             convertView.setTag(holder);
 
         } else {
@@ -133,44 +97,45 @@ public class TransactionListAdapter extends BaseAdapter {
             holder.payStatus = convertView.findViewById(R.id.pay_status);
             holder.to = convertView.findViewById(R.id.to_skilex_layout);
             holder.from = convertView.findViewById(R.id.from_skilex_layout);
-            if(services.get(position).getPay_to_ser_provider_flag().equalsIgnoreCase("Yes")) {
-                holder.to.setVisibility(View.VISIBLE);
-                holder.from.setVisibility(View.GONE);
-                if (services.get(position).getServ_prov_closing_status().equalsIgnoreCase("Paid")) {
-                    holder.payStatus.setText("Paid");
-                    holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_green_filled));
-                } else {
-                    holder.payStatus.setText("Pending");
-                    holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_red_filled));
-                }
-            } else {
-                holder.to.setVisibility(View.GONE);
-                holder.from.setVisibility(View.VISIBLE);
-                if (services.get(position).getServ_prov_closing_status().equalsIgnoreCase("Paid")) {
-                    holder.payStatus.setText("Paid");
-                    holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_green_filled));
-                } else {
-                    holder.payStatus.setText("Pending");
-                    holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_red_filled));
-                }
-            }
-            /*if (PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
-                holder.txtTransactionDate.setText(services.get(position).getServiceCategoryMainNameTA());
-                holder.txtTransactionAmt.setText(services.get(position).getServiceNameTA());
-            } else {*/
-            holder.txtTransactionDate.setText(services.get(position).getService_date());
-            holder.txtTransactionCount.setText("Total services - " + services.get(position).getTotal_service_per_day());
-            holder.txtTransactionAmt.setText("Total amount: ₹" + services.get(position).getServ_total_amount());
-//            }
-            holder.txtTransactionProviderComm = convertView.findViewById(R.id.self_amount);
-            holder.txtTransactionProviderComm.setText("₹" + services.get(position).getServ_prov_commission_amt());
-            holder.txtTransactionSkilexComm = convertView.findViewById(R.id.skilex_amount);
-            holder.txtTransactionSkilexComm.setText("₹" + services.get(position).getSkilex_commission_amt());
-            holder.fromSkilex = convertView.findViewById(R.id.from_skilex);
-            holder.fromSkilex.setText("₹" + services.get(position).getOnline_serv_prov_commission());
-            holder.toSkilex = convertView.findViewById(R.id.to_skilex);
-            holder.toSkilex.setText("₹" + services.get(position).getPay_to_serv_prov());
+
         }
+        if(services.get(position).getPay_to_ser_provider_flag().equalsIgnoreCase("Yes")) {
+            holder.to.setVisibility(View.VISIBLE);
+            holder.from.setVisibility(View.GONE);
+            if (services.get(position).getServ_prov_closing_status().equalsIgnoreCase("Paid")) {
+                holder.payStatus.setText("Paid");
+                holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_green_filled));
+            } else {
+                holder.payStatus.setText("Pending");
+                holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_red_filled));
+            }
+        } else {
+            holder.to.setVisibility(View.GONE);
+            holder.from.setVisibility(View.VISIBLE);
+            if (services.get(position).getSkilex_closing_status().equalsIgnoreCase("Paid")) {
+                holder.payStatus.setText("Paid");
+                holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_green_filled));
+            } else {
+                holder.payStatus.setText("Pending");
+                holder.payStatus.setBackground(ContextCompat.getDrawable(context, R.drawable.button_round_red_filled));
+            }
+        }
+//            if (PreferenceStorage.getLang(context).equalsIgnoreCase("tamil")) {
+//                holder.txtTransactionDate.setText(services.get(position).getServiceCategoryMainNameTA());
+//                holder.txtTransactionAmt.setText(services.get(position).getServiceNameTA());
+//            } else {
+        holder.txtTransactionDate.setText(services.get(position).getService_date());
+        holder.txtTransactionCount.setText("Total services - " + services.get(position).getTotal_service_per_day());
+        holder.txtTransactionAmt.setText("Total amount: ₹" + services.get(position).getServ_total_amount());
+//            }
+        holder.txtTransactionProviderComm = convertView.findViewById(R.id.self_amount);
+        holder.txtTransactionProviderComm.setText("₹" + services.get(position).getServ_prov_commission_amt());
+        holder.txtTransactionSkilexComm = convertView.findViewById(R.id.skilex_amount);
+        holder.txtTransactionSkilexComm.setText("₹" + services.get(position).getSkilex_commission_amt());
+        holder.fromSkilex = convertView.findViewById(R.id.from_skilex);
+        holder.fromSkilex.setText("₹" + services.get(position).getOnline_serv_prov_commission());
+        holder.toSkilex = convertView.findViewById(R.id.to_skilex);
+        holder.toSkilex.setText("₹" + services.get(position).getPay_to_serv_prov());
 
         if (mSearching) {
             position = mValidSearchIndices.get(position);

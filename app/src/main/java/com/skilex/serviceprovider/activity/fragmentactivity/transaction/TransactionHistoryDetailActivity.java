@@ -181,7 +181,7 @@ public class TransactionHistoryDetailActivity extends BaseActivity implements IS
                     to.setVisibility(View.GONE);
                     from.setVisibility(View.VISIBLE);
                     paySkilex.setVisibility(View.GONE);
-                    if (userData.getString("serv_prov_closing_status").equalsIgnoreCase("Paid")) {
+                    if (userData.getString("skilex_closing_status").equalsIgnoreCase("Paid")) {
                         payStatus.setText("Paid");
                         payStatus.setBackground(ContextCompat.getDrawable(this, R.drawable.button_round_green_filled));
                     } else {
