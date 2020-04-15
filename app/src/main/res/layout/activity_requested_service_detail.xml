@@ -106,15 +106,26 @@
             android:src="@drawable/ic_location_on" />
 
         <ImageView
+            android:id="@+id/imimg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/img_location"
+            android:layout_alignBottom="@id/notes"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@color/request"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:src="@drawable/ic_requested_service" />
+
+        <TextView
+            android:id="@+id/notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/imimg"
+            android:layout_alignStart="@+id/img_location"
+            android:fontFamily="@font/helvetica"
+            android:layout_below="@+id/service_location"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

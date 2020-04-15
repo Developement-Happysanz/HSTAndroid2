@@ -50,6 +50,7 @@ public class RequestedServiceDetailActivity extends BaseActivity implements ISer
     Button btnCancel, btnAccept, btnAssign;
     String res = "";
     String expertId = "";
+    private TextView orderNotes;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +83,8 @@ public class RequestedServiceDetailActivity extends BaseActivity implements ISer
         btnCancel.setOnClickListener(this);
         btnAccept = findViewById(R.id.btnAccept);
         btnAccept.setOnClickListener(this);
+        orderNotes = findViewById(R.id.notes);
+        orderNotes.setText(requestedServiceArray.getOrder_notes());
 
         serviceNumber = findViewById(R.id.txtServiceNumber);
         serviceNumber.setText("Service Number: " + requestedServiceArray.getServiceOrderId());

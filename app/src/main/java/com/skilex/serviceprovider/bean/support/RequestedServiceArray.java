@@ -20,6 +20,10 @@ public class RequestedServiceArray implements Serializable {
     @Expose
     private String service_order_date;
 
+    @SerializedName("order_notes")
+    @Expose
+    private String order_notes;
+
     @SerializedName("status")
     @Expose
     private String service_order_status;
@@ -96,6 +100,20 @@ public class RequestedServiceArray implements Serializable {
      */
     public void setServiceOrderDate(String service_order_date) {
         this.service_order_date = service_order_date;
+    }
+
+    /**
+     * @return The order_notes
+     */
+    public String getOrder_notes() {
+        return order_notes;
+    }
+
+    /**
+     * @param order_notes The order_notes
+     */
+    public void setOrder_notes(String order_notes) {
+        this.order_notes = order_notes;
     }
 
     /**
