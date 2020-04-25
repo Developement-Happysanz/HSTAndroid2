@@ -153,6 +153,7 @@
     <string name="merchant_id">Merchant Id</string>
     <string name="currency">Currency</string>
     <string name="amount">Amount</string>
+    <string name="reg_aamt">You can pay directly at SkilEx office.</string>
     <string name="redirect_url">Redirect Url</string>
     <string name="cancel_url">Cancel Url</string>
     <string name="rsa_url">RSA Key Url</string>
@@ -355,6 +356,9 @@
     <string name="user_gender">Gender</string>
     <string name="select_user_gender">Select Gender</string>
 
+
+    <string name="pay_button_online">Pay Online</string>
+    <string name="pay_button_cash">Pay at SkilEx</string>
 
     <string name="mobile_number">Mobile Number</string>
     <string name="google_android_map_api_key">AIzaSyB__XAQlolxxDYzb8WfBBMoWUh30EA8qz4</string>

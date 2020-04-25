@@ -27,6 +27,7 @@
     <string name="enter_text">உங்கள் மொபைல் நம்பரை என்டர் செய்யவும்</string>
     <string name="login">உள்நுழை</string>
     <string name="register">ஸ்கில்எக்ஸில் பதிவு செய்ய </string>
+    <string name="reg_aamt">நீங்கள் நேரடியாக ஸ்கில்எக்ஸ் அலுவலகத்திலேயே செலுத்துலாம்</string>
 
     <!--Register-->
     <string name="reg_name">பெயர்  *</string>
@@ -367,6 +368,9 @@
     <string name="user_gender">பாலினம்</string>
     <string name="select_user_gender">தேர்ந்தெடுக்கவும்</string>
 
+
+    <string name="pay_button_online">ஆன்லைனில் பணம் செலுத்து</string>
+    <string name="pay_button_cash">நேரடியாக பணம் செலுத்து</string>
 
     <string name="mobile_number">மொபைல் நம்பர்</string>
 

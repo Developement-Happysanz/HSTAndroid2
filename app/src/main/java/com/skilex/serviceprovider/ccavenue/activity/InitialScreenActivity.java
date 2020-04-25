@@ -20,7 +20,15 @@ import com.skilex.serviceprovider.activity.providerregistration.InitialDepositAc
 import com.skilex.serviceprovider.bean.support.Preference;
 import com.skilex.serviceprovider.ccavenue.utility.AvenuesParams;
 import com.skilex.serviceprovider.ccavenue.utility.ServiceUtility;
+import com.skilex.serviceprovider.helper.ProgressDialogHelper;
+import com.skilex.serviceprovider.interfaces.DialogClickListener;
+import com.skilex.serviceprovider.servicehelpers.ServiceHelper;
+import com.skilex.serviceprovider.serviceinterfaces.IServiceListener;
 import com.skilex.serviceprovider.utils.PreferenceStorage;
+import com.skilex.serviceprovider.utils.SkilExConstants;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static com.skilex.serviceprovider.utils.SkilExConstants.API_ADVANCE_PAYMENT_URL;
 import static com.skilex.serviceprovider.utils.SkilExConstants.API_RSA_URL;
@@ -31,6 +39,8 @@ public class InitialScreenActivity extends AppCompatActivity {
 
     private EditText accessCode, merchantId, currency, amount, orderId, rsaKeyUrl, redirectUrl, cancelUrl;
     private static int SPLASH_TIME_OUT = 500;
+    private ServiceHelper serviceHelper;
+    private ProgressDialogHelper progressDialogHelper;
 
     private void init() {
         accessCode = (EditText) findViewById(R.id.accessCode);
@@ -65,35 +75,35 @@ public class InitialScreenActivity extends AppCompatActivity {
             rsaKeyUrl.setText((API_RSA_URL));
         }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                //Mandatory parameters. Other parameters can be added if required.
-                String vAccessCode = ServiceUtility.chkNull(accessCode.getText()).toString().trim();
-                String vMerchantId = ServiceUtility.chkNull(merchantId.getText()).toString().trim();
-                String vCurrency = ServiceUtility.chkNull(currency.getText()).toString().trim();
-                String vAmount = ServiceUtility.chkNull(amount.getText()).toString().trim();
-                if (!vAccessCode.equals("") && !vMerchantId.equals("") && !vCurrency.equals("") && !vAmount.equals("")) {
-                    Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
-                    intent.putExtra(AvenuesParams.ACCESS_CODE, ServiceUtility.chkNull(accessCode.getText()).toString().trim());
-                    intent.putExtra(AvenuesParams.MERCHANT_ID, ServiceUtility.chkNull(merchantId.getText()).toString().trim());
-                    intent.putExtra(AvenuesParams.ORDER_ID, ServiceUtility.chkNull(orderId.getText()).toString().trim());
-                    intent.putExtra(AvenuesParams.CURRENCY, ServiceUtility.chkNull(currency.getText()).toString().trim());
-                    intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull(amount.getText()).toString().trim());
-
-                    intent.putExtra(AvenuesParams.REDIRECT_URL, ServiceUtility.chkNull(redirectUrl.getText()).toString().trim());
-                    intent.putExtra(AvenuesParams.CANCEL_URL, ServiceUtility.chkNull(cancelUrl.getText()).toString().trim());
-                    intent.putExtra(AvenuesParams.RSA_KEY_URL, ServiceUtility.chkNull(rsaKeyUrl.getText()).toString().trim());
-
-                    startActivity(intent);
-                    finish();
-//            finish();
-                } else {
-                    showToast("All parameters are mandatory.");
-                }
-            }
-        }, SPLASH_TIME_OUT);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                //Mandatory parameters. Other parameters can be added if required.
+//                String vAccessCode = ServiceUtility.chkNull(accessCode.getText()).toString().trim();
+//                String vMerchantId = ServiceUtility.chkNull(merchantId.getText()).toString().trim();
+//                String vCurrency = ServiceUtility.chkNull(currency.getText()).toString().trim();
+//                String vAmount = ServiceUtility.chkNull(amount.getText()).toString().trim();
+//                if (!vAccessCode.equals("") && !vMerchantId.equals("") && !vCurrency.equals("") && !vAmount.equals("")) {
+//                    Intent intent = new Intent(getApplicationContext(), WebViewActivity.class);
+//                    intent.putExtra(AvenuesParams.ACCESS_CODE, ServiceUtility.chkNull(accessCode.getText()).toString().trim());
+//                    intent.putExtra(AvenuesParams.MERCHANT_ID, ServiceUtility.chkNull(merchantId.getText()).toString().trim());
+//                    intent.putExtra(AvenuesParams.ORDER_ID, ServiceUtility.chkNull(orderId.getText()).toString().trim());
+//                    intent.putExtra(AvenuesParams.CURRENCY, ServiceUtility.chkNull(currency.getText()).toString().trim());
+//                    intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull(amount.getText()).toString().trim());
+//
+//                    intent.putExtra(AvenuesParams.REDIRECT_URL, ServiceUtility.chkNull(redirectUrl.getText()).toString().trim());
+//                    intent.putExtra(AvenuesParams.CANCEL_URL, ServiceUtility.chkNull(cancelUrl.getText()).toString().trim());
+//                    intent.putExtra(AvenuesParams.RSA_KEY_URL, ServiceUtility.chkNull(rsaKeyUrl.getText()).toString().trim());
+//
+//                    startActivity(intent);
+//                    finish();
+////            finish();
+//                } else {
+//                    showToast("All parameters are mandatory.");
+//                }
+//            }
+//        }, SPLASH_TIME_OUT);
 
 
     }
@@ -127,6 +137,33 @@ public class InitialScreenActivity extends AppCompatActivity {
         Toast.makeText(this, "Toast: " + msg, Toast.LENGTH_LONG).show();
     }
 
+    public void onCashClick(View view) {
+        //Mandatory parameters. Other parameters can be added if required.
+//        payChas();
+//        String status = null;
+//        status = "Transaction Successful!";
+//        Intent intent = new Intent(this, StatusActivity.class);
+//
+//        intent.putExtra("transStatus", status);
+//
+//        startActivity(intent);
+//        finish();
+        findViewById(R.id.alerere).setVisibility(View.VISIBLE);
+    }
+
+    public void finn(View view) {
+        //Mandatory parameters. Other parameters can be added if required.
+//        payChas();
+//        String status = null;
+//        status = "Transaction Successful!";
+//        Intent intent = new Intent(this, StatusActivity.class);
+//
+//        intent.putExtra("transStatus", status);
+//
+//        startActivity(intent);
+        finish();
+//        findViewById(R.id.alerere).setVisibility(View.VISIBLE);
+    }
 
     @Override
     protected void onStart() {
