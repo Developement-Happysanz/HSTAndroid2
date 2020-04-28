@@ -79,7 +79,7 @@
                     android:id="@+id/online_payment_icon"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:src="@drawable/ic_pay_online" />
+                    android:src="@drawable/ic_pay_skilex" />
 
             </RelativeLayout>
 
