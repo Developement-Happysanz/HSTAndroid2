@@ -288,6 +288,9 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
                         Log.d(TAG, "Show error dialog");
                         AlertDialogHelper.showSimpleAlertDialog(this, msg);
 
+                        selectedList.clear();
+                        finish();
+                        startActivity(getIntent());
                     } else {
                         signInSuccess = true;
                     }

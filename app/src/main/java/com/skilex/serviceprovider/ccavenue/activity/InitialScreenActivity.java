@@ -41,6 +41,7 @@ public class InitialScreenActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 500;
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
+    private TextView payCash;
 
     private void init() {
         accessCode = (EditText) findViewById(R.id.accessCode);
@@ -51,7 +52,7 @@ public class InitialScreenActivity extends AppCompatActivity {
         rsaKeyUrl = (EditText) findViewById(R.id.rsaUrl);
         redirectUrl = (EditText) findViewById(R.id.redirectUrl);
         cancelUrl = (EditText) findViewById(R.id.cancelUrl);
-
+        payCash = (TextView) findViewById(R.id.pay_cash);
     }
 
     @Override
@@ -70,6 +71,7 @@ public class InitialScreenActivity extends AppCompatActivity {
             cancelUrl.setText(API_ADVANCE_PAYMENT_URL);
             rsaKeyUrl.setText(API_RSA_URL);
         } else {
+            payCash.setVisibility(View.GONE);
             redirectUrl.setText(API_SKILEX_PAYMENT_URL);
             cancelUrl.setText(API_SKILEX_PAYMENT_URL);
             rsaKeyUrl.setText((API_RSA_URL));
