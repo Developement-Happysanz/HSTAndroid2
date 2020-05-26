@@ -377,7 +377,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
                 }
             }
 
-            if (selectedList.size() >= 2) {
+            if (selectedList.size() >= 1) {
 
                 setPreferences();
             } else {
