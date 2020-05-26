@@ -110,9 +110,9 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             holder.checkTick.setChecked(false);
 
         } else {
-            if (context instanceof CategorySelectionActivity) {
-                ((CategorySelectionActivity) context).onCategorySelected(position);
-            }
+//            if (context instanceof CategorySelectionActivity) {
+//                ((CategorySelectionActivity) context).onCategorySelected(position);
+//            }
 
             holder.checkTick.setChecked(true);
 

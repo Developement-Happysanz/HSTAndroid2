@@ -286,11 +286,20 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
                             (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
                         signInSuccess = false;
                         Log.d(TAG, "Show error dialog");
-                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+//                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
+                        android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
+                        alertDialogBuilder.setMessage(msg);
+                        alertDialogBuilder.setPositiveButton(R.string.alert_button_ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                selectedList.clear();
+                                finish();
+                                startActivity(getIntent());
+                            }
+                        });
+                        alertDialogBuilder.setCancelable(false);
+                        alertDialogBuilder.show();
 
-                        selectedList.clear();
-                        finish();
-                        startActivity(getIntent());
                     } else {
                         signInSuccess = true;
                     }
@@ -399,11 +408,12 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
             tag.setCategoryPreference("Y");
             selectedList.add(tag);
 
-            categoryListAdapter.notifyItemChanged(position);
+//            categoryListAdapter.notifyItemChanged(position);
         } else {
             tag.setCategoryPreference("N");
             selectedList.remove(tag);
-            categoryListAdapter.notifyItemChanged(position);
+//            categoryListAdapter.notifyItemChanged(position);
         }
+        categoryListAdapter.notifyItemChanged(position);
     }
 }
