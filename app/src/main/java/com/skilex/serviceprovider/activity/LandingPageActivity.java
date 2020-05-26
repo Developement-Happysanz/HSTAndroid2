@@ -53,7 +53,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
     private String resDat = "";
-
+    GPSTracker gpsTracker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +64,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
         progressDialogHelper = new ProgressDialogHelper(this);
         callGetSubCategoryService();
         // check if GPS enabled
-        GPSTracker gpsTracker = new GPSTracker(this);
+        gpsTracker = new GPSTracker(this);
 
 
         PreferenceStorage.saveActiveStatus(getApplicationContext(), "Live");
@@ -97,19 +97,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
         changeFragment(0);
         bottomNavigationView.setSelectedItemId(R.id.action_home);
 
-        if (gpsTracker.getIsGPSTrackingEnabled()) {
 
-            lat = gpsTracker.getLatitude();
-            lon = gpsTracker.getLongitude();
-
-            setAssociateLiveStatus(lat, lon);
-
-        } else {
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gpsTracker.showSettingsAlert();
-        }
     }
 
     void setAssociateLiveStatus(Double Lati, Double Longi) {
@@ -193,7 +181,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
     }
 
     private void loadCart() {
-        resDat = "sendStatus";
+        resDat = "check";
         JSONObject jsonObject = new JSONObject();
         String id = "";
         try {
@@ -260,6 +248,19 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
                     });
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.show();
+                }
+                if (gpsTracker.getIsGPSTrackingEnabled()) {
+
+                    lat = gpsTracker.getLatitude();
+                    lon = gpsTracker.getLongitude();
+
+                    setAssociateLiveStatus(lat, lon);
+
+                } else {
+                    // can't get location
+                    // GPS or Network is not enabled
+                    // Ask user to enable GPS/network in settings
+                    gpsTracker.showSettingsAlert();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
