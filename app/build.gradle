@@ -19,8 +19,8 @@ android {
         applicationId "com.skilex.serviceprovider"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 25
-        versionName "1.042"
+        versionCode 26
+        versionName "1.043"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
