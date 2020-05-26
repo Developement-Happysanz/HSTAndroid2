@@ -193,7 +193,7 @@ public class LandingPageActivity extends BaseActivity implements DialogClickList
     }
 
     private void loadCart() {
-        resDat = "check";
+        resDat = "sendStatus";
         JSONObject jsonObject = new JSONObject();
         String id = "";
         try {
