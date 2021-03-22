@@ -239,7 +239,7 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
     public boolean onTouchEvent(MotionEvent event) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.
                 INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(new View(this).getWindowToken(), 0);
         return true;
     }
 
@@ -345,7 +345,6 @@ public class CategorySelectionActivity extends BaseActivity implements View.OnCl
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
-
             }
         }
     }

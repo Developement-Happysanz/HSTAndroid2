@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'skilex_provider_alias'
             keyPassword 'skilex#123'
-            storeFile file('D:\\HappySanzTech\\AppWorkSpace\\ServiceProvider\\app\\skilex_service_provider.jks')
+            storeFile file('G:\\HappySanzTech\\AppWorkSpace\\ServiceProvider\\app\\skilex_service_provider.jks')
             storePassword 'skilex#123'
             flavorDimensions "default"
         }
@@ -19,8 +19,8 @@ android {
         applicationId "com.skilex.serviceprovider"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 27
-        versionName "1.044"
+        versionCode 28
+        versionName "1.045"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }

@@ -283,7 +283,7 @@ public class RegOrgDocStatus extends BaseActivity implements View.OnClickListene
     public boolean onTouchEvent(MotionEvent event) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.
                 INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(new View(this).getWindowToken(), 0);
         return true;
     }
 
